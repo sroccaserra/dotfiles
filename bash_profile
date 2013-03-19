@@ -1,3 +1,6 @@
+# -*- mode: shell -*-
+# vi: syn=sh:
+
 export EDITOR=vim
 
 export LESS="-iFRSX"
