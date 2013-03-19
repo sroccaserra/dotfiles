@@ -40,3 +40,7 @@ then
 fi
 EOF
 
+git config --global color.ui auto
+git config --global user.name sroccaserra
+git config --global user.email sroccaserra@yahoo.com
+
