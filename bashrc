@@ -1,4 +1,6 @@
 
+PS1='\[\033[00m\]\n\[\033[00;32m\]\u@\h\[\033[00m\] \[\033[01;33m\]\w\[\033[00m\]\n\$ '
+
 export PATH=$HOME/local/bin:$PATH 
 
 if [[ -d $HOME/.rvm ]]
