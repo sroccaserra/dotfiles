@@ -10,7 +10,10 @@ export LD_LIBRARY_PATH=/usr/local/mysql/lib:/usr/local/lib:/usr/lib
 export C_INCLUDE_PATH=/usr/local/include:/usr/include
 export CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH
 
-# export JAVA_HOME="/usr/lib/jvm/java-6-sun"
+if [ -d /usr/lib/jvm/java-6-sun ]
+then
+    export JAVA_HOME="/usr/lib/jvm/java-6-sun"
+fi
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
