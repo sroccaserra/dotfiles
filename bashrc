@@ -1,4 +1,3 @@
-
 PS1='\[\033[00m\]\n\[\033[00;32m\]\u@\h\[\033[00m\] \[\033[01;33m\]\w\[\033[00m\]\n\$ '
 
 export PATH=$HOME/local/bin:$PATH 
@@ -8,7 +7,7 @@ then
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
-if [[ "$TERM" != "screen-256color" ]]
+if [[ -n `command -v tmux` && "$TERM" != "screen-256color" ]]
 then
     tmux attach-session -t "$USER" || tmux new-session -s "$USER"
     exit
