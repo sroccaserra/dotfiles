@@ -10,5 +10,4 @@ fi
 alias df='df -h'
 alias du='du -h'
 
-alias less='less -RFX' # use grep --color=always to pass colors to less
 alias rgrep='grep -r --exclude-dir=\.svn --exclude-dir=\.git'
