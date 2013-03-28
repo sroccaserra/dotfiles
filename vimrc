@@ -2,7 +2,9 @@ filetype plugin indent on
 set autoindent
 set background=dark
 set diffopt+=iwhite
+set encoding=utf-8
 set expandtab
+set fileformat=unix
 set gdefault
 set guioptions-=T       " Turn off useless toolbar
 set guioptions-=m       " Turn off useless toolbar
