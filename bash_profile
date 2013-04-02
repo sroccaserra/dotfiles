@@ -6,7 +6,7 @@ export EDITOR=vim
 export LESS="-iFRSX"
 export GREP_OPTIONS="--color=auto"
 
-export LD_LIBRARY_PATH=/usr/local/mysql/lib:/usr/local/lib:/usr/lib
+# export LD_LIBRARY_PATH=/usr/local/mysql/lib:/usr/local/lib:/usr/lib:/lib
 export C_INCLUDE_PATH=/usr/local/include:/usr/include
 export CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH
 
