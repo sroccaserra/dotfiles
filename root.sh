@@ -1,10 +1,16 @@
 #!/bin/bash
 
+echo -n "Shielding calls to mesg ..."
 msgReplacement="if \`tty -s\`; then\n    mesg n\nfi"
 sed -i "s/^mesg n[\s]*$/${msgReplacement}/" /root/.profile
+echo done
 
-PS1='\n${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] $? \[\033[01;34m\]\w\[\033[00m\]\n\[\033[01;31m\]\$\[\033[00m\] '
+echo -n "Removing old bashrc customization ..."
 sed -i '/# begin sroccaserra/,/# end sroccaserra/d' /root/.bashrc
+echo done
+
+echo -n "Writing bashrc customization ..."
+PS1='\n${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] $? \[\033[01;34m\]\w\[\033[00m\]\n\[\033[01;31m\]\$\[\033[00m\] '
 cat <<-EOF >> /root/.bashrc
 	# begin sroccaserra
 
@@ -24,6 +30,9 @@ cat <<-EOF >> /root/.bashrc
 
 	# end sroccaserra
 EOF
+echo done
 
+echo -n "Writing vimrc customization ..."
 cp vimrc /root/.vimrc
+echo done
 

@@ -32,20 +32,31 @@ done
 
 if [[ -z `grep dotfiles ~/.bashrc` ]]
 then
-        cat <<-EOF >> ~/.bashrc
+    echo -n "Customizing bashrc ..."
+    cat <<-EOF >> ~/.bashrc
 
-			# sroccaserra/dotfiles
-			
-			if [[ -f ~/dotfiles/bashrc ]]
-			then
-			    source ~/dotfiles/bashrc
-			fi
+		# sroccaserra/dotfiles
+		
+		if [[ -f ~/dotfiles/bashrc ]]
+		then
+		    source ~/dotfiles/bashrc
+		fi
 EOF
+    echo done
 fi
 
-git config --global color.ui auto
-git config --global user.name sroccaserra
-git config --global user.email sroccaserra@yahoo.com
+
+if [[ -z `git config --global user.name` ]]
+then
+    git config --global color.ui auto
+    read -p "Git global user name: " GIT_USER_NAME
+    git config --global user.name $GIT_USER_NAME
+fi
+if [[ -z `git config --global user.email` ]]
+then
+    read -p "Git global user email: " GIT_USER_EMAIL
+    git config --global user.email $GIT_USER_EMAIL
+fi
 
 function choice {
     CHOICE=''
@@ -68,7 +79,6 @@ choice "Customize root? [Y/n] "
 if [[ 'y' == "$CHOICE" ]]
 then
     sudo ./root.sh
-    echo "Done."
 else
     echo "Root customization skipped."
 fi
