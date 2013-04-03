@@ -74,7 +74,7 @@ function choice {
     fi
 } # end of function choice
 
-choice "Customize root? [Y/n] "
+choice "Customize root? [Y/n]: "
 
 if [[ 'y' == "$CHOICE" ]]
 then
