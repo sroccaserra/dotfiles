@@ -30,7 +30,7 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-if [ -z `grep dotfiles ~/.bashrc` ]
+if [[ -z `grep dotfiles ~/.bashrc` ]]
 then
         cat <<-EOF >> ~/.bashrc
 
