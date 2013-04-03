@@ -30,17 +30,47 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-cat <<EOF >> ~/.bashrc
-
-# sroccaserra/dotfiles
-
-if [[ -f ~/dotfiles/bashrc ]]
+if [ -z `grep dotfiles ~/.bashrc` ]
 then
-    source ~/dotfiles/bashrc
-fi
+        cat <<-EOF >> ~/.bashrc
+
+			# sroccaserra/dotfiles
+			
+			if [[ -f ~/dotfiles/bashrc ]]
+			then
+			    source ~/dotfiles/bashrc
+			fi
 EOF
+fi
 
 git config --global color.ui auto
 git config --global user.name sroccaserra
 git config --global user.email sroccaserra@yahoo.com
+
+function choice {
+    CHOICE=''
+    local prompt="$*"
+    local answer
+    read -p "$prompt" answer
+    case "$answer" in
+        [yY1] ) CHOICE='y';;
+    [nN0] ) CHOICE='n';;
+    * ) CHOICE="$answer";;
+    esac
+    if [ -z "$CHOICE" ]
+    then
+        CHOICE='y'
+    fi
+} # end of function choice
+
+choice "Customize root? [Y/n] "
+
+if [[ 'y' == "$CHOICE" ]]
+then
+    sudo ./root.sh
+    echo "Done."
+else
+    echo "Root customization skipped."
+fi
+
 
