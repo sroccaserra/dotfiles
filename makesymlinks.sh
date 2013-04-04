@@ -8,7 +8,8 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bash_aliases bash_profile inputrc noserc tmux.conf vimrc"    # list of files/folders to symlink in homedir
+files_to_symlink="bash_aliases inputrc noserc tmux.conf vimrc"    # list of files/folders to symlink in homedir
+files_to_source="bash_profile bashrc"    # list of files/folders to source
 
 ##########
 
@@ -22,29 +23,43 @@ echo -n "Changing to the $dir directory ..."
 cd $dir
 echo "done"
 
+# Make sure .bash_profile is used
+if [[ ! -f ~/.bash_profile && -f ~/.profile ]]
+then
+    echo -n "Copying ~/.profile to ~/.bash_profile ..."
+    cp ~/.profile ~/.bash_profile
+    echo done
+fi
+
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-for file in $files; do
+for file in $files_to_symlink; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
 
-if [[ -z `grep dotfiles ~/.bashrc` ]]
-then
-    echo -n "Customizing bashrc ..."
-    cat <<-EOF >> ~/.bashrc
-
-		# sroccaserra/dotfiles
-		
-		if [[ -f ~/dotfiles/bashrc ]]
+function insert_source_directive {
+    local file_to_source="$1"
+    cat <<-EOF >> ~/.${file_to_source}
+		# begin sroccaserra
+		if [[ -f ~/dotfiles/${file_to_source} ]]
 		then
-		    source ~/dotfiles/bashrc
+		    source ~/dotfiles/${file_to_source}
 		fi
+		# end sroccaserra
 EOF
-    echo done
-fi
+}
 
+for file in ${files_to_source}
+do
+    echo -n "Removing old ~/.${file} source directive ..."
+    sed -i '/# begin sroccaserra/,/# end sroccaserra/d' ~/.${file}
+    echo done
+    echo -n "Inserting new source directive in ~/.${file} ..."
+    insert_source_directive "${file}"
+    echo done
+done
 
 if [[ -z `git config --global user.name` ]]
 then
