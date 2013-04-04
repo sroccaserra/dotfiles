@@ -8,6 +8,8 @@ PS1='\[\033[00m\]\n\[\033[00;32m\]\u@\h\[\033[00m\] $? \[\033[01;33m\]\w\[\033[0
 
 export PATH=$HOME/local/bin:$PATH 
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
 if [[ -d $HOME/.rvm ]]
 then
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -20,4 +22,4 @@ fi
 if [ -e /usr/bin/virtualenvwrapper.sh ] ; then
     source /usr/bin/virtualenvwrapper.sh 
 fi
- 
+
