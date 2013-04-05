@@ -93,7 +93,7 @@ choice "Customize root? [Y/n]: "
 
 if [[ 'y' == "$CHOICE" ]]
 then
-    sudo ./root.sh
+    sudo ./customize_root.sh
 else
     echo "Root customization skipped."
 fi
