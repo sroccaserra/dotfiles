@@ -74,6 +74,10 @@ then
 fi
 
 mkdir -p ~/.virtualenvs
+if [[ ! -f ~/.virtualenvs/postactivate ]]
+then
+    echo 'PS1="\n(`basename \"$VIRTUAL_ENV\"`)$_OLD_VIRTUAL_PS1"' > ~/.virtualenvs/postactivate
+fi
 
 function choice {
     CHOICE=''
