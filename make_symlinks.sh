@@ -73,6 +73,8 @@ then
     git config --global user.email $GIT_USER_EMAIL
 fi
 
+mkdir -p ~/.virtualenvs
+
 function choice {
     CHOICE=''
     local prompt="$*"
