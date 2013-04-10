@@ -39,6 +39,11 @@ for file in $files_to_symlink; do
     ln -s $dir/$file ~/.$file
 done
 
+function remove_sroccaserra_section {
+    local file_path="$1"
+    sed -i '/# begin sroccaserra/,/# end sroccaserra/d' ${file_path}
+}
+
 function insert_source_directive {
     local file_to_source="$1"
     cat <<-EOF >> ~/.${file_to_source}
@@ -54,7 +59,7 @@ EOF
 for file in ${files_to_source}
 do
     echo -n "Removing old ~/.${file} source directive ..."
-    sed -i '/# begin sroccaserra/,/# end sroccaserra/d' ~/.${file}
+    remove_sroccaserra_section ~/.${file}
     echo done
     echo -n "Inserting new source directive in ~/.${file} ..."
     insert_source_directive "${file}"
@@ -73,10 +78,15 @@ then
     git config --global user.email $GIT_USER_EMAIL
 fi
 
-mkdir -p "~/.virtualenvs"
-if [[ ! -f "~/.virtualenvs/postactivate" ]]
+mkdir -p ~/.virtualenvs
+if [[ -f ~/.virtualenvs/postactivate ]]
 then
-    echo 'PS1="\n(`basename \"$VIRTUAL_ENV\"`)$_OLD_VIRTUAL_PS1"' > ~/.virtualenvs/postactivate
+    remove_sroccaserra_section ~/.virtualenvs/postactivate
+    cat <<-'EOF' >> ~/.virtualenvs/postactivate
+		# begin sroccaserra
+		PS1="\n(`basename \"$VIRTUAL_ENV\"`)$_OLD_VIRTUAL_PS1"
+		# end sroccaserra
+EOF
 fi
 
 function choice {
