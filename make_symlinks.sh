@@ -66,6 +66,9 @@ do
     echo done
 done
 
+echo "Copying shared tmux conf to byobu dir."
+sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
+
 if [[ -z `git config --global user.name` ]]
 then
     git config --global color.ui auto
