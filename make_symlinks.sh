@@ -75,6 +75,19 @@ then
     echo "Zenburning Vim."
     wget http://www.vim.org/scripts/download_script.php?src_id=15530 -O ~/.vim/colors/zenburn.vim
 fi
+if [[ ! -d ~/.vim/bundle ]]
+then
+    echo "Infecting Vim."
+    mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+        curl -Sso ~/.vim/autoload/pathogen.vim \
+            https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+fi
+if [[ ! -d ~/.vim/bundle/nerdtree ]]
+then
+    echo "NERDTreeing Vim."
+    cd ~/.vim/bundle; \
+        git clone https://github.com/scrooloose/nerdtree.git
+fi
 
 if [[ -z `git config --global user.name` ]]
 then
