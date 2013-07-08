@@ -70,6 +70,8 @@ echo "Copying shared tmux conf to byobu dir."
 mkdir -p ~/.byobu
 sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
 
+######
+## Vim
 mkdir -p ~/.vim/colors
 if [[ ! -f ~/.vim/colors/zenburn.vim ]]
 then
@@ -85,9 +87,18 @@ then
 fi
 if [[ ! -d ~/.vim/bundle/nerdtree ]]
 then
-    echo "NERDTreeing Vim."
+    echo "NERDTree-ing Vim."
     cd ~/.vim/bundle; \
         git clone https://github.com/scrooloose/nerdtree.git
+fi
+if [[ ! -d ~/.vim/ruby/command-t ]]
+then
+    echo "CommandT-ing Vim."
+    wget http://www.vim.org/scripts/download_script.php?src_id=18167 -O command-t-1.4.vba
+    vim -S "command-t-1.4.vba" -c ":q"
+    cd ~/.vim/ruby/command-t; \
+        ruby extconf.rb; \
+        make
 fi
 
 if [[ -z `git config --global user.name` ]]
