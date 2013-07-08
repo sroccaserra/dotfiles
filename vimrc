@@ -1,4 +1,5 @@
 execute pathogen#infect()
+let NERDTreeIgnore = ['\.pyc$']
 
 filetype plugin indent on
 set autoindent
