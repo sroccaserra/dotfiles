@@ -30,3 +30,5 @@ set viminfo+=%
 set wildmenu
 set wildmode=list:longest,full
 syntax on
+colorscheme zenburn
+

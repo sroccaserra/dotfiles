@@ -69,6 +69,13 @@ done
 echo "Copying shared tmux conf to byobu dir."
 sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
 
+mkdir -p ~/.vim/colors
+if [[ ! -f ~/.vim/colors/zenburn.vim ]]
+then
+    echo "Zenburning Vim."
+    wget http://www.vim.org/scripts/download_script.php?src_id=15530 -O ~/.vim/colors/zenburn.vim
+fi
+
 if [[ -z `git config --global user.name` ]]
 then
     git config --global color.ui auto
