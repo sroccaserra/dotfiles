@@ -1,12 +1,18 @@
-if [ -x /usr/bin/dircolors ]; then
+if [ -x /usr/bin/dircolors ]
+then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
     alias cgrep='grep --color=always'
+    if [[ ! -z `command -v colormake` ]]
+    then
+        alias make=colormake
+    fi
 fi
 
+alias vi=vim
 alias df='df -h'
 alias du='du -h'
 

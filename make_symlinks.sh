@@ -67,6 +67,7 @@ do
 done
 
 echo "Copying shared tmux conf to byobu dir."
+mkdir -p ~/.byobu
 sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
 
 mkdir -p ~/.vim/colors
