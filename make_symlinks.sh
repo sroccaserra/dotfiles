@@ -72,6 +72,21 @@ sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
 
 ######
 ## Vim
+if [[ ! -f /usr/local/bin/vim ]]
+then
+    cd /usr/local/src; \
+        hg clone https://code.google.com/p/vim/; \
+        cd vim; \
+        ./configure --enable-rubyinterp --enable-pythoninterp --enable-luainterp --with-features=HUGE; \
+        colormake; \
+        colormake install
+
+    update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 200 --slave /usr/share/man/man1/editor.1 editor.1 /usr/local/share/man/man1/vim.1
+    update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 200 --slave /usr/share/man/man1/vi.1 vi.1 /usr/local/share/man/man1/vim.1
+    update-alternatives --set editor /usr/local/bin/vim
+    update-alternatives --set vi /usr/local/bin/vim
+fi
+
 mkdir -p ~/.vim/colors
 if [[ ! -f ~/.vim/colors/zenburn.vim ]]
 then
