@@ -74,18 +74,20 @@ sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
 ## Vim
 if [[ ! -f /usr/local/bin/vim ]]
 then
+    pushd .
     mkdir -p ~/developer
-    cd ~/developer; \
-        hg clone https://code.google.com/p/vim/; \
-        cd vim; \
-        ./configure --enable-rubyinterp --enable-pythoninterp --enable-luainterp --with-features=HUGE; \
-        colormake; \
-        sudo colormake install
+    cd ~/developer
+    hg clone https://code.google.com/p/vim/
+    cd vim
+    ./configure --enable-rubyinterp --enable-pythoninterp --enable-luainterp --with-features=HUGE
+    colormake
+    sudo colormake install
 
     sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 200 --slave /usr/share/man/man1/editor.1 editor.1 /usr/local/share/man/man1/vim.1
     sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 200 --slave /usr/share/man/man1/vi.1 vi.1 /usr/local/share/man/man1/vim.1
     sudo update-alternatives --set editor /usr/local/bin/vim
     sudo update-alternatives --set vi /usr/local/bin/vim
+    popd
 fi
 
 mkdir -p ~/.vim/colors
@@ -103,18 +105,22 @@ then
 fi
 if [[ ! -d ~/.vim/bundle/nerdtree ]]
 then
+    pushd .
     echo "NERDTree-ing Vim."
-    cd ~/.vim/bundle; \
-        git clone https://github.com/scrooloose/nerdtree.git
+    cd ~/.vim/bundle
+    git clone https://github.com/scrooloose/nerdtree.git
+    popd
 fi
 if [[ ! -d ~/.vim/ruby/command-t ]]
 then
+    pushd .
     echo "CommandT-ing Vim."
     wget http://www.vim.org/scripts/download_script.php?src_id=18167 -O command-t-1.4.vba
     vim -S "command-t-1.4.vba" -c ":q"
-    cd ~/.vim/ruby/command-t; \
-        ruby extconf.rb; \
-        make
+    cd ~/.vim/ruby/command-t
+    ruby extconf.rb
+    make
+    popd
 fi
 
 if [[ -z `git config --global user.name` ]]
@@ -156,7 +162,7 @@ function choice {
     fi
 } # end of function choice
 
-choice "Customize root? [Y/n]: "
+choice "Customize root? [Y/n](`pwd`): "
 
 if [[ 'y' == "$CHOICE" ]]
 then
