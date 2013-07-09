@@ -1,6 +1,7 @@
 execute pathogen#infect()
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
+let NERDTreeDirArrows = 1
 
 filetype plugin indent on
 set autoindent

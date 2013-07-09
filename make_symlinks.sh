@@ -90,6 +90,12 @@ then
     popd
 fi
 
+mkdir -p ~/.vim/syntax
+if [[ ! -f ~/.vim/syntax/python.vim ]]
+then
+    echo "python.vim"
+    wget http://www.vim.org/scripts/download_script.php?src_id=20262 -O ~/.vim/syntax/python.vim
+fi
 mkdir -p ~/.vim/colors
 if [[ ! -f ~/.vim/colors/zenburn.vim ]]
 then
