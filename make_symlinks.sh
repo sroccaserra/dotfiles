@@ -154,25 +154,18 @@ then
 EOF
 fi
 
-function choice {
-    CHOICE=''
-    local prompt="$*"
-    local answer
-    read -p "$prompt" answer
-    case "$answer" in
-        [yY1] ) CHOICE='y';;
-    [nN0] ) CHOICE='n';;
-    * ) CHOICE="$answer";;
+function ask_yes_or_no() {
+    read -p "$1 [y,N]:" answer
+
+    case ${answer} in
+        y|Y) echo "y" ;;
+        *)   echo "n" ;;
     esac
-    if [ -z "$CHOICE" ]
-    then
-        CHOICE='n'
-    fi
-} # end of function choice
+}
 
-choice "Customize root? [y/N](`pwd`): "
+customize_root=$(ask_yes_or_no "Customize root?")
 
-if [[ 'y' == "$CHOICE" ]]
+if [[ 'y' == "${customize_root}" ]]
 then
     sudo ./customize_root.sh
 else
