@@ -7,7 +7,7 @@
 ########## Variables
 
 dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
+olddir=~/.dotfiles_old             # old dotfiles backup directory
 files_to_symlink="bash_aliases inputrc noserc tmux.conf vimrc"    # list of files/folders to symlink in homedir
 files_to_source="bash_profile bashrc"    # list of files/folders to source
 required_commands="colormake curl hg python wget"
@@ -27,12 +27,8 @@ done
 # display pretty colors
 python terminal-colors -xc
 
-# create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
-mkdir -p $olddir
-echo "done"
-
 # change to the dotfiles directory
+echo
 echo -n "Changing to the $dir directory ..."
 cd $dir
 echo "done"
@@ -45,13 +41,27 @@ then
     echo done
 fi
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
+# move any existing dotfiles in homedir to $olddir directory,
+if [[ ! -d "$olddir" ]]
+then
+    echo
+    for file in $files_to_symlink
+    do
+        # create $olddir in homedir
+        echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
+        mkdir -p $olddir
+        echo "done"
+        
+        echo "Moving any existing dotfiles from ~ to $olddir"
+        mv ~/.$file "$olddir"
+    done
+fi
+# Then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
+echo
 for file in $files_to_symlink
 do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -fs $dir/$file ~/.$file
 done
 
 function remove_sroccaserra_section {
@@ -71,6 +81,7 @@ function insert_source_directive {
 EOF
 }
 
+echo
 for file in ${files_to_source}
 do
     echo -n "Removing old ~/.${file} source directive ..."
@@ -89,6 +100,7 @@ sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
 ## Vim
 if [[ ! -f /usr/local/bin/vim ]]
 then
+    echo
     pushd .
     mkdir -p ~/developer
     cd ~/developer
@@ -146,6 +158,7 @@ fi
 
 if [[ -z `git config --global user.name` ]]
 then
+    echo
     git config --global color.ui auto
     read -p "Git global user name: "
     git config --global user.name $REPLY
@@ -176,6 +189,7 @@ function ask_yes_or_no() {
     esac
 }
 
+echo
 customize_root=$(ask_yes_or_no "Customize root?")
 
 if [[ 'y' == "${customize_root}" ]]
