@@ -6,7 +6,7 @@ then
     alias vdir='vdir --color=auto'
 
     alias cgrep='grep --color=always'
-    if [[ ! -z `command -v colormake` ]]
+    if [[ -n "`command -v colormake`" ]]
     then
         alias make=colormake
     fi

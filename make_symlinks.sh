@@ -17,7 +17,7 @@ required_commands="colormake curl hg python wget"
 # check command existence
 for command_name in $required_commands
 do
-    if [[ -z $(command -v ${command_name}) ]]
+    if [[ -z "$(command -v ${command_name})" ]]
     then
         echo "Please install yourself a ${command_name}."
         exit 1
@@ -149,21 +149,22 @@ then
     pushd .
     echo "CommandT-ing Vim."
     wget http://www.vim.org/scripts/download_script.php?src_id=18167 -O command-t-1.4.vba
-    vim -S "command-t-1.4.vba" -c ":q"
+    vim -S command-t-1.4.vba -c ":q"
+    rm command-t-1.4.vba
     cd ~/.vim/ruby/command-t
     ruby extconf.rb
     make
     popd
 fi
 
-if [[ -z `git config --global user.name` ]]
+if [[ -z "`git config --global user.name`" ]]
 then
     echo
     git config --global color.ui auto
     read -p "Git global user name: "
     git config --global user.name $REPLY
 fi
-if [[ -z `git config --global user.email` ]]
+if [[ -z "`git config --global user.email`" ]]
 then
     read -p "Git global user email: "
     git config --global user.email $REPLY
