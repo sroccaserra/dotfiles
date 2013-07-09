@@ -33,7 +33,6 @@ EOF
 echo done
 
 echo -n "Writing vimrc customization ..."
-cp vimrc /root/.vimrc
 sed -n '/^""" Begin shared with root$/,/^""" End shared with root$/ p' vimrc > /root/.vimrc
 echo done
 
