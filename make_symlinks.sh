@@ -13,6 +13,8 @@ files_to_source="bash_profile bashrc"    # list of files/folders to source
 
 ##########
 
+python terminal-colors -xc
+
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
 mkdir -p $olddir
@@ -164,11 +166,11 @@ function choice {
     esac
     if [ -z "$CHOICE" ]
     then
-        CHOICE='y'
+        CHOICE='n'
     fi
 } # end of function choice
 
-choice "Customize root? [Y/n](`pwd`): "
+choice "Customize root? [y/N](`pwd`): "
 
 if [[ 'y' == "$CHOICE" ]]
 then
