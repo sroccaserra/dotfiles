@@ -3,7 +3,7 @@ let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeDirArrows = 1
 
-""" Shared with root
+""" Begin shared with root
 
 filetype plugin indent on
 set autoindent
@@ -39,4 +39,8 @@ set wildignore+=*.pyc,*.o,*.class
 set wildmenu
 set wildmode=list:longest,full
 syntax on
+
+""" End shared with root
+
 colorscheme zenburn
+
