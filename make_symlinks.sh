@@ -134,13 +134,13 @@ fi
 if [[ -z `git config --global user.name` ]]
 then
     git config --global color.ui auto
-    read -p "Git global user name: " GIT_USER_NAME
-    git config --global user.name $GIT_USER_NAME
+    read -p "Git global user name: "
+    git config --global user.name $REPLY
 fi
 if [[ -z `git config --global user.email` ]]
 then
-    read -p "Git global user email: " GIT_USER_EMAIL
-    git config --global user.email $GIT_USER_EMAIL
+    read -p "Git global user email: "
+    git config --global user.email $REPLY
 fi
 
 mkdir -p ~/.virtualenvs
@@ -155,9 +155,9 @@ EOF
 fi
 
 function ask_yes_or_no() {
-    read -p "$1 [y,N]:" answer
+    read -p "$1 [y,N]:"
 
-    case ${answer} in
+    case $REPLY in
         y|Y) echo "y" ;;
         *)   echo "n" ;;
     esac

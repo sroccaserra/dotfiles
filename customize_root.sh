@@ -34,5 +34,6 @@ echo done
 
 echo -n "Writing vimrc customization ..."
 cp vimrc /root/.vimrc
+sed -n '/^""" Shared with root$/,$ p' vimrc > /root/.vimrc
 echo done
 
