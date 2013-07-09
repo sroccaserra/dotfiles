@@ -1,5 +1,6 @@
 execute pathogen#infect()
-let NERDTreeIgnore = ['\.pyc$']
+let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
+let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 
 filetype plugin indent on
 set autoindent
@@ -30,6 +31,7 @@ set smarttab
 set softtabstop=4
 set tabstop=4
 set viminfo+=%
+set wildignore+=*.pyc,*.o,*.class
 set wildmenu
 set wildmode=list:longest,full
 syntax on
