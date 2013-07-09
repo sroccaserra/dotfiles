@@ -10,9 +10,21 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 files_to_symlink="bash_aliases inputrc noserc tmux.conf vimrc"    # list of files/folders to symlink in homedir
 files_to_source="bash_profile bashrc"    # list of files/folders to source
+required_commands="colormake curl hg python wget"
 
 ##########
 
+# check command existence
+for command_name in $required_commands
+do
+    if [[ -z $(command -v ${command_name}) ]]
+    then
+        echo "Please install yourself a ${command_name}."
+        exit 1
+    fi
+done
+
+# display pretty colors
 python terminal-colors -xc
 
 # create dotfiles_old in homedir
@@ -34,7 +46,8 @@ then
 fi
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-for file in $files_to_symlink; do
+for file in $files_to_symlink
+do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."

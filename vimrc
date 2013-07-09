@@ -2,7 +2,6 @@ execute pathogen#infect()
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeDirArrows = 1
-colorscheme zenburn
 
 """ Shared with root
 
@@ -40,4 +39,4 @@ set wildignore+=*.pyc,*.o,*.class
 set wildmenu
 set wildmode=list:longest,full
 syntax on
-
+colorscheme zenburn
