@@ -24,6 +24,7 @@ set nopaste
 set noswapfile
 set nowrap
 set nowritebackup
+set number
 set ruler
 set shiftwidth=4
 set smartindent
