@@ -1,4 +1,4 @@
-# vim: filetype=sh
+# vim: set filetype=sh
 
 if [ -x /usr/bin/dircolors ]
 then
