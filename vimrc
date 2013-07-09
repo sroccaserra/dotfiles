@@ -7,6 +7,7 @@ let NERDTreeDirArrows = 1
 
 filetype plugin indent on
 set autoindent
+set backspace=2
 set background=dark
 set diffopt+=iwhite
 set encoding=utf-8
