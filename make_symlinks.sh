@@ -96,6 +96,19 @@ echo "Copying shared tmux conf to byobu dir."
 mkdir -p ~/.byobu
 sed -n '/^### Shared with Byobu ###$/,$ p' tmux.conf > ~/.byobu/.tmux.conf
 
+if [[ ! -d "$HOME/bin" ]]
+then
+    echo
+    echo "\$HOME/bin sweet \$HOME/bin."
+    mkdir -p "$HOME/bin"
+    if [[ -z "`command -v lein`" ]]
+    then
+        echo "Leiningen! You're insane!"
+        \curl https://raw.github.com/technomancy/leiningen/stable/bin/lein > "$HOME/bin/lein"
+    fi
+fi
+
+
 ######
 ## Vim
 if [[ ! -f /usr/local/bin/vim ]]

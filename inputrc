@@ -26,3 +26,9 @@ $if Bash
   # a history expansion in the line
   Space: magic-space
 $endif
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+set show-all-if-ambiguous on
+set completion-ignore-case on
+

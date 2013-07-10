@@ -23,3 +23,10 @@ if [ -e /usr/bin/virtualenvwrapper.sh ] ; then
     source /usr/bin/virtualenvwrapper.sh 
 fi
 
+case "$TERM" in
+screen*) 
+    GIT_PS1_SHOWDIRTYSTATE=true
+    PROMPT_COMMAND='echo -ne "\033k$(__git_ps1)\033"'
+    ;;
+esac
+
