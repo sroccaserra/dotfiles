@@ -10,11 +10,11 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 files_to_symlink="bash_aliases inputrc noserc tmux.conf vimrc"    # list of files/folders to symlink in homedir
 files_to_source="bash_profile bashrc"    # list of files/folders to source
-required_commands="colormake curl hg python wget"
+required_commands="colormake curl hg git python ruby wget"
 
 ##########
 
-# check command existence
+# check commands existence
 for command_name in $required_commands
 do
     if [[ -z "$(command -v ${command_name})" ]]
@@ -130,41 +130,26 @@ then
     popd
 fi
 
-mkdir -p ~/.vim/syntax
-if [[ ! -f ~/.vim/syntax/python.vim ]]
+#  if [[ ! -f "$HOME/.vim/autoload/pathogen.vim" ]]
+#  then
+#      echo "Infecting Vim."
+#      mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"; \
+#          curl -Sso ~/.vim/autoload/pathogen.vim \
+#              https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+#  fi
+
+if [[ ! -d "$HOME/.vim/bundle/vundle" ]]
 then
-    echo "python.vim"
-    wget http://www.vim.org/scripts/download_script.php?src_id=20262 -O ~/.vim/syntax/python.vim
+    echo "Vundle FTW"
+    git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
+    vim +BundleInstall +xa
 fi
-mkdir -p ~/.vim/colors
-if [[ ! -f ~/.vim/colors/zenburn.vim ]]
-then
-    echo "Zenburning Vim."
-    wget http://www.vim.org/scripts/download_script.php?src_id=15530 -O ~/.vim/colors/zenburn.vim
-fi
-if [[ ! -d ~/.vim/bundle ]]
-then
-    echo "Infecting Vim."
-    mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-        curl -Sso ~/.vim/autoload/pathogen.vim \
-            https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-fi
-if [[ ! -d ~/.vim/bundle/nerdtree ]]
-then
-    pushd .
-    echo "NERDTree-ing Vim."
-    cd ~/.vim/bundle
-    git clone https://github.com/scrooloose/nerdtree.git
-    popd
-fi
+
 if [[ ! -d ~/.vim/ruby/command-t ]]
 then
     pushd .
     echo "CommandT-ing Vim."
-    wget http://www.vim.org/scripts/download_script.php?src_id=18167 -O command-t-1.4.vba
-    vim -S command-t-1.4.vba -c ":q"
-    rm command-t-1.4.vba
-    cd ~/.vim/ruby/command-t
+    cd "$HOME/.vim/ruby/command-t"
     ruby extconf.rb
     make
     popd

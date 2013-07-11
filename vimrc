@@ -1,6 +1,34 @@
-execute pathogen#infect()
+" See https://github.com/skwp/dotfiles for vundle plugins & conf ideas
 
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jnurmine/Zenburn'
+Bundle 'scrooloose/nerdtree'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-fugitive'
+Bundle 'Raimondi/delimitMate'
+Bundle 'Shougo/neocomplcache'
+Bundle 'bogado/file-line'
+
+Bundle 'git://git.wincent.com/command-t.git'
+
+filetype plugin indent on
+
+let g:CommandTMatchWindowAtTop=1
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
+let g:Powerline_symbols = 'fancy'
+let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_max_list = 5
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
@@ -55,7 +83,7 @@ syntax on
 
 """ End shared with root
 
-colorscheme zenburn
+silent! colorscheme zenburn
 
 nmap <leader>d :NERDTreeToggle<CR>
 
