@@ -145,15 +145,15 @@ then
     vim +BundleInstall +xa
 fi
 
-if [[ ! -d ~/.vim/ruby/command-t ]]
-then
-    pushd .
-    echo "CommandT-ing Vim."
-    cd "$HOME/.vim/ruby/command-t"
-    ruby extconf.rb
-    make
-    popd
-fi
+# if [[ ! -d ~/.vim/ruby/command-t ]]
+# then
+#     pushd .
+#     echo "CommandT-ing Vim."
+#     cd "$HOME/.vim/ruby/command-t"
+#     ruby extconf.rb
+#     make
+#     popd
+# fi
 
 if [[ -z "`git config --global user.name`" ]]
 then

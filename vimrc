@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/vim-powerline'
+" Note: with powerline, you need one of these too: https://github.com/ashwin/vim-powerline/tree/develop/font (works on PuTTY)
 Bundle 'jnurmine/Zenburn'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
