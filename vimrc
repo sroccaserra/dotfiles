@@ -3,7 +3,7 @@ execute pathogen#infect()
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
-nmap <leader>d :NERDTreeToggle<CR>
+let NERDTreeMinimalUI=1
 
 """ Begin shared with root
 
@@ -56,4 +56,6 @@ syntax on
 """ End shared with root
 
 colorscheme zenburn
+
+nmap <leader>d :NERDTreeToggle<CR>
 
