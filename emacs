@@ -1,18 +1,31 @@
+;; -*- mode:emacs-lisp -*-
+
 ;;;;;;;;;;;;;;;;
 ;;; Packages
 
-(load
-  (expand-file-name "~/.emacs.d/elpa/package.el"))
+(defun is-emacs-24-or-more ()
+  (string-match "Emacs \\([0-9]+\\)" (version))
+  (let ((v (string-to-int (match-string 1 (version)))))
+    (>= v 24)))
+
+(unless (is-emacs-24-or-more)
+  (when (not (file-exists-p "~/.emacs.d/elpa/package.el"))
+    (make-directory "~/.emacs.d/elpa" t)
+    (url-copy-file "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el" "~/.emacs.d/elpa/package.el"))
+  (load "~/.emacs.d/elpa/package.el"))
 
 (require 'package)
 (add-to-list 'package-archives
-    '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 (defvar my-packages '(clojure-mode clojure-test-mode dired+ evil evil-leader evil-numbers helm
   helm-projectile powershell-mode projectile undo-tree
     zenburn-theme)
   "List of my sine qua non packages")
+
+(unless (is-emacs-24-or-more)
+  (add-to-list 'my-packages 'color-theme t))
 
 (require 'cl)
 (let ((missing-packages (remove-if 'package-installed-p my-packages)))
@@ -32,3 +45,8 @@
 (require 'evil-leader)
 (global-evil-leader-mode t)
 
+(cond ((is-emacs-24-or-more)
+       (load-theme 'zenburn t))
+      (t
+       (load-theme 'zenburn)))
+       

@@ -11,10 +11,10 @@
  '(global-auto-revert-mode t)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
- '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(pop-up-windows nil)
  '(recentf-max-saved-items 1024)
- '(recentf-mode t))
+ '(recentf-mode t)
+ '(vc-follow-symlinks t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
