@@ -1,5 +1,5 @@
 # -*- mode: shell -*-
-# vi: syn=sh:
+# vi: filetype=sh:
 
 if [ -x /usr/bin/dircolors ]
 then
