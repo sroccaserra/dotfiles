@@ -19,6 +19,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/neocomplcache'
 Bundle 'bogado/file-line'
+Bundle 'kien/ctrlp.vim'
 
 Bundle 'git://git.wincent.com/command-t.git'
 
@@ -88,6 +89,7 @@ syntax on
 silent! colorscheme zenburn
 
 nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>p :CtrlP<CR>
 
 if &term =~ '256color'
     " Disable Background Color Erase (BCE) so that color schemes
