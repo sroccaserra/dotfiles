@@ -52,3 +52,20 @@
        (require 'color-theme)
        (color-theme-initialize)
        (load-theme 'zenburn)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Evil
+
+(evil-ex-define-cmd "p[rojectile]" 'helm-projectile)
+(evil-ex-define-cmd "a[nything]" 'save-buffer-then-helm)
+(evil-leader/set-key "t" 'save-buffer-then-helm)
+(defun save-buffer-then-helm ()
+  (interactive)
+  (when (buffer-file-name)
+    (save-buffer))
+  (cond ((fboundp 'helm-for-files)
+         (helm-for-files))
+        ((fboundp 'helm-mini)
+         (helm-mini))
+        (t (ibuffer))))
+
