@@ -142,7 +142,7 @@ if [[ ! -d "$HOME/.vim/bundle/vundle" ]]
 then
     echo "Vundle FTW"
     git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
-    vim +BundleInstall +xa
+    vim --noplugin -N "+set hidden" "+syntax on" +BundleInstall +xa
 fi
 
 # if [[ ! -d ~/.vim/ruby/command-t ]]
