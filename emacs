@@ -1,4 +1,5 @@
 ;; -*- mode:emacs-lisp -*-
+;; vi: set filetype=lisp:
 
 ;;;;;;;;;;;;;;;;
 ;;; Packages
@@ -48,5 +49,6 @@
 (cond ((is-emacs-24-or-more)
        (load-theme 'zenburn t))
       (t
+       (require 'color-theme)
+       (color-theme-initialize)
        (load-theme 'zenburn)))
-       

@@ -1,4 +1,5 @@
 " See https://github.com/skwp/dotfiles for vundle plugins & conf ideas
+" vi: set filetype=vim:
 
 set nocompatible
 filetype off

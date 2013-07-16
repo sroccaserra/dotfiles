@@ -11,9 +11,13 @@
  '(global-auto-revert-mode t)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
+ '(menu-bar-mode nil)
  '(pop-up-windows nil)
  '(recentf-max-saved-items 1024)
  '(recentf-mode t)
+ '(show-paren-delay 0)
+ '(show-paren-mode t)
+ '(show-trailing-whitespace t)
  '(vc-follow-symlinks t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
