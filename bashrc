@@ -1,9 +1,6 @@
-# if [[ -n `command -v tmux` && "$TERM" != "screen-256color" ]]
-# then
-#     tmux attach-session -t "$USER" || tmux new-session -s "$USER"
-#     exit
-# fi
- 
+# -*- mode: shell -*-
+# vi: filetype=sh:
+
 PS1='\[\033[00m\]\n\[\033[00;32m\]\u@\h\[\033[00m\] $? \[\033[01;33m\]\w\[\033[00m\]\n\[\033[00;32m\]\$\[\033[00m\] '
 
 export PATH=$HOME/local/bin:$PATH 
@@ -29,4 +26,25 @@ screen*)
     PROMPT_COMMAND='echo -ne "\033k$(__git_ps1)\033"'
     ;;
 esac
+
+##########################
+# Formerly in bash_profile
+
+export EDITOR=vim
+
+export LESS="-iFRSX"
+export GREP_OPTIONS="--color=auto"
+
+export PATH=$PATH:$HOME/bin
+
+# export LD_LIBRARY_PATH=/usr/local/mysql/lib:/usr/local/lib:/usr/lib:/lib
+export C_INCLUDE_PATH=/usr/local/include:/usr/include
+export CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH
+
+if [ -d /usr/lib/jvm/java-6-sun ]
+then
+    export JAVA_HOME="/usr/lib/jvm/java-6-sun"
+fi
+
+[ -z "$TMUX" ] && export TERM=xterm-256color
 

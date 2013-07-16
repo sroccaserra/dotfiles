@@ -15,8 +15,8 @@ then
     fi
 fi
 
-alias vi=vim
 alias df='df -h'
 alias du='du -h'
+alias emacs='TERM=xterm-256color emacs'
 
 alias rgrep='grep -r --exclude-dir=\.svn --exclude-dir=\.git'
