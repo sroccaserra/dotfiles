@@ -101,5 +101,12 @@ if &term =~ '256color'
     set t_ut=
 endif
 
-autocmd GUIEnter * simalt ~n
+if has("gui_running")
+    if has("win32")
+        autocmd GUIEnter * simalt ~n
+    else
+        set lines=999 columns=999
+    endif
+endif
+
 
