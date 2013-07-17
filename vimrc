@@ -102,3 +102,5 @@ if &term =~ '256color'
     set t_ut=
 endif
 
+autocmd GUIEnter * simalt ~n
+
