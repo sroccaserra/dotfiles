@@ -92,7 +92,6 @@ syntax on
 silent! colorscheme zenburn
 
 nmap <leader>d :NERDTreeToggle<CR>
-nmap <leader>p :CtrlP<CR>
 
 if &term =~ '256color'
     " Disable Background Color Erase (BCE) so that color schemes
@@ -108,5 +107,4 @@ if has("gui_running")
         set lines=999 columns=999
     endif
 endif
-
 
