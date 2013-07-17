@@ -16,6 +16,7 @@
  '(pop-up-windows nil)
  '(recentf-max-saved-items 1024)
  '(recentf-mode t)
+ '(require-final-newline t)
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(show-paren-style (quote parenthesis))

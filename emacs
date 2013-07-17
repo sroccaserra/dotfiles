@@ -88,6 +88,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key bindings
 
+(global-set-key [(control c)(control m)] 'execute-extended-command)
+(global-set-key [(control c)(m)] 'execute-extended-command)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tab
 
