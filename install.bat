@@ -16,5 +16,23 @@ if not exist %HOME%\.emacs (
     echo (load-file "~/dotfiles/emacs"^) > %HOME%\.emacs
 )
 
+if not exist %HOME%\.ssh (
+    if exist %HOME%\Dropbox\.ssh (
+        mklink /D %HOME%\.ssh %HOME%\Dropbox\.ssh
+    )
+)
+
+if x"%PATH:\git\bin=%"==x"%PATH%" (
+    echo Suggestion: You should add Git\bin to your path.
+)
+
+if x"%PATH:\vim\=%"==x"%PATH%" (
+    echo Suggestion: You should add Vim to your path.
+)
+
+if x"%PATH:emacs=%"==x"%PATH%" (
+    echo Suggestion: You should add Emacs to your path.
+)
+
 pause
 
