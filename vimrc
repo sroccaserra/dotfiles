@@ -81,6 +81,7 @@ set smarttab
 set softtabstop=4
 set tabstop=4
 set viminfo+=%
+set whichwrap+=<,>,[,]
 set wildignore+=*.pyc,*.o,*.class,log/**
 set wildmenu
 set wildmode=list:longest,full
