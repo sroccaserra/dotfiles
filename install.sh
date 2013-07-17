@@ -108,6 +108,18 @@ then
     fi
 fi
 
+#################
+# Developer stuff
+
+mkdir -p ~/developer
+if [[ ! -d ~/developer/emacs ]]
+then
+    git clone git@github.com:sroccaserra/emacs.git ~/developer/emacs
+fi
+if [[ ! -d ~/developer/smart-tab ]]
+then
+    git clone git@github.com:sroccaserra/smart-tab.git ~/developer/smart-tab
+fi
 
 ######
 ## Vim
