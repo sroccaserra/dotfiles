@@ -180,20 +180,22 @@ EOF
 fi
 
 function ask_yes_or_no() {
-    read -p "$1 [y,N]:"
+    read -p "$1 ([y]es or [N]o): "
 
-    case $REPLY in
-        y|Y) echo "y" ;;
-        *)   echo "n" ;;
+    case $(echo $REPLY | tr '[A-Z]' '[a-z]') in
+        y|yes) echo "yes" ;;
+        *)   echo "no" ;;
     esac
 }
 
 echo
-customize_root=$(ask_yes_or_no "Customize root?")
+install_root=$(ask_yes_or_no "Customize root?")
 
-if [[ 'y' == "${customize_root}" ]]
+echo
+if [[ 'yes' == "${install_root}" ]]
 then
-    sudo ./customize_root.sh
+    echo "Customizing root."
+    sudo ./install_root.sh
 else
     echo "Root customization skipped."
 fi
