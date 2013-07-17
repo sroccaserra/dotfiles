@@ -167,6 +167,7 @@ fi
 #     popd
 # fi
 
+# Git
 if [[ -z "`git config --global user.name`" ]]
 then
     echo

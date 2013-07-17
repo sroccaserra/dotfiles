@@ -10,9 +10,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
+" Note: with powerline, you need one of these too:
+" https://github.com/ashwin/vim-powerline/tree/develop/font
+" (works on PuTTY)
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
-" Note: with powerline, you need one of these too: https://github.com/ashwin/vim-powerline/tree/develop/font (works on PuTTY)
 Bundle 'jnurmine/Zenburn'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
@@ -22,11 +24,8 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'bogado/file-line'
 Bundle 'kien/ctrlp.vim'
 
-" Bundle 'git://git.wincent.com/command-t.git'
-
 filetype plugin indent on
 
-" let g:CommandTMatchWindowAtTop=1
 let g:ctrlp_match_window = 'top,order:ttb,max:20'
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 let g:Powerline_symbols = 'fancy'
