@@ -1,13 +1,15 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(abbrev-mode t)
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(abbrev-mode t t)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(cursor-in-non-selected-windows nil)
+ '(custom-safe-themes (quote ("1f4e6cf4cb3bdba8afdb9244e037698238080eeecb209084602f7d717225f102" default)))
  '(delete-old-versions t)
+ '(evil-default-cursor (quote (t "white")))
  '(evil-leader/leader ",")
  '(global-auto-revert-mode t)
  '(inhibit-startup-screen t)
@@ -32,8 +34,8 @@
  '(view-exits-all-viewing-windows t)
  '(visible-bell t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )

@@ -20,9 +20,9 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(defvar my-packages '(clojure-mode clojure-test-mode dired+ evil evil-leader evil-numbers helm
-  helm-projectile powershell-mode projectile undo-tree
-    zenburn-theme)
+(defvar my-packages '(clojure-mode clojure-test-mode dired+ evil
+  evil-leader evil-numbers helm helm-projectile maxframe
+  powershell-mode projectile undo-tree zenburn-theme)
   "List of my sine qua non packages")
 
 (unless (is-emacs-24-or-more)
@@ -84,6 +84,9 @@
         (t (ibuffer))))
 
 (load-theme 'zenburn)
+
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key bindings
