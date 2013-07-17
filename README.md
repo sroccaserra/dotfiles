@@ -3,8 +3,8 @@ dotfiles
 
 Mes fichiers de conf basiques.
 
-Installation
-------------
+Installation Linux
+------------------
 
 Clôner le dépot Git, puis :
 
@@ -12,3 +12,9 @@ Clôner le dépot Git, puis :
     $ bash install.sh
 
 Ensuite, synchroniser le dépot Git au besoin.
+
+Installation Windows
+--------------------
+
+Clôner le dépot Git, puis lancer le script `install.bat`.
+
