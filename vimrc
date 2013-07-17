@@ -37,6 +37,7 @@ let g:neocomplcache_max_list = 5
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
+set guifont=Powerline\ DejaVu\ Sans\ Mono
 
 """ Begin shared with root
 
