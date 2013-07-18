@@ -22,6 +22,14 @@ if not exist %HOME%\.ssh (
     )
 )
 
+for %%p in (emacs smart-tab) do (
+    if not exist "%HOME%\developer\%%p" (
+        git clone "git@github.com:sroccaserra/%%p.git" "%HOME%/developer/%%p"
+    ) else (
+        echo %%p ok.
+    )
+)
+
 if x"%PATH:\git\bin=%"==x"%PATH%" (
     echo Suggestion: You should add Git\bin to your path.
 )
