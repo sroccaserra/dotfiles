@@ -8,10 +8,14 @@
  '(column-number-mode t)
  '(cursor-in-non-selected-windows nil)
  '(custom-safe-themes (quote ("1f4e6cf4cb3bdba8afdb9244e037698238080eeecb209084602f7d717225f102" default)))
+ '(debug-on-error t)
  '(delete-old-versions t)
  '(evil-default-cursor (quote (t "white")))
  '(evil-leader/leader ",")
  '(global-auto-revert-mode t)
+ '(global-whitespace-mode t)
+ '(ido-everywhere t)
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
@@ -32,7 +36,8 @@
  '(undo-strong-limit 1200000)
  '(vc-follow-symlinks t)
  '(view-exits-all-viewing-windows t)
- '(visible-bell t))
+ '(visible-bell t)
+ '(whitespace-style (quote (face tabs trailing lines space-before-tab empty))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

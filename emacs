@@ -17,11 +17,11 @@
 
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 (defvar my-packages '(clojure-mode clojure-test-mode dired+ evil
-  evil-leader evil-numbers helm helm-projectile maxframe
+  evil-leader evil-numbers helm helm-projectile maxframe pager
   powershell-mode projectile undo-tree zenburn-theme)
   "List of my sine qua non packages")
 
@@ -57,8 +57,8 @@
 (dolist (dir *emacs-plugin-dirs*)
     (add-to-list 'load-path dir t))
 
-(require 'tools)
 (require 'smart-tab)
+(require 'tools)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -83,16 +83,51 @@
          (helm-mini))
         (t (ibuffer))))
 
+;;;;;;;;;;;;
+;; Libraries
+
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+
 (load-theme 'zenburn)
 
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
 
+(whitespace-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key bindings
 
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
 (global-set-key [(control c)(control m)] 'execute-extended-command)
 (global-set-key [(control c)(m)] 'execute-extended-command)
+
+(define-key minibuffer-local-map [(control n)] 'next-complete-history-element)
+(define-key minibuffer-local-map [(control p)] 'previous-complete-history-element)
+
+(global-set-key [(control shift d)]   'backward-delete-char-untabify)
+
+(setq skeleton-pair t)
+(global-set-key (kbd "[")  'skeleton-pair-insert-maybe)
+(global-set-key (kbd "(")  'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
+(global-set-key (kbd "<")  'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "'") 'skeleton-pair-insert-maybe)
+
+(define-key lisp-mode-shared-map "'" 'self-insert-command)
+(define-key text-mode-map "'" 'self-insert-command)
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key org-mode-map "'" 'self-insert-command)))
+
+(require 'pager)
+(global-set-key [(control v)] 'pager-page-down)
+(global-set-key [next]        'pager-page-down)
+(global-set-key [(meta v)]    'pager-page-up)
+(global-set-key [prior]       'pager-page-up)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tab
@@ -109,3 +144,16 @@
 (define-key read-expression-map [(tab)] 'hippie-expand)
 (define-key read-expression-map [(shift tab)] 'hippie-unexpand)
 
+;;;;;;;;
+;; Tests
+
+(define-key emacs-lisp-mode-map [(f9)] 'save-and-eval-buffer-then-ert-run-tests)
+(defun save-and-eval-buffer-then-ert-run-tests ()
+  (interactive)
+  (when (buffer-file-name)
+    (save-buffer))
+  (when (fboundp 'ert-delete-all-tests)
+    (ert-delete-all-tests))
+  (eval-buffer)
+  (when (fboundp 'ert-run-tests-interactively)
+    (ert-run-tests-interactively t)))
