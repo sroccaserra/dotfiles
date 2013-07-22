@@ -15,6 +15,7 @@
  '(git-gutter:modified-sign "~")
  '(global-auto-revert-mode t)
  '(global-git-gutter-mode t)
+ '(global-hl-line-mode t)
  '(global-whitespace-mode t)
  '(helm-boring-file-regexp-list (quote ("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "~$" "\\.pyc$" "\\.class$")))
  '(ido-enable-flex-matching t)
