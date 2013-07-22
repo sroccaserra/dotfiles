@@ -21,8 +21,9 @@
 (package-initialize)
 
 (defvar my-packages '(clojure-mode clojure-test-mode dired+ evil
-  evil-leader evil-numbers helm helm-projectile maxframe pager
-  powershell-mode projectile undo-tree zenburn-theme)
+  evil-leader evil-numbers git-gutter helm helm-projectile
+  maxframe pager powershell-mode projectile undo-tree
+  zenburn-theme)
   "List of my sine qua non packages")
 
 (unless (is-emacs-24-or-more)
@@ -48,6 +49,9 @@
 
 (setq custom-file "~/dotfiles/custom.el")
 (load-file custom-file)
+
+(setq frame-title-format
+      (concat "%b %+ (%f) - " invocation-name))
 
 ;;;;;;;;;;;
 ;; My tools
