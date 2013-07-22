@@ -21,9 +21,9 @@
 (package-initialize)
 
 (defvar my-packages '(ace-jump-mode clojure-mode
-  clojure-test-mode dired+ evil evil-leader evil-numbers
+  clojure-test-mode dash dired+ evil evil-leader evil-numbers
   git-gutter helm helm-projectile maxframe pager powershell-mode
-  projectile undo-tree zenburn-theme)
+  projectile s undo-tree zenburn-theme)
   "List of my sine qua non packages")
 
 (unless (is-emacs-24-or-more)
@@ -53,19 +53,8 @@
 (setq frame-title-format
       (concat "%b %+ (%f) - " invocation-name))
 
-;;;;;;;;;;;
-;; My tools
 
-(defvar *emacs-plugin-dirs*
-    '("~/developer/smart-tab" "~/developer/emacs"))
-(dolist (dir *emacs-plugin-dirs*)
-    (add-to-list 'load-path dir t))
-
-(require 'smart-tab)
-(require 'tools)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;
 ;; Evil
 
 (require 'evil)
@@ -92,19 +81,29 @@
 ;; Libraries
 
 (require 'ace-jump-mode)
+(require 'dash)
+(require 's)
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
 (load-theme 'zenburn)
 
-(require 'maxframe)
-(add-hook 'window-setup-hook 'maximize-frame t)
-
 (whitespace-mode)
 
 
-;;;;;;;;;;;;;;;
-;; Key bindings
+;;;;;;;;;;;
+;; My tools
+
+(--each '("~/developer/smart-tab" "~/developer/emacs")
+  (add-to-list 'load-path it t))
+
+(require 'smart-tab)
+
+
+;;;;;;;;;;;;;;;;;;
+;; My key bindings
 
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
