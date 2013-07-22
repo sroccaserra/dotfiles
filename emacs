@@ -20,10 +20,10 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(defvar my-packages '(clojure-mode clojure-test-mode dired+ evil
-  evil-leader evil-numbers git-gutter helm helm-projectile
-  maxframe pager powershell-mode projectile undo-tree
-  zenburn-theme)
+(defvar my-packages '(ace-jump-mode clojure-mode
+  clojure-test-mode dired+ evil evil-leader evil-numbers
+  git-gutter helm helm-projectile maxframe pager powershell-mode
+  projectile undo-tree zenburn-theme)
   "List of my sine qua non packages")
 
 (unless (is-emacs-24-or-more)
@@ -87,8 +87,11 @@
          (helm-mini))
         (t (ibuffer))))
 
+
 ;;;;;;;;;;;;
 ;; Libraries
+
+(require 'ace-jump-mode)
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
@@ -99,7 +102,8 @@
 
 (whitespace-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;
 ;; Key bindings
 
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -131,6 +135,10 @@
 (global-set-key [next]        'pager-page-down)
 (global-set-key [(meta v)]    'pager-page-up)
 (global-set-key [prior]       'pager-page-up)
+
+(evil-leader/set-key ",w" 'ace-jump-word-mode)
+(evil-leader/set-key ",f" 'ace-jump-char-mode)
+(evil-leader/set-key ",j" 'ace-jump-line-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
