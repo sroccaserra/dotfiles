@@ -139,6 +139,9 @@
 (evil-leader/set-key ",f" 'ace-jump-char-mode)
 (evil-leader/set-key ",j" 'ace-jump-line-mode)
 
+(when (s-contains? "xterm" (tty-type))
+  (define-key input-decode-map "\e[4~" [end]))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tab

@@ -1,9 +1,9 @@
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(abbrev-mode t t)
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(abbrev-mode t)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(cursor-in-non-selected-windows nil)
@@ -29,13 +29,14 @@
  '(recentf-max-saved-items 1024)
  '(recentf-mode t)
  '(require-final-newline t)
- '(savehist-mode t)
+ '(save-place t nil (saveplace))
+ '(savehist-mode t nil (savehist))
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(show-paren-style (quote parenthesis))
  '(show-trailing-whitespace t)
  '(smart-tab-completion-functions-alist (quote ((emacs-lisp-mode . lisp-complete-symbol) (text-mode . dabbrev-completion) (lisp-interaction-mode . lisp-complete-symbol))))
- '(smart-tab-disabled-major-modes (quote (org-mode term-mode eshell-mode custom-mode)))
+ '(smart-tab-disabled-major-modes (quote (org-mode term-mode eshell-mode Custom-mode)))
  '(smart-tab-using-hippie-expand t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -47,8 +48,8 @@
  '(visible-bell t)
  '(whitespace-style (quote (face tabs trailing lines space-before-tab empty))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(helm-ff-directory ((t (:foreground "#DC8CC3")))))
