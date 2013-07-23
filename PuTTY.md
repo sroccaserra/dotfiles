@@ -51,3 +51,19 @@ Connection
 
 - [X] Allow agent forwarding
 - Private key file for authentication = `XXXX.ppk`
+
+KiTTY et Launchy
+================
+
+Pour utiliser KiTTY avec le pluggin PuTTY de Launchy :
+- mettre `savemode=dir` dans son `kitty.ini`
+- éventuellement, lancer ensuite `kitty.exe -convert-dir` pour convertir toutes ses sessions en mode répertoire
+- ouvrir la configuration de Launchy, dans l''onglet `Plugins > PuTTY > Sessions` cocher `[X] Filesystem`, avec l''option `-load` et `Sessions` comme nom de répertoire.
+
+Exemple de kitty.ini :
+
+    [KiTTY]
+    cygterm=yes
+    shortcuts=no
+    savemode=dir
+
