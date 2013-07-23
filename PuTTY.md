@@ -27,7 +27,7 @@ Window
 
 - [X] Cursor blinks
 - Font: `DejaVu Sans Mono, 10-point` (pour PowerLine)
-- [X] Hide mouse pointer when typing in winow
+- [X] Hide mouse pointer when typing in window
 
 ### Translation
 
