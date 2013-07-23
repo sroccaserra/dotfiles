@@ -1,5 +1,7 @@
 @echo off
 
+set PWD=%~dp0
+
 if not defined HOME (
     setx HOME "%USERPROFILE%"
 )
@@ -44,8 +46,13 @@ if x"%PATH:\vim\=%"==x"%PATH%" (
     echo Suggestion: You should add Vim to your path.
 )
 
-if x"%PATH:emacs=%"==x"%PATH%" (
+for %%X in (emacs.exe) do (set EMACS=%%~$PATH:X)
+if not defined EMACS (
     echo Suggestion: You should add Emacs to your path.
+) else (
+    for %%E in (%EMACS%) do (
+        copy "%PWD%\emacsw.bat" "%%~dpE"
+    )
 )
 
 for %%X in (es.exe) do (set EVERYTHING=%%~$PATH:X)
@@ -53,6 +60,6 @@ if not defined EVERYTHING (
     echo Suggestion: You should add Everything ^(http://www.voidtools.com^) to your path.
 )
 
-echo -
+echo.
 pause
 
