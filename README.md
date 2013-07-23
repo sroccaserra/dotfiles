@@ -18,3 +18,6 @@ Installation Windows
 
 Clôner le dépot Git, puis lancer le script `install.bat`.
 
+### Configuration de PuTTY
+
+Voir wiki/PuTTY
