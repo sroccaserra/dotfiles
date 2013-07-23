@@ -4,6 +4,11 @@ if not defined HOME (
     setx HOME "%USERPROFILE%"
 )
 
+for %%X in (git.exe) do (set GIT=%%~$PATH:X)
+if not defined GIT (
+    echo Please add Git to your path.
+)
+
 if not exist %HOME%\.vim\bundle\vundle (
     git clone https://github.com/gmarik/vundle.git %HOME%/.vim/bundle/vundle
 )
@@ -30,8 +35,9 @@ for %%p in (emacs smart-tab) do (
     )
 )
 
-if x"%PATH:\git\bin=%"==x"%PATH%" (
-    echo Suggestion: You should add Git\bin to your path.
+for %%X in (curl.exe) do (set CURL=%%~$PATH:X)
+if not defined CURL (
+    echo Suggestion: You should add curl to your path. (Good for Vundle)
 )
 
 if x"%PATH:\vim\=%"==x"%PATH%" (
@@ -42,5 +48,11 @@ if x"%PATH:emacs=%"==x"%PATH%" (
     echo Suggestion: You should add Emacs to your path.
 )
 
+for %%X in (es.exe) do (set EVERYTHING=%%~$PATH:X)
+if not defined EVERYTHING (
+    echo Suggestion: You should add Everything ^(http://www.voidtools.com^) to your path.
+)
+
+echo -
 pause
 
