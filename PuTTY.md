@@ -1,62 +1,53 @@
 Réglages utiles pour PuTTY.
 
 Terminal
-========
-
-Keyboard
 --------
+
+### Keyboard
 
 - The Backspace key = `Control-? (127)` (pour permettre C-h dans Emacs)
 - The Function keys and keypad = `Xterm R6` (pour les touches F1-F4 dans Byobu)
 
-Bell
-----
+### Bell
+
 - Set the style of the bell = `Visual bell`
 
-Features
---------
+### Features
 
-- [X] Disable application keypad mode
+- [X] Disable application keypad mode (évite de casser le pavé numérique dans Vim)
 
 
 Window
-======
+------
 
 - Columns = `160`
 - Rows = `48`
 
-Appearance
-----------
+### Appearance
 
 - [X] Cursor blinks
 - Font: `DejaVu Sans Mono, 10-point` (pour PowerLine)
 - [X] Hide mouse pointer when typing in winow
 
-Translation
------------
+### Translation
 
 - Remote character set = `UTF-8`
 
-Colours
--------
+### Colours
 
 - [X] Allow terminal to use xterm 256-colour mode
 
 
 Connection
-==========
+----------
 
-Data
-----
+### Data
 
 - Auto-login username = `XXXX`
 
-SSH
-----
+### SSH
 
-Auth
-----
+#### Auth
 
 - [X] Allow agent forwarding
 - Private key file for authentication = `XXXX.ppk`
-
