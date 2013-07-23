@@ -20,4 +20,4 @@ Clôner le dépot Git, puis lancer le script `install.bat`.
 
 ### Configuration de PuTTY
 
-Voir sroccaserra/dotfiles/wiki/PuTTY
+Voir ./wiki/PuTTY
