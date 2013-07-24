@@ -10,7 +10,7 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 files_to_symlink="bash_aliases emacs inputrc noserc tmux.conf vimrc"    # list of files/folders to symlink in homedir
 files_to_source="bash_profile bashrc"    # list of files/folders to source
-required_commands="colormake curl hg git python ruby wget"
+required_commands="curl git python ruby wget"
 
 ##########
 
@@ -121,51 +121,12 @@ then
     git clone git@github.com:sroccaserra/smart-tab.git ~/developer/smart-tab
 fi
 
-######
-## Vim
-if [[ ! -f /usr/local/bin/vim ]]
-then
-    echo
-    pushd .
-    mkdir -p ~/developer
-    cd ~/developer
-    hg clone https://code.google.com/p/vim/
-    cd vim
-    ./configure --enable-rubyinterp --enable-pythoninterp --enable-luainterp --with-features=HUGE
-    colormake
-    sudo colormake install
-
-    sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 200 --slave /usr/share/man/man1/editor.1 editor.1 /usr/local/share/man/man1/vim.1
-    sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 200 --slave /usr/share/man/man1/vi.1 vi.1 /usr/local/share/man/man1/vim.1
-    sudo update-alternatives --set editor /usr/local/bin/vim
-    sudo update-alternatives --set vi /usr/local/bin/vim
-    popd
-fi
-
-#  if [[ ! -f "$HOME/.vim/autoload/pathogen.vim" ]]
-#  then
-#      echo "Infecting Vim."
-#      mkdir -p "$HOME/.vim/autoload" "$HOME/.vim/bundle"; \
-#          curl -Sso ~/.vim/autoload/pathogen.vim \
-#              https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-#  fi
-
 if [[ ! -d "$HOME/.vim/bundle/vundle" ]]
 then
     echo "Vundle FTW"
     git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
     vim --noplugin -N "+set hidden" "+syntax on" +BundleInstall +xa
 fi
-
-# if [[ ! -d ~/.vim/ruby/command-t ]]
-# then
-#     pushd .
-#     echo "CommandT-ing Vim."
-#     cd "$HOME/.vim/ruby/command-t"
-#     ruby extconf.rb
-#     make
-#     popd
-# fi
 
 # Git
 if [[ -z "`git config --global user.name`" ]]
