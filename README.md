@@ -1,7 +1,5 @@
-dotfiles
+dotfiles [![Build Status](https://secure.travis-ci.org/sroccaserra/dotfiles.png)](http://travis-ci.org/sroccaserra/dotfiles)
 ========
-
-[![Build Status](https://secure.travis-ci.org/sroccaserra/dotfiles.png)](http://travis-ci.org/sroccaserra/dotfiles)
 
 Mes fichiers de conf basiques.
 
