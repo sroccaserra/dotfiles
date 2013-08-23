@@ -24,6 +24,26 @@ end
 
 task :windows => [:os_independant] do
     sh 'if not defined HOME (setx HOME "%USERPROFILE%")'
+
+    target_dir = File.expand_path '~/Dropbox/.ssh'
+    link_dir = File.expand_path '~/.ssh'
+    if not File.exists?(link_dir) and File.exists?(target_dir)
+        mklink link_dir, target_dir
+    end
+
+    if system('emacs --version')
+        result = `emacs -Q -batch --eval="(message exec-directory)" 2>&1`
+        emacs_exec_directory = result.strip
+        if not File.exists? emacs_exec_directory + '/emacsw.bat'
+            sh "copy emacsw.bat \"#{emacs_exec_directory}\""
+        end
+    else
+        suggest 'You should add Emacs to your path.'
+    end
+
+    if not system('es /?')
+        suggest 'You should add Everything (http://www.voidtools.com) to your path.'
+    end
 end
 
 task :os_independant => [:files_to_source, :git_projects, :useful_commands]
@@ -36,7 +56,7 @@ task :useful_commands do
 
     commands_and_arguments.each do |command_name, arguments|
         if not system("#{command_name} #{arguments}")
-            puts "You should add #{command_name} to your path."
+            suggest "You should add #{command_name} to your path."
         end
     end
 end
@@ -62,6 +82,7 @@ task :git_projects => [File.expand_path("~/.vim/bundle"),
                        File.expand_path('~/developer')] do
     if not system('git --version')
         puts 'Git is not in your path, git projects skipped.'
+        suggest 'You should add Git to your path'
         return
     end
 
@@ -77,4 +98,20 @@ task :git_projects => [File.expand_path("~/.vim/bundle"),
             sh "git clone #{url} \"#{destination_dir}\""
         end
     end
+end
+
+def mklink(link_dir, target_dir)
+    arguments = "\"#{link_dir}\" \"#{target_dir}\""
+    if system('mklink /?')
+        sh "mklink /d #{arguments}" 
+        return
+    end
+    if system('junction /?')
+        sh "junction #{arguments}"
+        return
+    end
+end
+
+def suggest(message)
+    puts "Suggestion: #{message}"
 end
