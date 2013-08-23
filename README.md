@@ -16,7 +16,9 @@ Ensuite, synchroniser le dépot Git au besoin.
 Installation Windows
 --------------------
 
-Clôner le dépot Git, puis lancer le script `install.bat`.
+Installer Ruby.
+
+Clôner le dépot Git, puis lancer `rake windows`.
 
 ### Configuration de PuTTY
 
