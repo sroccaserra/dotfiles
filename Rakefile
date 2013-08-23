@@ -1,22 +1,11 @@
 ##
 # Rake FTW
 
-require 'pathname'
-
-$DOTFILES_DIR = '~/dotfiles'
-$BACKUP_DIR = '~/.dotfiles_backup'
-
-$FILES_TO_SYMLINK = FileList['bash_aliases', 'emacs', 'inputrc', 'noserc', 'tmux.conf',
-                    'vimrc']
-$FILES_TO_SOURCE = FileList['bash_profile', 'bashrc']
-$REQUIRED_COMMANDS = ['curl', 'git', 'python', 'ruby', 'wget']
-
-#####
 
 task :default => [:test]
 
 task :test do
-    puts $FILES_TO_SYMLINK
+    puts 'Hello Rake!'
 end
 
 task :install => [:os_independant] do
