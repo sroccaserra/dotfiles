@@ -1,17 +1,14 @@
 ##
 # Rake FTW
 
-
 task :default => [:test]
 
 task :test do
     puts 'Hello Rake!'
 end
 
-task :install => [:os_independant] do
-end
-
 task :windows => [:os_independant] do
+    puts
     sh 'if not defined HOME (setx HOME "%USERPROFILE%")'
 
     target_dir = File.expand_path '~/Dropbox/.ssh'
@@ -20,34 +17,22 @@ task :windows => [:os_independant] do
         mklink link_dir, target_dir
     end
 
-    if system('emacs --version')
+    if test_command('emacs --version')
         result = `emacs -Q -batch --eval="(message exec-directory)" 2>&1`
         emacs_exec_directory = result.strip
         if not File.exists? emacs_exec_directory + '/emacsw.bat'
             sh "copy emacsw.bat \"#{emacs_exec_directory}\""
         end
-    else
-        suggest 'You should add Emacs to your path.'
     end
 
-    if not system('es /?')
-        suggest 'You should add Everything (http://www.voidtools.com) to your path.'
-    end
+    test_command 'es /?', 'You should add Everything (http://www.voidtools.com) to your path.'
 end
 
 task :os_independant => [:files_to_source, :git_projects, :useful_commands]
 
 task :useful_commands do
-    commands_and_arguments = {
-        'curl' => '--version',
-        'vim' => '+q'
-    }
-
-    commands_and_arguments.each do |command_name, arguments|
-        if not system("#{command_name} #{arguments}")
-            suggest "You should add #{command_name} to your path."
-        end
-    end
+    test_command 'curl --version'
+    test_command 'vim +q'
 end
 
 task :files_to_source do
@@ -69,9 +54,8 @@ directory File.expand_path "~/developer"
 
 task :git_projects => [File.expand_path("~/.vim/bundle"),
                        File.expand_path('~/developer')] do
-    if not system('git --version')
-        puts 'Git is not in your path, git projects skipped.'
-        suggest 'You should add Git to your path'
+    if not test_command 'git --version'
+        puts 'Git is unavailable, git projects skipped.'
         return
     end
 
@@ -82,25 +66,29 @@ task :git_projects => [File.expand_path("~/.vim/bundle"),
     }
     
     git_projects.each do |url, destination_dir|
-        puts destination_dir
-        if not system("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status")
+        if not test_command("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status")
             sh "git clone #{url} \"#{destination_dir}\""
         end
     end
 end
 
-def mklink(link_dir, target_dir)
-    arguments = "\"#{link_dir}\" \"#{target_dir}\""
-    if system('mklink /?')
-        sh "mklink /d #{arguments}" 
-        return
+def test_command(command, fail_message="You should add #{command.split(' ')[0]} to your path.")
+    puts
+    puts "$ #{command}"
+    result = system(command)
+    if not result
+        puts "KO. #{fail_message}"
     end
-    if system('junction /?')
-        sh "junction #{arguments}"
-        return
-    end
+    result
 end
 
-def suggest(message)
-    puts "Suggestion: #{message}"
+def mklink(link_dir, target_dir)
+    puts
+    arguments = "\"#{link_dir}\" \"#{target_dir}\""
+    case 
+    when system('mklink /?')
+        sh "mklink /d #{arguments}" 
+    when system('junction /?')
+        sh "junction #{arguments}"
+    end
 end
