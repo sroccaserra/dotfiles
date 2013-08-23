@@ -64,7 +64,7 @@ end
 task :files_to_source do
     files_to_source = {
         "~/.vimrc" => "source ~/dotfiles/vimrc",
-        "~/.emacs"=> '(load-file "~/dotfiles/emacs"'
+        "~/.emacs"=> '(load-file "~/dotfiles/emacs")'
     }
     files_to_source.each do |key, source_directive|
         file_path = File.expand_path key
