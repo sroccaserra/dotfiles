@@ -7,6 +7,13 @@ task :test do
     puts 'Hello Rake!'
 end
 
+task :os_independant => [:files_to_source, :git_projects, :useful_commands]
+
+task :linux => [:os_independant] do
+    test_command 'python terminal-colors -xc'
+    test_command 'wget --version'
+end
+
 task :windows => [:os_independant] do
     puts
     sh 'if not defined HOME (setx HOME "%USERPROFILE%")'
@@ -27,8 +34,6 @@ task :windows => [:os_independant] do
 
     test_command 'es /?', 'You should add Everything (http://www.voidtools.com) to your path.'
 end
-
-task :os_independant => [:files_to_source, :git_projects, :useful_commands]
 
 task :useful_commands do
     test_command 'curl --version'
