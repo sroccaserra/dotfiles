@@ -13,8 +13,14 @@ task :os_independant => [:files_to_source, :git_projects, :useful_commands]
 
 task :linux => [:linux_useful_commands, :linux_files_to_symlink,
                 :os_independant] do
-    if not File.exists? "~/.bash_profile" and File.exists? "~/.profile"
-        sh "cp ~/.profile ~/.bash_profile"
+    if not File.exists? File.expand_path("~/.bash_profile")
+        if File.exists? File.expand_path("~/.profile")
+            sh "cp ~/.profile ~/.bash_profile"
+        else
+            File.open(File.expand_path '~/.bash_profile') do |file|
+                file.write 'source ~/.bashrc'
+            end
+        end
     end
 
     files_to_source = {
