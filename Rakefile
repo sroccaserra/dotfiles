@@ -32,6 +32,16 @@ task :linux => [:linux_useful_commands, :linux_files_to_symlink,
         FileUtils.touch filename
         put_sroccaserra_section filename, source_directive
     end
+
+    if `git config --global user.name`.empty?
+        sh 'git config --global color.ui auto'
+        print "Git global user name: "
+        answer = STDIN.gets
+        sh "git config --global user.name #{answer.strip}"
+        print "Git global user email: "
+        answer = STDIN.gets
+        sh "git config --global user.email #{answer.strip}"
+    end
 end
 
 task :windows => [:os_independant] do
