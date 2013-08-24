@@ -1,8 +1,6 @@
 ##
 # Rake FTW
 
-require 'fileutils'
-
 task :default => [:test]
 
 task :test do
@@ -17,11 +15,12 @@ task :linux => [:linux_useful_commands,
                 :linux_developer_tools,
                 :os_independant,
                 File.expand_path("~/.byobu")] do
-    if not File.exists? File.expand_path("~/.bash_profile")
+    bash_profile = File.expand_path "~/.bash_profile"
+    if not File.exists? bash_profile
         if File.exists? File.expand_path("~/.profile")
             sh "cp ~/.profile ~/.bash_profile"
         else
-            File.open(File.expand_path '~/.bash_profile') do |file|
+            File.open(bash_profile) do |file|
                 file.write 'source ~/.bashrc'
             end
         end
@@ -33,7 +32,7 @@ task :linux => [:linux_useful_commands,
     }
     files_to_source.each do |key, source_directive|
         filename = File.expand_path key
-        FileUtils.touch filename
+        touch filename
         put_sroccaserra_section filename, source_directive
     end
 
@@ -54,19 +53,17 @@ task :windows => [:os_independant] do
     if test_command('emacs --version')
         result = `emacs -Q -batch --eval="(message exec-directory)" 2>&1`
         emacs_exec_directory = result.strip
-        if not File.exists? emacs_exec_directory + '/emacsw.bat'
+        if not File.exists? File.join(emacs_exec_directory, 'emacsw.bat')
             sh "copy emacsw.bat \"#{emacs_exec_directory}\""
         end
     end
 
-    test_command 'es /?', 'You should add Everything (http://www.voidtools.com) to your path.'
+    test_command 'es -n 1 dotfiles', 'You should add Everything (http://www.voidtools.com) to your path.'
 end
 
 task :useful_commands => [:git_projects] do
     test_command 'curl --version'
-    if test_command 'vim +q'
-        sh 'vim --noplugin -N "+set hidden" "+syntax on" +BundleInstall +xa'
-    end
+    test_command 'vim --noplugin -N "+set hidden" "+syntax on" +BundleInstall +xa'
 end
 
 task :linux_useful_commands do
@@ -84,8 +81,8 @@ task :files_to_source do
 
         if not File.exists? file_path
             File.open(file_path, "w") do |file|
-	        file.write source_directive
-	    end
+	            file.write source_directive
+	        end
         end
     end
 end
@@ -93,16 +90,18 @@ end
 task :git_global_config do
     if `git config --global user.name`.empty?
         sh 'git config --global color.ui auto'
+
         print "Git global user name: "
-        answer = STDIN.gets
-        sh "git config --global user.name #{answer.strip}"
+        name = STDIN.gets().strip
+        sh "git config --global user.name #{name}"
+        
         print "Git global user email: "
-        answer = STDIN.gets
-        sh "git config --global user.email #{answer.strip}"
+        email = STDIN.gets().strip
+        sh "git config --global user.email #{email}"
     end
 end
 
-task :git_projects => [File.expand_path("~/.vim/bundle"),
+task :git_projects => [File.expand_path('~/.vim/bundle'),
                        File.expand_path('~/developer')] do
     if not test_command 'git --version'
         puts 'Git is unavailable, git projects skipped.'
@@ -110,13 +109,14 @@ task :git_projects => [File.expand_path("~/.vim/bundle"),
     end
 
     git_projects = {
-        'https://github.com/gmarik/vundle.git' => File.expand_path('~/.vim/bundle/vundle'), 
-        'git@github.com:sroccaserra/emacs.git' => File.expand_path('~/developer/emacs'),
-        'git@github.com:sroccaserra/smart-tab.git' => File.expand_path('~/developer/smart-tab'),
+        'https://github.com/gmarik/vundle.git' => '~/.vim/bundle/vundle', 
+        'git@github.com:sroccaserra/emacs.git' => '~/developer/emacs',
+        'git@github.com:sroccaserra/smart-tab.git' => '~/developer/smart-tab',
     }
     
-    git_projects.each do |url, destination_dir|
-        if not test_command("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status")
+    git_projects.each do |url, value|
+        destination_dir = File.expand_path value
+        if not test_command("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status", "")
             sh "git clone #{url} \"#{destination_dir}\""
         end
     end
@@ -129,10 +129,9 @@ task :linux_files_to_symlink do
         "~/.noserc" => "noserc",
         "~/.tmux.conf" => "tmux.conf"
     }
-    files_to_symlink.each do |key, source|
-        source_path = File.expand_path source
+    files_to_symlink.each do |key, value|
         link_path = File.expand_path key
-        puts link_path
+        source_path = File.expand_path value
         if not File.exists? link_path
             sh "ln -s #{source_path} #{link_path}"
         end
@@ -165,7 +164,7 @@ def test_command(command, fail_message="You should add #{command.split(' ')[0]} 
     puts
     puts "$ #{command}"
     result = system(command)
-    if not result
+    if not result and not fail_message.empty?
         puts "KO. #{fail_message}"
     end
     result
