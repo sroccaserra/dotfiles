@@ -9,9 +9,19 @@ end
 
 task :os_independant => [:files_to_source, :git_projects, :useful_commands]
 
-task :linux => [:os_independant] do
-    test_command 'python terminal-colors -xc'
-    test_command 'wget --version'
+task :linux => [:linux_useful_commands, :linux_files_to_symlink,
+                :os_independant] do
+    if not File.exists? "~/.bash_profile" and File.exists? "~/.profile"
+        sh "cp ~/.profile ~/.bash_profile"
+    end
+
+    files_to_source = {
+        "~/.bash_profile" => "source ~/dotfiles/bash_profile",
+        "~/.bashrc" => "source ~/dotfiles/bashrc",
+    }
+    files_to_source.each do |filename, source_directive|
+        put_sroccaserra_section filename, source_directive
+    end
 end
 
 task :windows => [:os_independant] do
@@ -38,6 +48,11 @@ end
 task :useful_commands do
     test_command 'curl --version'
     test_command 'vim +q'
+end
+
+task :linux_useful_commands do
+    test_command 'python terminal-colors -xc'
+    test_command 'wget --version'
 end
 
 task :files_to_source do
@@ -79,6 +94,18 @@ task :git_projects => [File.expand_path("~/.vim/bundle"),
     end
 end
 
+task :linux_files_to_symlink do
+    files_to_symlink = {
+        "~/.bash_aliases" => "bash_aliases",
+        "~/.inputrc" => "inputrc",
+        "~/.noserc" => "noserc",
+        "~/.tmux.conf" => "tmux.conf"
+    }
+    files_to_symlink.each do |target, source|
+        sh "ln -s \"#{source}\" \"#{target}\""
+    end
+end
+
 def test_command(command, fail_message="You should add #{command.split(' ')[0]} to your path.")
     puts
     puts "$ #{command}"
@@ -97,5 +124,18 @@ def mklink(link_dir, target_dir)
         sh "mklink /d #{arguments}" 
     when system('junction /?')
         sh "junction #{arguments}"
+    end
+end
+
+def put_sroccaserra_section(filename, section_contents)
+    section_begin = '# begin sroccaserra'
+    section_end = '# end sroccaserra'
+
+    sh "sed -i '/#{section_begin}/,/#{section_end}/d' \"#{filename}\""
+
+    File.open(filename, "a") do |file|
+        file.puts section_begin
+        file.puts section_contents
+        file.puts section_end
     end
 end
