@@ -49,7 +49,9 @@ task :files_to_source do
         file_path = File.expand_path key
 
         if not File.exists? file_path
-          File.write file_path, source_directive
+            File.open(file_path, "w") do |file|
+	        file.write source_directive
+	    end
         end
     end
 end
