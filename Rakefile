@@ -9,10 +9,14 @@ task :test do
     puts 'Hello Rake!'
 end
 
-task :os_independant => [:files_to_source, :git_projects, :useful_commands]
+task :os_independant => [:files_to_source, :git_global_config, :git_projects, :useful_commands]
 
-task :linux => [:linux_useful_commands, :linux_files_to_symlink,
-                :os_independant] do
+task :linux => [:linux_useful_commands,
+                :linux_files_to_symlink,
+                :customize_virtualenv_prompt,
+                :linux_developer_tools,
+                :os_independant,
+                File.expand_path("~/.byobu")] do
     if not File.exists? File.expand_path("~/.bash_profile")
         if File.exists? File.expand_path("~/.profile")
             sh "cp ~/.profile ~/.bash_profile"
@@ -33,15 +37,8 @@ task :linux => [:linux_useful_commands, :linux_files_to_symlink,
         put_sroccaserra_section filename, source_directive
     end
 
-    if `git config --global user.name`.empty?
-        sh 'git config --global color.ui auto'
-        print "Git global user name: "
-        answer = STDIN.gets
-        sh "git config --global user.name #{answer.strip}"
-        print "Git global user email: "
-        answer = STDIN.gets
-        sh "git config --global user.email #{answer.strip}"
-    end
+    # Copy shared tmux conf to byobu dir.
+    sh 'sed -n \'/^### Shared with Byobu ###$/,$ p\' tmux.conf > ~/.byobu/.tmux.conf'
 end
 
 task :windows => [:os_independant] do
@@ -65,9 +62,11 @@ task :windows => [:os_independant] do
     test_command 'es /?', 'You should add Everything (http://www.voidtools.com) to your path.'
 end
 
-task :useful_commands do
+task :useful_commands => [:git_projects] do
     test_command 'curl --version'
-    test_command 'vim +q'
+    if test_command 'vim +q'
+        sh 'vim --noplugin -N "+set hidden" "+syntax on" +BundleInstall +xa'
+    end
 end
 
 task :linux_useful_commands do
@@ -91,8 +90,17 @@ task :files_to_source do
     end
 end
 
-directory File.expand_path "~/.vim/bundle"
-directory File.expand_path "~/developer"
+task :git_global_config do
+    if `git config --global user.name`.empty?
+        sh 'git config --global color.ui auto'
+        print "Git global user name: "
+        answer = STDIN.gets
+        sh "git config --global user.name #{answer.strip}"
+        print "Git global user email: "
+        answer = STDIN.gets
+        sh "git config --global user.email #{answer.strip}"
+    end
+end
 
 task :git_projects => [File.expand_path("~/.vim/bundle"),
                        File.expand_path('~/developer')] do
@@ -130,6 +138,28 @@ task :linux_files_to_symlink do
         end
     end
 end
+
+task :linux_developer_tools => [File.expand_path("~/bin")] do
+    if test_command 'java -version' and not test_command "lein version"
+        sh '\curl https://raw.github.com/technomancy/leiningen/stable/bin/lein > "$HOME/bin/lein"'
+        sh 'chmod +x ~/bin/lein'
+    end
+end
+
+task :customize_virtualenv_prompt do
+    virtualenvs_postactivate = File.expand_path "~/.virtualenvs/postactivate"
+    if File.exists? virtualenvs_postactivate
+        put_sroccaserra_section(
+            virtualenvs_postactivate,
+		    'PS1="\n(`basename \"$VIRTUAL_ENV\"`)$_OLD_VIRTUAL_PS1"'
+        )
+    end
+end
+
+directory File.expand_path "~/.byobu"
+directory File.expand_path "~/.vim/bundle"
+directory File.expand_path "~/bin"
+directory File.expand_path "~/developer"
 
 def test_command(command, fail_message="You should add #{command.split(' ')[0]} to your path.")
     puts

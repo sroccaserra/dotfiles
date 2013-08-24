@@ -3,24 +3,17 @@ dotfiles [![Build Status](https://secure.travis-ci.org/sroccaserra/dotfiles.png)
 
 Mes fichiers de conf basiques.
 
-Installation Linux
-------------------
-
-Clôner le dépot Git, puis :
-
-    $ cd dotfiles
-    $ bash install.sh
-
-Ensuite, synchroniser le dépot Git au besoin.
-
-Installation Windows
---------------------
+Installation
+------------
 
 Installer Ruby.
 
-Clôner le dépot Git, puis lancer `rake windows`.
+Clôner le dépot Git, puis lancer `rake linux` ou `rake windows` en fonction de l'OS.
 
-### Configuration de PuTTY
+Ensuite, synchroniser le dépot Git au besoin.
+
+Windows - Configuration de PuTTY
+--------------------------------
 
 Voir [PuTTY](https://github.com/sroccaserra/dotfiles/wiki/PuTTY)
 
