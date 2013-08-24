@@ -3,8 +3,12 @@
 
 task :default => [:test]
 
+def home(path)
+    File.expand_path File.join('~', path)
+end
+
 task :test do
-    puts 'Hello Rake!'
+    raise unless home('developer') == File.expand_path('~/developer')
 end
 
 task :os_independant => [:files_to_source, :git_global_config, :git_projects, :useful_commands]
@@ -14,10 +18,10 @@ task :linux => [:linux_useful_commands,
                 :customize_virtualenv_prompt,
                 :linux_developer_tools,
                 :os_independant,
-                File.expand_path("~/.byobu")] do
-    bash_profile = File.expand_path "~/.bash_profile"
+                home(".byobu")] do
+    bash_profile = home ".bash_profile"
     if not File.exists? bash_profile
-        if File.exists? File.expand_path("~/.profile")
+        if File.exists? home(".profile")
             sh "cp ~/.profile ~/.bash_profile"
         else
             File.open(bash_profile) do |file|
@@ -44,8 +48,8 @@ task :windows => [:os_independant] do
     puts
     sh 'if not defined HOME (setx HOME "%USERPROFILE%")'
 
-    target_dir = File.expand_path '~/Dropbox/.ssh'
-    link_dir = File.expand_path '~/.ssh'
+    target_dir = home 'Dropbox/.ssh'
+    link_dir = home '.ssh'
     if not File.exists?(link_dir) and File.exists?(target_dir)
         mklink link_dir, target_dir
     end
@@ -101,8 +105,8 @@ task :git_global_config do
     end
 end
 
-task :git_projects => [File.expand_path('~/.vim/bundle'),
-                       File.expand_path('~/developer')] do
+task :git_projects => [home('.vim/bundle'),
+                       home('developer')] do
     if not test_command 'git --version'
         puts 'Git is unavailable, git projects skipped.'
         return
@@ -138,7 +142,7 @@ task :linux_files_to_symlink do
     end
 end
 
-task :linux_developer_tools => [File.expand_path("~/bin")] do
+task :linux_developer_tools => [home("bin")] do
     if test_command 'java -version' and not test_command "lein version"
         sh '\curl https://raw.github.com/technomancy/leiningen/stable/bin/lein > "$HOME/bin/lein"'
         sh 'chmod +x ~/bin/lein'
@@ -146,7 +150,7 @@ task :linux_developer_tools => [File.expand_path("~/bin")] do
 end
 
 task :customize_virtualenv_prompt do
-    virtualenvs_postactivate = File.expand_path "~/.virtualenvs/postactivate"
+    virtualenvs_postactivate = home ".virtualenvs/postactivate"
     if File.exists? virtualenvs_postactivate
         put_sroccaserra_section(
             virtualenvs_postactivate,
@@ -155,10 +159,10 @@ task :customize_virtualenv_prompt do
     end
 end
 
-directory File.expand_path "~/.byobu"
-directory File.expand_path "~/.vim/bundle"
-directory File.expand_path "~/bin"
-directory File.expand_path "~/developer"
+directory home ".byobu"
+directory home ".vim/bundle"
+directory home "bin"
+directory home "developer"
 
 def test_command(command, fail_message="You should add #{command.split(' ')[0]} to your path.")
     puts
