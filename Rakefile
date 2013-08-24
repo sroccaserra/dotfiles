@@ -1,6 +1,8 @@
 ##
 # Rake FTW
 
+require 'fileutils'
+
 task :default => [:test]
 
 task :test do
@@ -19,7 +21,9 @@ task :linux => [:linux_useful_commands, :linux_files_to_symlink,
         "~/.bash_profile" => "source ~/dotfiles/bash_profile",
         "~/.bashrc" => "source ~/dotfiles/bashrc",
     }
-    files_to_source.each do |filename, source_directive|
+    files_to_source.each do |key, source_directive|
+        filename = File.expand_path key
+        FileUtils.touch filename
         put_sroccaserra_section filename, source_directive
     end
 end
@@ -101,8 +105,13 @@ task :linux_files_to_symlink do
         "~/.noserc" => "noserc",
         "~/.tmux.conf" => "tmux.conf"
     }
-    files_to_symlink.each do |target, source|
-        sh "ln -s \"#{source}\" \"#{target}\""
+    files_to_symlink.each do |key, source|
+        source_path = File.expand_path source
+        link_path = File.expand_path key
+        puts link_path
+        if not File.exists? link_path
+            sh "ln -s #{source_path} #{link_path}"
+        end
     end
 end
 
