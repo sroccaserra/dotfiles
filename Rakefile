@@ -3,12 +3,12 @@
 
 task :default => [:test]
 
-def home(path)
-    File.expand_path File.join('~', path)
-end
-
 task :test do
     raise unless home('developer') == File.expand_path('~/developer')
+end
+
+def home(path)
+    File.expand_path File.join('~', path)
 end
 
 task :os_independant => [:files_to_source, :git_global_config, :git_projects, :useful_commands]
@@ -85,8 +85,8 @@ task :files_to_source do
 
         if not File.exists? file_path
             File.open(file_path, "w") do |file|
-	            file.write source_directive
-	        end
+                file.write source_directive
+            end
         end
     end
 end
@@ -98,7 +98,7 @@ task :git_global_config do
         print "Git global user name: "
         name = STDIN.gets().strip
         sh "git config --global user.name #{name}"
-        
+
         print "Git global user email: "
         email = STDIN.gets().strip
         sh "git config --global user.email #{email}"
@@ -117,7 +117,7 @@ task :git_projects => [home('.vim/bundle'),
         'git@github.com:sroccaserra/emacs.git' => '~/developer/emacs',
         'git@github.com:sroccaserra/smart-tab.git' => '~/developer/smart-tab',
     }
-    
+
     git_projects.each do |url, value|
         destination_dir = File.expand_path value
         if not test_command("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status", "")
@@ -154,7 +154,7 @@ task :customize_virtualenv_prompt do
     if File.exists? virtualenvs_postactivate
         put_sroccaserra_section(
             virtualenvs_postactivate,
-		    'PS1="\n(`basename \"$VIRTUAL_ENV\"`)$_OLD_VIRTUAL_PS1"'
+            'PS1="\n(`basename \"$VIRTUAL_ENV\"`)$_OLD_VIRTUAL_PS1"'
         )
     end
 end
@@ -177,9 +177,9 @@ end
 def mklink(link_dir, target_dir)
     puts
     arguments = "\"#{link_dir}\" \"#{target_dir}\""
-    case 
+    case
     when system('mklink /?')
-        sh "mklink /d #{arguments}" 
+        sh "mklink /d #{arguments}"
     when system('junction /?')
         sh "junction #{arguments}"
     end

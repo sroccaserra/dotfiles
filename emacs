@@ -87,11 +87,11 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-
-(load-theme 'zenburn)
+(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 
 (whitespace-mode)
 
+(load-theme 'zenburn)
 
 ;;;;;;;;;;;
 ;; My tools
