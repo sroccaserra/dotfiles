@@ -97,6 +97,7 @@ task :git_global_config do
     sh 'git config --global branch.autosetuprebase always'
     sh 'git config --global push.default tracking'
     sh 'git config --global log.date iso'
+    sh 'git config --global alias.c commit'
     sh 'git config --global alias.s "status -sb"'
     sh 'git config --global alias.l "log --decorate --graph"'
 
