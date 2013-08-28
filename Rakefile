@@ -92,9 +92,15 @@ task :files_to_source do
 end
 
 task :git_global_config do
-    if `git config --global user.name`.empty?
-        sh 'git config --global color.ui auto'
+    puts
+    sh 'git config --global color.ui auto'
+    sh 'git config --global branch.autosetuprebase always'
+    sh 'git config --global push.default tracking'
+    sh 'git config --global log.date iso'
+    sh 'git config --global alias.s "status -sb"'
+    sh 'git config --global alias.l "log --decorate --graph"'
 
+    if `git config --global user.name`.empty?
         print "Git global user name: "
         name = STDIN.gets().strip
         sh "git config --global user.name #{name}"
@@ -120,7 +126,7 @@ task :git_projects => [home('.vim/bundle'),
 
     git_projects.each do |url, value|
         destination_dir = File.expand_path value
-        if not test_command("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status", "")
+        if not test_command("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status -sb", "")
             sh "git clone #{url} \"#{destination_dir}\""
         end
     end
