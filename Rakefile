@@ -4,10 +4,12 @@
 task :default => [:test]
 
 task :test do
+    raise unless home() == File.expand_path('~')
+    raise unless home('') == File.expand_path('~')
     raise unless home('developer') == File.expand_path('~/developer')
 end
 
-def home(path)
+def home(path='')
     File.expand_path File.join('~', path)
 end
 
@@ -19,12 +21,13 @@ task :linux => [:linux_useful_commands,
                 :linux_developer_tools,
                 :os_independant,
                 home(".byobu")] do
-    bash_profile = home ".bash_profile"
+    bash_profile = home '.bash_profile'
+    profile = home '.profile'
     if not File.exists? bash_profile
-        if File.exists? home(".profile")
-            sh "cp ~/.profile ~/.bash_profile"
+        if File.exists? profile
+            sh "ln -s #{profile} #{bash_profile}"
         else
-            File.open(bash_profile) do |file|
+            File.open bash_profile do |file|
                 file.write 'source ~/.bashrc'
             end
         end
