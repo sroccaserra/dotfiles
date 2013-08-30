@@ -20,6 +20,7 @@ if [ -e /usr/bin/virtualenvwrapper.sh ] ; then
     source /usr/bin/virtualenvwrapper.sh 
 fi
 
+test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
 case "$TERM" in
 screen*) 
     GIT_PS1_SHOWDIRTYSTATE=true
