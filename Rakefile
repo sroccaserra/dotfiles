@@ -82,11 +82,10 @@ end
 
 task :linux_useful_commands do
     test_command 'python terminal-colors -xc'
-    test_command 'wget --version > /dev/null'
+    test_command 'wget --version | head -n1'
 end
 
 task :files_to_source do
-    puts
     files_to_source = {
         "~/.vimrc" => "source ~/dotfiles/vimrc",
         "~/.emacs"=> '(load-file "~/dotfiles/emacs")'
@@ -163,7 +162,7 @@ task :linux_files_to_symlink do
 end
 
 task :linux_developer_tools => [home("bin")] do
-    if test_command 'java -version' and not test_command "lein version"
+    if test_command 'java -version 2>&1 | head -n1' and not test_command "lein version"
         sh '\curl https://raw.github.com/technomancy/leiningen/stable/bin/lein > "$HOME/bin/lein"'
         sh 'chmod +x ~/bin/lein'
     end
