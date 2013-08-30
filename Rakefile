@@ -7,6 +7,11 @@ task :test do
     raise unless home() == File.expand_path('~')
     raise unless home('') == File.expand_path('~')
     raise unless home('developer') == File.expand_path('~/developer')
+
+    test = ["1","22","333", "# begin sroccaserra", "44", "555", "66",
+            "# end sroccaserra", "77", "8888"]
+    cleared = clear_sroccaserra_section(test)
+    raise unless cleared == ["1", "22", "333", "77", "8888"]
 end
 
 def home(path='')
@@ -102,8 +107,9 @@ task :git_global_config do
     sh 'git config --global log.date iso'
     sh 'git config --global alias.c commit'
     sh 'git config --global alias.ca "commit -a"'
-    sh 'git config --global alias.s "status -sb"'
+    sh 'git config --global alias.d diff'
     sh 'git config --global alias.l "log --decorate --graph"'
+    sh 'git config --global alias.s "status -sb"'
 
     if `git config --global user.name`.empty?
         print "Git global user name: "
@@ -196,15 +202,34 @@ def mklink(link_dir, target_dir)
     end
 end
 
+def clear_sroccaserra_section(lines)
+    ok = true
+
+    lines.reduce [] do |memo, line|
+        if line =~ /# begin sroccaserra/
+            ok = false
+        end
+        keep = ok
+        if line =~ /# end sroccaserra/
+            ok = true
+        end
+        keep ? memo + [line] : memo
+    end
+end
+
 def put_sroccaserra_section(filename, section_contents)
     section_begin = '# begin sroccaserra'
     section_end = '# end sroccaserra'
 
-    sh "sed -i '/#{section_begin}/,/#{section_end}/d' \"#{filename}\""
+    file_lines = File.open(filename, "r") do |file|
+        clear_sroccaserra_section file
+    end
 
-    File.open(filename, "a") do |file|
+    File.open(filename, "w") do |file|
+        file.puts file_lines
         file.puts section_begin
         file.puts section_contents
         file.puts section_end
     end
 end
+
