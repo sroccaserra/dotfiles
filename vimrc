@@ -33,6 +33,7 @@ let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_max_list = 5
+let g:neocomplcache_enable_insert_char_pre = 1
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
