@@ -38,6 +38,7 @@ task :linux => [:linux_useful_commands,
         end
     end
 
+    puts
     files_to_source = {
         "~/.bash_profile" => "source ~/dotfiles/bash_profile",
         "~/.bashrc" => "source ~/dotfiles/bashrc",
@@ -49,6 +50,7 @@ task :linux => [:linux_useful_commands,
     end
 
     # Copy shared tmux conf to byobu dir.
+    puts
     sh 'sed -n \'/^### Shared with Byobu ###$/,$ p\' tmux.conf > ~/.byobu/.tmux.conf'
 end
 
@@ -80,10 +82,11 @@ end
 
 task :linux_useful_commands do
     test_command 'python terminal-colors -xc'
-    test_command 'wget --version'
+    test_command 'wget --version > /dev/null'
 end
 
 task :files_to_source do
+    puts
     files_to_source = {
         "~/.vimrc" => "source ~/dotfiles/vimrc",
         "~/.emacs"=> '(load-file "~/dotfiles/emacs")'
@@ -107,7 +110,7 @@ task :git_global_config do
     sh 'git config --global log.date iso'
     sh 'git config --global alias.c commit'
     sh 'git config --global alias.ca "commit -a"'
-    sh 'git config --global alias.d diff'
+    sh 'git config --global alias.d "diff --word-diff"'
     sh 'git config --global alias.l "log --decorate --graph"'
     sh 'git config --global alias.s "status -sb"'
 
