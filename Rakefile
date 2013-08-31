@@ -40,13 +40,12 @@ task :linux => [:linux_useful_commands,
 
     puts
     files_to_source = {
-        "~/.bash_profile" => "source ~/dotfiles/bash_profile",
-        "~/.bashrc" => "source ~/dotfiles/bashrc",
+        home(".bash_profile") => "source ~/dotfiles/bash_profile",
+        home(".bashrc") => "source ~/dotfiles/bashrc",
     }
-    files_to_source.each do |key, source_directive|
-        filename = File.expand_path key
-        touch filename
-        put_sroccaserra_section filename, source_directive
+    files_to_source.each do |file_name, source_directive|
+        touch file_name
+        put_sroccaserra_section file_name, source_directive
     end
 
     # Copy shared tmux conf to byobu dir.
@@ -87,12 +86,10 @@ end
 
 task :files_to_source do
     files_to_source = {
-        "~/.vimrc" => "source ~/dotfiles/vimrc",
-        "~/.emacs"=> '(load-file "~/dotfiles/emacs")'
+        home(".vimrc") => "source ~/dotfiles/vimrc",
+        home(".emacs") => '(load-file "~/dotfiles/emacs")'
     }
-    files_to_source.each do |key, source_directive|
-        file_path = File.expand_path key
-
+    files_to_source.each do |file_path, source_directive|
         if not File.exists? file_path
             File.open(file_path, "w") do |file|
                 file.write source_directive
@@ -132,13 +129,12 @@ task :git_projects => [home('.vim/bundle'),
     end
 
     git_projects = {
-        'https://github.com/gmarik/vundle.git' => '~/.vim/bundle/vundle', 
-        'git@github.com:sroccaserra/emacs.git' => '~/developer/emacs',
-        'git@github.com:sroccaserra/smart-tab.git' => '~/developer/smart-tab',
+        'https://github.com/gmarik/vundle.git' => home('.vim/bundle/vundle'),
+        'git@github.com:sroccaserra/emacs.git' => home('developer/emacs'),
+        'git@github.com:sroccaserra/smart-tab.git' => home('developer/smart-tab'),
     }
 
-    git_projects.each do |url, value|
-        destination_dir = File.expand_path value
+    git_projects.each do |url, destination_dir|
         if not test_command("git --git-dir=\"#{destination_dir}/.git\" --work-tree=\"#{destination_dir}\" status -sb", "")
             sh "git clone #{url} \"#{destination_dir}\""
         end
@@ -147,13 +143,12 @@ end
 
 task :linux_files_to_symlink do
     files_to_symlink = {
-        "~/.bash_aliases" => "bash_aliases",
-        "~/.inputrc" => "inputrc",
-        "~/.noserc" => "noserc",
-        "~/.tmux.conf" => "tmux.conf"
+        home(".bash_aliases") => "bash_aliases",
+        home(".inputrc") => "inputrc",
+        home(".noserc") => "noserc",
+        home(".tmux.conf") => "tmux.conf"
     }
-    files_to_symlink.each do |key, value|
-        link_path = File.expand_path key
+    files_to_symlink.each do |link_path, value|
         source_path = File.expand_path value
         if not File.exists? link_path
             sh "ln -s #{source_path} #{link_path}"
