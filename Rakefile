@@ -18,7 +18,10 @@ def home(path='')
     File.expand_path File.join('~', path)
 end
 
-task :os_independant => [:files_to_source, :git_global_config, :git_projects, :useful_commands]
+task :os_independant => [:files_to_source,
+                         :git_global_config,
+                         :git_projects,
+                         :useful_commands]
 
 task :linux => [:linux_useful_commands,
                 :linux_files_to_symlink,
@@ -71,7 +74,8 @@ task :windows => [:os_independant] do
         end
     end
 
-    test_command 'es -n 1 dotfiles', 'You should add Everything (http://www.voidtools.com) to your path.'
+    test_command 'es -n 1 dotfiles',
+                 'You should add Everything (http://www.voidtools.com) to your path.'
 end
 
 task :useful_commands => [:git_projects] do
@@ -100,21 +104,32 @@ end
 
 task :git_global_config do
     puts
-    sh 'git config --global color.ui auto'
-    sh 'git config --global branch.autosetuprebase always'
-    sh 'git config --global push.default tracking'
-    sh 'git config --global log.date iso'
-    sh 'git config --global alias.c commit'
-    sh 'git config --global alias.ca "commit -a"'
-    sh 'git config --global alias.d "diff --word-diff"'
-    sh 'git config --global alias.l "log --decorate --graph"'
-    sh 'git config --global alias.s "status -sb"'
+    puts "# Git config."
+
+    git_settings = {
+       'color.ui' => 'auto',
+       'branch.autosetuprebase' => 'always',
+       'push.default' => 'tracking',
+       'log.date' => 'iso',
+       'alias.c' => 'commit',
+       'alias.ca' => '"commit -a"',
+       'alias.d' => '"diff --word-diff"',
+       'alias.l' => '"log --decorate --graph"',
+       'alias.s' => '"status -sb"'
+    }
+    git_settings.each do |key, value|
+        if not value.gsub(/^"|"$/, '').eql?(`git config --global #{key}`.strip)
+            sh "git config --global #{key} #{value}"
+        end
+    end
 
     if `git config --global user.name`.empty?
         print "Git global user name: "
         name = STDIN.gets().strip
         sh "git config --global user.name #{name}"
+    end
 
+    if `git config --global user.email`.empty?
         print "Git global user email: "
         email = STDIN.gets().strip
         sh "git config --global user.email #{email}"
