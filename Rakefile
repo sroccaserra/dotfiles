@@ -90,7 +90,7 @@ task :windows => [:os_independant] do
 end
 
 task :useful_commands => [:git_projects] do
-    test_command 'curl --version'
+    test_command 'curl --version | head -n1'
     test_command 'vim --noplugin -N "+set hidden" "+syntax on" +BundleInstall +xa'
 end
 
@@ -199,10 +199,46 @@ task :customize_virtualenv_prompt do
     end
 end
 
+task :linux_root => ['/root/.profile', '/root/.bashrc', '/root/.vimrc'] do
+    puts "# Shielding calls to mesg."
+    mesg_replacement = 'if `tty -s`; then\n    mesg n\nfi'
+    sh "sed -i 's/^mesg n[\\s]*$/#{mesg_replacement}/' /root/.profile"
+
+    puts "# Updating bash customization."
+    PS1 = '\n${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] $? \[\033[01;34m\]\w\[\033[00m\]\n\[\033[01;31m\]\$\[\033[00m\] '
+    put_sroccaserra_section '/root/.bashrc', <<-EOS
+	    export EDITOR=vim
+
+	    PS1='#{PS1}'
+
+	    export LS_OPTIONS='--color=auto'
+	    eval "\`dircolors\`"
+	    alias ls='ls \$LS_OPTIONS'
+	    alias ll='ls \$LS_OPTIONS -l'
+	    alias l='ls \$LS_OPTIONS -lA'
+
+	    alias rm='rm -i'
+	    alias cp='cp -i'
+	    alias mv='mv -i'
+    EOS
+
+    puts "# Writing Vim customization."
+    vim_lines = File.open "vimrc" do |file|
+        read_section file, /^""" Begin shared with root$/, /^""" End shared with root$/
+    end
+    File.open '/root/.vimrc', 'w' do |file|
+        file.puts vim_lines
+    end
+end
+
 directory home ".byobu"
 directory home ".vim/bundle"
 directory home "bin"
 directory home "developer"
+
+file '/root/.profile'
+file '/root/.bashrc'
+file '/root/.vimrc'
 
 def test_command(command, fail_message="You should add #{command.split(' ')[0]} to your path.")
     puts
