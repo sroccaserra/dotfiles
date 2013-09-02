@@ -8,10 +8,16 @@ task :test do
     raise unless home('') == File.expand_path('~')
     raise unless home('developer') == File.expand_path('~/developer')
 
-    test = ["1","22","333", "# begin sroccaserra", "44", "555", "66",
-            "# end sroccaserra", "77", "8888"]
-    cleared = clear_sroccaserra_section(test)
-    raise unless cleared == ["1", "22", "333", "77", "8888"]
+    test_lines = ["1","22","333", "# begin sroccaserra", "44", "555", "66",
+                  "# end sroccaserra", "77", "8888"]
+    sroccaserra_section = read_sroccaserra_section test_lines
+    raise unless ['# begin sroccaserra', "44", "555", "66", '# end sroccaserra'] == sroccaserra_section
+
+    outside_sroccaserra = read_outside_sroccaserra_section test_lines
+    raise unless outside_sroccaserra == ["1", "22", "333", "77", "8888"]
+
+    section = read_section test_lines, /# begin sroccaserra/, /(?!)/
+    raise unless ['# begin sroccaserra', "44", "555", "66", '# end sroccaserra', "77", "8888"] == section
 end
 
 def home(path='')
@@ -50,10 +56,15 @@ task :linux => [:linux_useful_commands,
         touch file_name
         put_sroccaserra_section file_name, source_directive
     end
-
-    # Copy shared tmux conf to byobu dir.
+    
     puts
-    sh 'sed -n \'/^### Shared with Byobu ###$/,$ p\' tmux.conf > ~/.byobu/.tmux.conf'
+    puts '# Copy shared tmux conf to byobu dir.'
+    tmux_shared_conf = File.open('tmux.conf') do |file|
+        read_section file, /^### Shared with Byobu ##\#$/, /(?!)/
+    end
+    File.open home('.byobu/.tmux.conf'), 'w' do |file|
+        file.puts tmux_shared_conf
+    end
 end
 
 task :windows => [:os_independant] do
@@ -214,34 +225,38 @@ def mklink(link_dir, target_dir)
     end
 end
 
-def clear_sroccaserra_section(lines)
-    ok = true
+def read_section(lines, begin_expression, end_expression, inside=true)
+    status = !inside
 
     lines.reduce [] do |memo, line|
-        if line =~ /# begin sroccaserra/
-            ok = false
+        if line =~ begin_expression
+            status = !status
         end
-        keep = ok
-        if line =~ /# end sroccaserra/
-            ok = true
+        keep = status
+        if line =~ end_expression
+            status = !status
         end
         keep ? memo + [line] : memo
     end
 end
 
-def put_sroccaserra_section(filename, section_contents)
-    section_begin = '# begin sroccaserra'
-    section_end = '# end sroccaserra'
+def read_sroccaserra_section(lines)
+    read_section lines, /# begin sroccaserra/, /# end sroccaserra/
+end
 
+def read_outside_sroccaserra_section(lines)
+    read_section lines, /# begin sroccaserra/, /# end sroccaserra/, false
+end
+
+def put_sroccaserra_section(filename, section_contents)
     file_lines = File.open(filename, "r") do |file|
-        clear_sroccaserra_section file
+        read_outside_sroccaserra_section file
     end
 
     File.open(filename, "w") do |file|
         file.puts file_lines
-        file.puts section_begin
+        file.puts '# begin sroccaserra'
         file.puts section_contents
-        file.puts section_end
+        file.puts '# end sroccaserra'
     end
 end
-
