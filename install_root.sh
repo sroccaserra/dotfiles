@@ -19,4 +19,4 @@ then
     exit 0
 fi
 
-rake install_root
+rake linux_root
