@@ -205,11 +205,12 @@ task :linux_root => ['/root/.profile', '/root/.bashrc', '/root/.vimrc'] do
     ruby %q{-i -pe '$_.gsub!(/^mesg n[\s]*$/, "if `tty -s`; then\n    mesg n\nfi\n")' /root/.profile}
 
     puts "# Updating bash customization."
-    PS1 = '\n${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] $? \[\033[01;34m\]\w\[\033[00m\]\n\[\033[01;31m\]\$\[\033[00m\] '
+    ps1 = '\n${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] $? \[\033[01;34m\]\w\[\033[00m\]\n' +
+          '\[\033[01;31m\]\$\[\033[00m\] '
     put_sroccaserra_section '/root/.bashrc', <<-EOS
         export EDITOR=vim
 
-        PS1='#{PS1}'
+        PS1='#{ps1}'
 
         export LS_OPTIONS='--color=auto'
         eval "\`dircolors\`"
