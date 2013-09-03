@@ -50,8 +50,8 @@ task :linux => [:linux_useful_commands,
 
     puts
     files_to_source = {
-        home(".bash_profile") => "source ~/dotfiles/bash_profile",
-        home(".bashrc") => "source ~/dotfiles/bashrc",
+        home(".bash_profile") => "source #{pwd}/bash_profile",
+        home(".bashrc") => "source #{pwd}/bashrc",
     }
     files_to_source.each do |file_name, source_directive|
         touch file_name
@@ -75,7 +75,7 @@ task :windows => [:os_independant] do
     target_dir = home 'Dropbox/.ssh'
     link_dir = home '.ssh'
     if not File.exists?(link_dir) and File.exists?(target_dir)
-        mklink link_dir, target_dir
+        mklink_dir link_dir, target_dir
     end
 
     if test_command('emacs --version')
@@ -102,8 +102,8 @@ end
 
 task :files_to_source do
     files_to_source = {
-        home(".vimrc") => "source ~/dotfiles/vimrc",
-        home(".emacs") => '(load-file "~/dotfiles/emacs")'
+        home(".vimrc") => %Q{exec 'source ' . fnameescape('#{pwd}/vimrc')},
+        home(".emacs") => %Q{(load-file "#{pwd}/emacs")}
     }
     files_to_source.each do |file_path, source_directive|
         if not File.exists? file_path
@@ -251,7 +251,7 @@ def test_command(command, fail_message="You should add #{command.split(' ')[0]} 
     result
 end
 
-def mklink(link_dir, target_dir)
+def mklink_dir(link_dir, target_dir)
     puts
     arguments = "\"#{link_dir}\" \"#{target_dir}\""
     case
