@@ -42,7 +42,7 @@ task :linux => [:linux_useful_commands,
         if File.exists? profile
             sh "ln -s #{profile} #{bash_profile}"
         else
-            File.open bash_profile do |file|
+            File.open bash_profile, 'w' do |file|
                 file.write 'source ~/.bashrc'
             end
         end
@@ -60,7 +60,7 @@ task :linux => [:linux_useful_commands,
     
     puts
     puts '# Copy shared tmux conf to byobu dir.'
-    tmux_shared_conf = File.open('tmux.conf') do |file|
+    tmux_shared_conf = File.open 'tmux.conf', 'r'  do |file|
         read_section file, /^### Shared with Byobu ##\#$/, /(?!)/
     end
     File.open home('.byobu/.tmux.conf'), 'w' do |file|
@@ -107,7 +107,7 @@ task :files_to_source do
     }
     files_to_source.each do |file_path, source_directive|
         if not File.exists? file_path
-            File.open(file_path, "w") do |file|
+            File.open file_path, 'w' do |file|
                 file.write source_directive
             end
         end
@@ -224,7 +224,7 @@ task :linux_root => ['/root/.profile', '/root/.bashrc', '/root/.vimrc'] do
     EOS
 
     puts "# Writing Vim customization."
-    vim_lines = File.open "vimrc" do |file|
+    vim_lines = File.open 'vimrc', 'r' do |file|
         read_section file, /^""" Begin shared with root$/, /^""" End shared with root$/
     end
     File.open '/root/.vimrc', 'w' do |file|
@@ -286,11 +286,11 @@ def read_outside_sroccaserra_section(lines)
 end
 
 def put_sroccaserra_section(filename, section_contents)
-    file_lines = File.open(filename, "r") do |file|
+    file_lines = File.open filename, 'r' do |file|
         read_outside_sroccaserra_section file
     end
 
-    File.open(filename, "w") do |file|
+    File.open filename, 'w' do |file|
         file.puts file_lines
         file.puts '# begin sroccaserra'
         file.puts section_contents
