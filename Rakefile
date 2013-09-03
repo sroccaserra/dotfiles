@@ -10,6 +10,7 @@ task :test do
 
     test_lines = ["1","22","333", "# begin sroccaserra", "44", "555", "66",
                   "# end sroccaserra", "77", "8888"]
+
     sroccaserra_section = read_sroccaserra_section test_lines
     raise unless ['# begin sroccaserra', "44", "555", "66", '# end sroccaserra'] == sroccaserra_section
 
@@ -201,8 +202,7 @@ end
 
 task :linux_root => ['/root/.profile', '/root/.bashrc', '/root/.vimrc'] do
     puts "# Shielding calls to mesg."
-    mesg_replacement = 'if `tty -s`; then\n    mesg n\nfi'
-    sh "sed -i 's/^mesg n[\\s]*$/#{mesg_replacement}/' /root/.profile"
+    ruby %q{-i -pe '$_.gsub!(/^mesg n[\s]*$/, "if `tty -s`; then\n    mesg n\nfi\n")' /root/.profile}
 
     puts "# Updating bash customization."
     PS1 = '\n${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] $? \[\033[01;34m\]\w\[\033[00m\]\n\[\033[01;31m\]\$\[\033[00m\] '
