@@ -15,7 +15,7 @@ Ensuite, synchroniser le dépot Git au besoin.
 Debian
 ------
 
-Voir [install_debian_dev_tools.sh](install_debian_dev_tools.sh).
+Voir le script [install_debian_dev_tools.sh](install_debian_dev_tools.sh).
 
 Windows
 -------
