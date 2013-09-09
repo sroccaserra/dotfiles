@@ -15,11 +15,12 @@ Ensuite, synchroniser le dépot Git au besoin.
 Debian
 ------
 
-Voir [install_debian_dev_tools.sh](install_debian_dev_tools.sh)
+Voir [install_debian_dev_tools.sh](install_debian_dev_tools.sh).
 
 Windows
 -------
 
+Voir :
 - [OutilsWindows](https://github.com/sroccaserra/dotfiles/wiki/OutilsWindows)
 - [ConfigurationDePuTTY](https://github.com/sroccaserra/dotfiles/wiki/ConfigurationDePuTTY)
 
