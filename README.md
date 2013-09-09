@@ -12,9 +12,16 @@ Clôner le dépot Git, puis lancer `rake linux` ou `rake windows` en fonction de
 
 Ensuite, synchroniser le dépot Git au besoin.
 
-Windows - Configuration de PuTTY
---------------------------------
+Debian
+------
 
-Voir [PuTTY](https://github.com/sroccaserra/dotfiles/wiki/PuTTY)
+Voir install_debian_dev_tools.sh
+
+Windows
+-------
+
+- [OutilsWindows](OutilsWindows)
+- [ConfigurationDePuTTY](ConfigurationDePuTTY)
+
 
 
