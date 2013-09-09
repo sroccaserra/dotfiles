@@ -20,7 +20,7 @@ Voir [install_debian_dev_tools.sh](install_debian_dev_tools.sh).
 Windows
 -------
 
-Voir :
+Voir les pages Wiki :
 - [OutilsWindows](https://github.com/sroccaserra/dotfiles/wiki/OutilsWindows)
 - [ConfigurationDePuTTY](https://github.com/sroccaserra/dotfiles/wiki/ConfigurationDePuTTY)
 
