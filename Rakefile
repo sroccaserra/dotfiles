@@ -35,7 +35,8 @@ task :linux => [:linux_useful_commands,
                 :customize_virtualenv_prompt,
                 :linux_developer_tools,
                 :os_independant,
-                home(".byobu")] do
+                home(".byobu"),
+                home(".ssh")] do
     bash_profile = home '.bash_profile'
     profile = home '.profile'
     if not File.exists? bash_profile
@@ -173,7 +174,8 @@ task :linux_files_to_symlink do
         home(".bash_aliases") => "bash_aliases",
         home(".inputrc") => "inputrc",
         home(".noserc") => "noserc",
-        home(".tmux.conf") => "tmux.conf"
+        home(".ssh/rc") => "ssh_rc",
+        home(".tmux.conf") => "tmux.conf",
     }
     files_to_symlink.each do |link_path, value|
         source_path = File.expand_path value
@@ -233,6 +235,7 @@ task :linux_root => ['/root/.profile', '/root/.bashrc', '/root/.vimrc'] do
 end
 
 directory home ".byobu"
+directory home ".ssh"
 directory home ".vim/bundle"
 directory home "bin"
 directory home "developer"
