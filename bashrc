@@ -3,7 +3,7 @@
 
 test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
 
-git_ps1_maybe() {
+_git_ps1_maybe() {
     if test -n "`type __git_ps1`"
     then
         [[ ! "$(pwd)" = /vagrant/* ]] && GIT_PS1_SHOWDIRTYSTATE=true
@@ -12,7 +12,7 @@ git_ps1_maybe() {
 }
 
 # \e[0;32m = green, \e[1;33m = bold yellow, \e[1;36 = bold cyan, \e[m = reset
-PS1='\n\[\e[0;32m\]\u@\h\[\e[m\] $? \[\e[1;33m\]\w\[\e[1;36m\]$(git_ps1_maybe)\n\[\e[0;32m\]\$\[\e[m\] '
+PS1='\n\[\e[0;32m\]\u@\h\[\e[m\] $? \[\e[1;33m\]\w\[\e[1;36m\]$(_git_ps1_maybe)\n\[\e[0;32m\]\$\[\e[m\] '
 
 export PATH=$HOME/local/bin:$PATH 
 
@@ -52,3 +52,6 @@ if [[ -d /usr/lib/jvm/java-6-sun ]]
 then
     export JAVA_HOME="/usr/lib/jvm/java-6-sun"
 fi
+
+test -x /usr/games/fortune && echo && /usr/games/fortune -s
+
