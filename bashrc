@@ -1,7 +1,18 @@
 # -*- mode: shell -*-
 # vi: filetype=sh:
 
-PS1='\[\033[00m\]\n\[\033[00;32m\]\u@\h\[\033[00m\] $? \[\033[01;33m\]\w\[\033[00m\]\n\[\033[00;32m\]\$\[\033[00m\] '
+test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
+
+git_ps1_maybe() {
+    if test -n "`type __git_ps1`"
+    then
+        [[ ! "$(pwd)" = /vagrant/* ]] && GIT_PS1_SHOWDIRTYSTATE=true
+        __git_ps1
+    fi
+}
+
+# \e[0;32m = green, \e[1;33m = bold yellow, \e[1;36 = bold cyan, \e[m = reset
+PS1='\n\[\e[0;32m\]\u@\h\[\e[m\] $? \[\e[1;33m\]\w\[\e[1;36m\]$(git_ps1_maybe)\n\[\e[0;32m\]\$\[\e[m\] '
 
 export PATH=$HOME/local/bin:$PATH 
 
@@ -21,14 +32,6 @@ if [[ -e /usr/bin/virtualenvwrapper.sh ]]
 then
     source /usr/bin/virtualenvwrapper.sh 
 fi
-
-test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
-case "$TERM" in
-screen*) 
-    GIT_PS1_SHOWDIRTYSTATE=true
-    PROMPT_COMMAND='echo -ne "\033k$(__git_ps1)\033"'
-    ;;
-esac
 
 test -f $HOME/.bash_aliases && source $HOME/.bash_aliases
 
