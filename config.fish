@@ -1,7 +1,21 @@
 #!/usr/bin/fish
 
-set -x EDITOR vim
+set fish_greeting
 
+if status --is-interactive
+    if test -x '/usr/games/fortune'
+        echo
+        /usr/games/fortune -s
+    end
+end
+
+set -x EDITOR vim
+set -x LESS "-iFRSX"
+
+set -u fish_user_paths ~/bin
+
+############
+# Git config
 set __fish_git_prompt_showupstream 'yes'
 set __fish_git_prompt_showstashstate 'yes'
 set __fish_git_prompt_color_branch yellow
@@ -28,11 +42,13 @@ function fish_prompt
     
     set_color normal
     if test (pwd | grep '^/vagrant\b')
-        set -e __fish_git_prompt_showdirtystate
+        set -ge __fish_git_prompt_showdirtystate
     else
-        set __fish_git_prompt_showdirtystate 'yes'
+        set -g __fish_git_prompt_showdirtystate 'yes'
     end
     printf '%s\n$ ' (__fish_git_prompt)
 
     set_color normal
 end
+############
+

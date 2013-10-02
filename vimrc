@@ -38,6 +38,7 @@ let g:neocomplcache_enable_insert_char_pre = 1
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
 set guifont=Powerline\ DejaVu\ Sans\ Mono
+set shell=/bin/bash
 
 """ Begin shared with root
 
