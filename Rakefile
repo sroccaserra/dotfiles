@@ -36,6 +36,7 @@ task :linux => [:linux_useful_commands,
                 :linux_developer_tools,
                 :os_independant,
                 home(".byobu"),
+                home(".config/fish"),
                 home(".ssh")] do
     bash_profile = home '.bash_profile'
     profile = home '.profile'
@@ -53,6 +54,7 @@ task :linux => [:linux_useful_commands,
     files_to_source = {
         home(".bash_profile") => "source #{pwd}/bash_profile",
         home(".bashrc") => "source #{pwd}/bashrc",
+        home(".config/fish/config.fish") => "source #{pwd}/config.fish"
     }
     files_to_source.each do |file_name, source_directive|
         touch file_name
@@ -235,6 +237,7 @@ task :linux_root => ['/root/.profile', '/root/.bashrc', '/root/.vimrc'] do
 end
 
 directory home ".byobu"
+directory home ".config/fish"
 directory home ".ssh"
 directory home ".vim/bundle"
 directory home "bin"
