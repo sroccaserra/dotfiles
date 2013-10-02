@@ -28,9 +28,9 @@ function fish_prompt
     
     set_color normal
     if test (pwd | grep '^/vagrant\b')
-        set -ge __fish_git_prompt_showdirtystate
+        set -e __fish_git_prompt_showdirtystate
     else
-        set -g __fish_git_prompt_showdirtystate 'yes'
+        set __fish_git_prompt_showdirtystate 'yes'
     end
     printf '%s\n$ ' (__fish_git_prompt)
 
