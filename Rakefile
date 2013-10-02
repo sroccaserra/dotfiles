@@ -54,7 +54,7 @@ task :linux => [:linux_useful_commands,
     files_to_source = {
         home(".bash_profile") => "source #{pwd}/bash_profile",
         home(".bashrc") => "source #{pwd}/bashrc",
-        home(".config/fish/config.fish") => "source #{pwd}/config.fish"
+        home(".config/fish/config.fish") => "source #{pwd}/fish/config.fish\n set -x fish_function_path #{pwd}/fish/functions $fish_function_path"
     }
     files_to_source.each do |file_name, source_directive|
         touch file_name
