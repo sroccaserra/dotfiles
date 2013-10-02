@@ -36,5 +36,3 @@ function fish_prompt
 
     set_color normal
 end
-
-status --is-login; and status --is-interactive; and exec byobu-launcher
