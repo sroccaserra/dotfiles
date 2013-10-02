@@ -23,6 +23,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/neocomplcache'
 Bundle 'bogado/file-line'
 Bundle 'kien/ctrlp.vim'
+Bundle 'dag/vim-fish'
 
 filetype plugin indent on
 
