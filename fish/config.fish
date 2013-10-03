@@ -3,6 +3,7 @@
 set fish_greeting
 
 if status --is-interactive
+    set -x fish_function_path $sroccaserra_dotfiles/fish/functions $fish_function_path
     if test -x '/usr/games/fortune'
         echo
         /usr/games/fortune -s
