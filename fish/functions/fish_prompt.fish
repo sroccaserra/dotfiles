@@ -9,7 +9,7 @@ function fish_prompt
     set_color normal
     printf ' ('
     if test 0 -ne $last_status
-        set_color red
+        set_color $fish_color_error
     end
     printf '%d' $last_status
     set_color normal
