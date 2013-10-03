@@ -19,7 +19,7 @@ set -u fish_user_paths ~/bin
 # Git config
 set __fish_git_prompt_showupstream 'yes'
 set __fish_git_prompt_showstashstate 'yes'
-set __fish_git_prompt_color_branch yellow
+set __fish_git_prompt_color_branch cyan
 
 set __fish_git_prompt_char_dirtystate '⚡'
 set __fish_git_prompt_char_stagedstate '→'

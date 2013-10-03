@@ -56,7 +56,7 @@ task :linux => [:linux_useful_commands,
         home(".bashrc") => "source #{pwd}/bashrc",
         home(".config/fish/config.fish") => [
             "set -x sroccaserra_dotfiles #{pwd}",
-            "source #{pwd}/fish/config.fish"
+            ". #{pwd}/fish/config.fish"
         ]
     }
     files_to_source.each do |file_name, source_directive|

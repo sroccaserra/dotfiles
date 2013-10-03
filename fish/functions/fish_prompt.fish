@@ -2,14 +2,18 @@ function fish_prompt
     set last_status $status
     
     # Who I am
-    set_color normal
+    set_color yellow
     printf '\n%s@%s' (whoami) (hostname)
     
     # last status
+    set_color normal
+    printf ' ('
     if test 0 -ne $last_status
         set_color red
     end
-    printf ' %d' $last_status
+    printf '%d' $last_status
+    set_color normal
+    printf ')'
 
     # cwd
     set_color $fish_color_cwd
