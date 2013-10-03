@@ -6,14 +6,14 @@ function fish_prompt
     printf '\n%s@%s' (whoami) (hostname)
     
     # last status
-    set_color normal
-    printf ' ('
     if test 0 -ne $last_status
+        set_color normal
+        printf ' ('
         set_color $fish_color_error
+        printf '%d' $last_status
+        set_color normal
+        printf ')'
     end
-    printf '%d' $last_status
-    set_color normal
-    printf ')'
 
     # cwd
     set_color $fish_color_cwd
