@@ -1,7 +1,18 @@
 #!/bin/bash
 
-# Allows tmux to keep ssh-agent through detached sessions'
-if test "$SSH_AUTH_SOCK"
+#########################################################
+# Allows tmux to keep ssh-agent through detached sessions
+SOCK=~/.ssh/ssh_auth_sock
+
+if test -z "$TMUX"
 then
-    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+    if test ! -z "$SSH_TTY"
+    then
+        if test "$SSH_AUTH_SOCK" && [ $SSH_AUTH_SOCK != $SOCK ]
+        then
+            ln -sf $SSH_AUTH_SOCK $SOCK
+            export SSH_AUTH_SOCK=$SOCK
+        fi
+    fi
 fi
+#########################################################

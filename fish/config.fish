@@ -4,16 +4,17 @@ set fish_greeting
 
 if status --is-interactive
     set -x fish_function_path $sroccaserra_dotfiles/fish/functions $fish_function_path
+
+    set -x EDITOR vim
+    set -x LESS "-iFRSX"
+
+    set -u fish_user_paths ~/bin
+
     if test -x '/usr/games/fortune'
         echo
         /usr/games/fortune -s
     end
 end
-
-set -x EDITOR vim
-set -x LESS "-iFRSX"
-
-set -u fish_user_paths ~/bin
 
 ############
 # Git config
