@@ -28,6 +28,7 @@ Bundle 'dag/vim-fish'
 filetype plugin indent on
 
 let g:ctrlp_match_window = 'top,order:ttb,max:20'
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 let g:Powerline_symbols = 'fancy'
 let g:neocomplcache_auto_completion_start_length = 3

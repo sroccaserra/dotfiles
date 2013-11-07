@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(abbrev-mode t t)
+ '(calc-undo-length 1000)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(cursor-in-non-selected-windows nil)
@@ -53,4 +54,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(helm-ff-directory ((t (:foreground "#DC8CC3")))))
+ '(helm-ff-directory ((t (:foreground "#DC8CC3"))) t))
