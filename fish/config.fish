@@ -8,7 +8,7 @@ if status --is-interactive
     set -x EDITOR vim
     set -x LESS "-iFRSX"
 
-    set -u fish_user_paths ~/bin
+    set -u fish_user_paths ~/bin $PATH
 
     if test -x '/usr/games/fortune'
         echo
