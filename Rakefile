@@ -144,7 +144,7 @@ task :git_global_config do
     if `git config --global user.name`.empty?
         print "Git global user name: "
         name = STDIN.gets().strip
-        sh "git config --global user.name #{name}"
+        sh "git config --global user.name \"#{name}\""
     end
 
     if `git config --global user.email`.empty?
