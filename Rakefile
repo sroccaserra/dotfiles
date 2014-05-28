@@ -191,7 +191,7 @@ task :linux_files_to_symlink do
 end
 
 task :linux_developer_tools => [home("bin")] do
-    if test_command 'java -version 2>&1 | head -n1' and not test_command "lein version"
+    if test_command('java -version 2>&1 | head -n1') && (not test_command("lein version"))
         sh '\curl https://raw.github.com/technomancy/leiningen/stable/bin/lein > "$HOME/bin/lein"'
         sh 'chmod +x ~/bin/lein'
     end
