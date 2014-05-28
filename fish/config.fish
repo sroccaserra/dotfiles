@@ -12,7 +12,11 @@ if status --is-interactive
 
     if test -x '/usr/games/fortune'
         echo
-        /usr/games/fortune -s
+        if test -x '/usr/games/cowsay'
+            /usr/games/fortune -s | /usr/games/cowsay -f stegosaurus
+        else
+            /usr/games/fortune -s
+        end
     end
 end
 
