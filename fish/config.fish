@@ -13,7 +13,8 @@ if status --is-interactive
     if test -x '/usr/games/fortune'
         echo
         if test -x '/usr/games/cowsay'
-            /usr/games/fortune -s | /usr/games/cowsay -f stegosaurus
+            set animal (basename (find /usr/share/cowsay/ -name '*.cow' | sort -R | head -n 1) | sed 's/.cow$//')
+            /usr/games/fortune -s | /usr/games/cowsay -f $animal
         else
             /usr/games/fortune -s
         end
