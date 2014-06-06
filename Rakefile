@@ -133,7 +133,8 @@ task :git_global_config do
        'alias.ca' => '"commit -a"',
        'alias.d' => '"diff --word-diff"',
        'alias.l' => '"log --decorate --graph"',
-       'alias.s' => '"status -sb"'
+       'alias.poule' => '"pull"',
+       'alias.lapin' => '"push"'
     }
     git_settings.each do |key, value|
         if not value.gsub(/^"|"$/, '').eql?(`git config --global #{key}`.strip)
