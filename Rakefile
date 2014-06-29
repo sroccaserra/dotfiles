@@ -133,6 +133,7 @@ task :git_global_config do
        'alias.ca' => '"commit -a"',
        'alias.d' => '"diff --word-diff"',
        'alias.l' => '"log --decorate --graph"',
+       'alias.s' => '"status -sb"',
        'alias.poule' => 'pull',
        'alias.mouche' => 'push',
        'alias.lapin' => '"log --decorate --graph"'
