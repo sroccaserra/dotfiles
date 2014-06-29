@@ -4,7 +4,7 @@
 test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
 
 _git_ps1_maybe() {
-    if test -n "`type __git_ps1`"
+    if test -n "`which __git_ps1`"
     then
         [[ ! "$(pwd)" = /vagrant/* ]] && GIT_PS1_SHOWDIRTYSTATE=true
         __git_ps1
