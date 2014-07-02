@@ -165,7 +165,7 @@ task :git_projects => [home('.vim/bundle'),
     end
 
     git_projects = {
-        'https://github.com/gmarik/vundle.git' => home('.vim/bundle/vundle'),
+        'https://github.com/gmarik/vundle.git' => home('.vim/bundle/Vundle.vim'),
         'git@github.com:sroccaserra/emacs.git' => home('developer/emacs'),
         'git@github.com:sroccaserra/smart-tab.git' => home('developer/smart-tab'),
     }

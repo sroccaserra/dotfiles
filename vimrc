@@ -4,27 +4,33 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+if !has("win32")
+    set shell=/bin/bash
+endif
 
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'altercation/vim-colors-solarized'
 " Note: with powerline, you need one of these too:
 " https://github.com/ashwin/vim-powerline/tree/develop/font
 " (works on PuTTY)
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'jnurmine/Zenburn'
-Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Raimondi/delimitMate'
-Bundle 'Shougo/neocomplcache'
-Bundle 'bogado/file-line'
-Bundle 'kien/ctrlp.vim'
-Bundle 'dag/vim-fish'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'jnurmine/Zenburn'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/neocomplcache'
+Plugin 'bogado/file-line'
+Plugin 'kien/ctrlp.vim'
+Plugin 'dag/vim-fish'
+Plugin 'mxw/vim-jsx'
 
+call vundle#end()
 filetype plugin indent on
 
 let g:ctrlp_match_window = 'top,order:ttb,max:20'
@@ -40,7 +46,6 @@ let g:neocomplcache_enable_insert_char_pre = 1
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
 set guifont=Powerline\ DejaVu\ Sans\ Mono
-set shell=/bin/bash
 
 """ Begin shared with root
 
