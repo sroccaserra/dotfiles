@@ -11,8 +11,5 @@ aptitude install -y linux-headers-$(uname -r) build-essential \
         python-dev python-nose python-unittest2 python-paver \
         python-mysqldb python-sqlalchemy virtualenvwrapper
 
-DEBIAN_FRONTEND=noninteractive aptitude install -q -y \
-        mysql-server
-
 pip install yanc
 
