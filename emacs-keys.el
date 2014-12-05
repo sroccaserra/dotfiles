@@ -147,14 +147,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto parenthesis & the like
 
-(setq skeleton-pair t)
-(global-set-key (kbd "[")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "(")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "<")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "'") 'skeleton-pair-insert-maybe)
-
 (define-key lisp-mode-shared-map "'" 'self-insert-command)
 (define-key text-mode-map "'" 'self-insert-command)
 (add-hook 'org-mode-hook

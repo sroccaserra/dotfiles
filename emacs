@@ -115,13 +115,13 @@
 
 (global-set-key [(control shift d)]   'backward-delete-char-untabify)
 
-(setq skeleton-pair t)
-(global-set-key (kbd "[")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "(")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "<")  'skeleton-pair-insert-maybe)
-(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "'") 'skeleton-pair-insert-maybe)
+;; (setq skeleton-pair t)
+;; (global-set-key (kbd "[")  'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "(")  'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "<")  'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "'") 'skeleton-pair-insert-maybe)
 
 (define-key lisp-mode-shared-map "'" 'self-insert-command)
 (define-key text-mode-map "'" 'self-insert-command)
