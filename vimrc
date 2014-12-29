@@ -29,6 +29,7 @@ Plugin 'bogado/file-line'
 Plugin 'kien/ctrlp.vim'
 Plugin 'dag/vim-fish'
 Plugin 'mxw/vim-jsx'
+Plugin 'lambdatoast/elm.vim'
 
 call vundle#end()
 filetype plugin indent on
