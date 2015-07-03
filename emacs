@@ -21,8 +21,8 @@
 (package-initialize)
 
 (defvar my-packages '(ace-jump-mode clojure-mode
-  clojure-test-mode dash dired+ evil evil-leader evil-numbers
-  git-gutter helm helm-projectile maxframe pager powershell-mode
+  dash dired+ evil evil-leader evil-numbers
+  git-gutter helm helm-projectile maxframe pager
   projectile s undo-tree zenburn-theme)
   "List of my sine qua non packages")
 
