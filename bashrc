@@ -55,3 +55,10 @@ fi
 
 test -x /usr/games/fortune && echo && /usr/games/fortune -s
 
+if test `uname -a | cut -d " " -f 1` = Darwin
+then
+    alias ls='ls -G'
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias l='ls -CF'
+fi
