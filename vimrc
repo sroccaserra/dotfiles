@@ -17,7 +17,7 @@ Plugin 'altercation/vim-colors-solarized'
 " Note: with powerline, you need one of these too:
 " https://github.com/ashwin/vim-powerline/tree/develop/font
 " (works on PuTTY)
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/nerdtree'
@@ -43,10 +43,11 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
+let g:airline_powerline_fonts = 1
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
-set guifont=Powerline\ DejaVu\ Sans\ Mono
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
 
 """ Begin shared with root
 
