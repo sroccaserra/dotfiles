@@ -30,6 +30,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'dag/vim-fish'
 Plugin 'mxw/vim-jsx'
 Plugin 'lambdatoast/elm.vim'
+Plugin 'vim-scripts/vim-auto-save'
 
 call vundle#end()
 filetype plugin indent on
@@ -44,6 +45,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
 let g:airline_powerline_fonts = 1
+let g:auto_save = 1
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
@@ -100,6 +102,8 @@ syntax on
 """ End shared with root
 
 silent! colorscheme zenburn
+
+:au FocusLost * silent! wa
 
 nmap <leader>d :NERDTreeToggle<CR>
 
