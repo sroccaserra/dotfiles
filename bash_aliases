@@ -19,4 +19,5 @@ alias df='df -h'
 alias du='du -h'
 alias emacs='TERM=xterm-256color emacs'
 
+alias grep='grep --color=auto'
 alias rgrep='grep -r --exclude-dir=\.svn --exclude-dir=\.git'

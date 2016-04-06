@@ -41,7 +41,6 @@ test -f $HOME/.bash_aliases && source $HOME/.bash_aliases
 export EDITOR=vim
 
 export LESS="-iFRSX"
-export GREP_OPTIONS="--color=auto"
 
 export PATH=$PATH:$HOME/bin
 
