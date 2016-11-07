@@ -46,10 +46,11 @@ let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
 let g:airline_powerline_fonts = 1
 let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h11;DejaVu\ Sans\ Mono\ for\ Powerline
 
 """ Begin shared with root
 

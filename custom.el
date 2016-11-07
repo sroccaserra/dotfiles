@@ -10,7 +10,7 @@
  '(cursor-in-non-selected-windows nil)
  '(custom-safe-themes
    (quote
-    ("3dafeadb813a33031848dfebfa0928e37e7a3c18efefa10f3e9f48d1993598d3" "1f4e6cf4cb3bdba8afdb9244e037698238080eeecb209084602f7d717225f102" default)))
+    ("40f6a7af0dfad67c0d4df2a1dd86175436d79fc69ea61614d668a635c2cd94ab" "f3d6a49e3f4491373028eda655231ec371d79d6d2a628f08d5aa38739340540b" "3dafeadb813a33031848dfebfa0928e37e7a3c18efefa10f3e9f48d1993598d3" "1f4e6cf4cb3bdba8afdb9244e037698238080eeecb209084602f7d717225f102" default)))
  '(debug-on-error t)
  '(delete-old-versions t)
  '(electric-indent-mode t)
