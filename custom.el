@@ -29,6 +29,7 @@
  '(global-auto-revert-mode t)
  '(global-git-gutter-mode t)
  '(global-hl-line-mode t)
+ '(global-linum-mode t)
  '(global-whitespace-mode t)
  '(helm-boring-file-regexp-list
    (quote
@@ -42,7 +43,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (zenburn-theme s pager maxframe markdown-mode+ helm-projectile git-gutter evil-numbers evil-leader dired+ clojure-mode ace-jump-mode)))
+    (racket-mode zenburn-theme s pager maxframe markdown-mode+ helm-projectile evil-numbers evil-leader dired+ clojure-mode ace-jump-mode)))
  '(pop-up-windows nil)
  '(recentf-max-saved-items 1024)
  '(recentf-mode t)

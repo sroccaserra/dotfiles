@@ -4,30 +4,19 @@
 ;;;;;;;;;;;;;;;;
 ;;; Packages
 
-(defun is-emacs-24-or-more ()
-  (string-match "Emacs \\([0-9]+\\)" (version))
-  (let ((v (string-to-int (match-string 1 (version)))))
-    (>= v 24)))
-
-(unless (is-emacs-24-or-more)
-  (when (not (file-exists-p "~/.emacs.d/elpa/package.el"))
-    (make-directory "~/.emacs.d/elpa" t)
-    (url-copy-file "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el" "~/.emacs.d/elpa/package.el"))
-  (load "~/.emacs.d/elpa/package.el"))
-
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
 (defvar my-packages '(ace-jump-mode clojure-mode
   dash dired+ evil evil-leader evil-numbers
-  git-gutter helm helm-projectile maxframe pager
-  projectile s undo-tree zenburn-theme)
+  helm helm-projectile maxframe pager
+  projectile racket-mode s undo-tree zenburn-theme)
   "List of my sine qua non packages")
-
-(unless (is-emacs-24-or-more)
-  (add-to-list 'my-packages 'color-theme t))
 
 (require 'cl)
 (let ((missing-packages (remove-if 'package-installed-p my-packages)))
@@ -81,6 +70,8 @@
 ;; Libraries
 
 (require 'ace-jump-mode)
+(setq ace-jump-word-mode-use-query-char nil)
+
 (require 'dash)
 (require 's)
 (require 'maxframe)
@@ -143,6 +134,19 @@
            (s-contains? "xterm" (tty-type) t))
   (define-key input-decode-map "\e[4~" [end]))
 
+(if (string-match "Aquamacs\\|NS apple-appkit\\|NS appkit\\|darwin"
+                  (emacs-version))
+ (progn
+   (global-set-key [(meta n)] (lambda () (interactive) (insert-string "~")))
+   (global-set-key (kbd "M-(") (lambda () (interactive) (insert-string "{")))
+   (global-set-key (kbd "M-)") (lambda () (interactive) (insert-string "}")))
+   (global-set-key (kbd "M-5") (lambda () (interactive) (insert-string "[")))
+   (global-set-key (kbd "M-°") (lambda () (interactive) (insert-string "]")))
+   (global-set-key [(meta l)] (lambda () (interactive) (insert-string "|")))
+   (global-set-key [(meta /)] (lambda () (interactive) (insert-string "\\")))
+   (global-set-key [(meta $)] (lambda () (interactive) (insert-string "€")))
+ )
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tab

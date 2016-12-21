@@ -92,6 +92,7 @@ set showmode
 set smartindent
 set smarttab
 set softtabstop=4
+set spelllang=fr
 set tabstop=4
 set whichwrap+=<,>,[,]
 set wildignore+=*.pyc,*.o,*.class,log/**
