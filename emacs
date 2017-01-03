@@ -13,7 +13,7 @@
 (package-initialize)
 
 (defvar my-packages '(ace-jump-mode clojure-mode
-  dash dired+ evil evil-leader evil-numbers
+  dash dired+ editorconfig evil evil-leader evil-numbers
   helm helm-projectile maxframe pager
   projectile racket-mode s undo-tree zenburn-theme)
   "List of my sine qua non packages")

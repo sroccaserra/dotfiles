@@ -31,6 +31,7 @@ Plugin 'dag/vim-fish'
 Plugin 'mxw/vim-jsx'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 filetype plugin indent on
