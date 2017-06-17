@@ -76,6 +76,8 @@ set incsearch
 set laststatus=2        " Always want statusline
 set lazyredraw          " Don't display macro steps
 set linebreak
+set list
+set listchars=trail:•
 set mouse=a
 set nobackup
 set nocompatible
@@ -99,6 +101,8 @@ set whichwrap+=<,>,[,]
 set wildignore+=*.pyc,*.o,*.class,log/**
 set wildmenu
 set wildmode=list:longest,full
+
+autocmd Filetype javascript setlocal suffixesadd=.js
 
 syntax on
 

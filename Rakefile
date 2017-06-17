@@ -130,6 +130,7 @@ task :git_global_config do
        'pull.rebase' => 'true',
        'push.default' => 'tracking',
        'log.date' => 'iso',
+       'rerere.enabled' => 'true',
        'alias.c' => 'commit',
        'alias.ca' => '"commit -a"',
        'alias.d' => '"diff --word-diff"',
