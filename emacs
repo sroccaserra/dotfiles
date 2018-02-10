@@ -15,7 +15,7 @@
 (defvar my-packages '(ace-jump-mode clojure-mode
   dash dired+ editorconfig evil evil-leader evil-numbers
   helm helm-projectile maxframe pager
-  projectile racket-mode s undo-tree zenburn-theme)
+  projectile racket-mode rainbow-delimiters s undo-tree zenburn-theme)
   "List of my sine qua non packages")
 
 (require 'cl)
@@ -54,6 +54,7 @@
 
 (evil-ex-define-cmd "p[rojectile]" 'helm-projectile)
 (evil-ex-define-cmd "a[nything]" 'save-buffer-then-helm)
+(evil-leader/set-key "p" 'helm-projectile)
 (evil-leader/set-key "t" 'save-buffer-then-helm)
 (defun save-buffer-then-helm ()
   (interactive)
@@ -83,6 +84,8 @@
 (whitespace-mode)
 
 (load-theme 'zenburn)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;
 ;; My tools

@@ -51,7 +51,7 @@ let g:auto_save_in_insert_mode = 0
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
-set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h11;DejaVu\ Sans\ Mono\ for\ Powerline
+set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h14;DejaVu\ Sans\ Mono\ for\ Powerline
 
 """ Begin shared with root
 
@@ -77,7 +77,7 @@ set laststatus=2        " Always want statusline
 set lazyredraw          " Don't display macro steps
 set linebreak
 set list
-set listchars=trail:•
+set listchars=tab:»\ ,trail:•
 set mouse=a
 set nobackup
 set nocompatible
@@ -103,6 +103,11 @@ set wildmenu
 set wildmode=list:longest,full
 
 autocmd Filetype javascript setlocal suffixesadd=.js
+autocmd Filetype markdown setlocal wrap
+
+autocmd Filetype yaml setlocal tabstop=2
+autocmd Filetype yaml setlocal shiftwidth=2
+autocmd Filetype yaml setlocal softtabstop=2
 
 syntax on
 
