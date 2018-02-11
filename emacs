@@ -145,6 +145,8 @@
            (s-contains? "xterm" (tty-type) t))
   (define-key input-decode-map "\e[4~" [end]))
 
+;; Note: customized mac-right-option-modifier to nil instead
+;;
 ;; (if (string-match "Aquamacs\\|NS apple-appkit\\|NS appkit\\|darwin"
 ;;                   (emacs-version))
 ;;  (progn
@@ -158,9 +160,6 @@
 ;;    (global-set-key [(meta $)] (lambda () (interactive) (insert-string "€")))
 ;;  )
 ;; )
-
-(setq mac-option-key-is-meta t)
-(setq mac-right-option-modifier nil)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

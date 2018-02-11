@@ -17,13 +17,7 @@
  '(electric-indent-mode t)
  '(electric-layout-mode nil)
  '(electric-pair-mode t)
- '(electric-pair-pairs
-   (quote
-    ((34 . 34)
-     (40 . 41)
-     (123 . 125)
-     (91 . 93)
-     (39 . 39))))
+ '(electric-pair-pairs (quote ((34 . 34) (40 . 41) (123 . 125) (91 . 93))))
  '(evil-cross-lines t)
  '(evil-default-cursor (quote (t)))
  '(evil-leader/leader ",")
@@ -43,6 +37,7 @@
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
+ '(ns-right-alternate-modifier nil)
  '(package-selected-packages
    (quote
     (rainbow-delimiters 0xc editorconfig racket-mode zenburn-theme s pager maxframe markdown-mode+ helm-projectile evil-numbers evil-leader dired+ clojure-mode ace-jump-mode)))
