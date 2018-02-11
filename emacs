@@ -145,19 +145,23 @@
            (s-contains? "xterm" (tty-type) t))
   (define-key input-decode-map "\e[4~" [end]))
 
-(if (string-match "Aquamacs\\|NS apple-appkit\\|NS appkit\\|darwin"
-                  (emacs-version))
- (progn
-   (global-set-key [(meta n)] (lambda () (interactive) (insert-string "~")))
-   (global-set-key (kbd "M-(") (lambda () (interactive) (insert-string "{")))
-   (global-set-key (kbd "M-)") (lambda () (interactive) (insert-string "}")))
-   (global-set-key (kbd "M-5") (lambda () (interactive) (insert-string "[")))
-   (global-set-key (kbd "M-°") (lambda () (interactive) (insert-string "]")))
-   (global-set-key [(meta l)] (lambda () (interactive) (insert-string "|")))
-   (global-set-key [(meta /)] (lambda () (interactive) (insert-string "\\")))
-   (global-set-key [(meta $)] (lambda () (interactive) (insert-string "€")))
- )
-)
+;; (if (string-match "Aquamacs\\|NS apple-appkit\\|NS appkit\\|darwin"
+;;                   (emacs-version))
+;;  (progn
+;;    (global-set-key [(meta n)] (lambda () (interactive) (insert-string "~")))
+;;    (global-set-key (kbd "M-(") (lambda () (interactive) (insert-string "{")))
+;;    (global-set-key (kbd "M-)") (lambda () (interactive) (insert-string "}")))
+;;    (global-set-key (kbd "M-5") (lambda () (interactive) (insert-string "[")))
+;;    (global-set-key (kbd "M-°") (lambda () (interactive) (insert-string "]")))
+;;    (global-set-key [(meta l)] (lambda () (interactive) (insert-string "|")))
+;;    (global-set-key [(meta /)] (lambda () (interactive) (insert-string "\\")))
+;;    (global-set-key [(meta $)] (lambda () (interactive) (insert-string "€")))
+;;  )
+;; )
+
+(setq mac-option-key-is-meta t)
+(setq mac-right-option-modifier nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tab
