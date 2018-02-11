@@ -1,4 +1,5 @@
-;; -*- mode:emacs-lisp -*-
+;; -*- mode:emacs-lisp -*-OB
+
 ;; vi: set filetype=lisp:
 
 ;;;;;;;;;;;;;;;;
@@ -79,6 +80,10 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (make-local-variable 'electric-pair-pairs)
+                                  (delete '(?\' . ?\') electric-pair-pairs)))
+
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 
 (whitespace-mode)
@@ -109,6 +114,8 @@
 
 (global-set-key [(control shift d)]   'backward-delete-char-untabify)
 
+;; Note: skeleton-pair is now replaced by electric-pair
+;;
 ;; (setq skeleton-pair t)
 ;; (global-set-key (kbd "[")  'skeleton-pair-insert-maybe)
 ;; (global-set-key (kbd "(")  'skeleton-pair-insert-maybe)
@@ -116,12 +123,13 @@
 ;; (global-set-key (kbd "<")  'skeleton-pair-insert-maybe)
 ;; (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
 ;; (global-set-key (kbd "'") 'skeleton-pair-insert-maybe)
+;;
+;; (define-key lisp-mode-shared-map "'" 'self-insert-command)
+;; (define-key text-mode-map "'" 'self-insert-command)
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (define-key org-mode-map "'" 'self-insert-command)))
 
-(define-key lisp-mode-shared-map "'" 'self-insert-command)
-(define-key text-mode-map "'" 'self-insert-command)
-(add-hook 'org-mode-hook
-          (lambda ()
-            (define-key org-mode-map "'" 'self-insert-command)))
 
 (require 'pager)
 (global-set-key [(control v)] 'pager-page-down)
