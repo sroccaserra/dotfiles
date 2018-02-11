@@ -40,7 +40,7 @@
  '(ns-right-alternate-modifier nil)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters 0xc editorconfig racket-mode zenburn-theme s pager maxframe markdown-mode+ helm-projectile evil-numbers evil-leader dired+ clojure-mode ace-jump-mode)))
+    (default-text-scale rainbow-delimiters 0xc editorconfig racket-mode zenburn-theme s pager maxframe markdown-mode+ helm-projectile evil-numbers evil-leader dired+ clojure-mode ace-jump-mode)))
  '(pop-up-windows nil)
  '(recentf-max-saved-items 1024)
  '(recentf-mode t)

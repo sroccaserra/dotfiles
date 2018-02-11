@@ -14,7 +14,7 @@
 (package-initialize)
 
 (defvar my-packages '(ace-jump-mode clojure-mode
-  dash dired+ editorconfig evil evil-leader evil-numbers
+  dash default-text-scale dired+ editorconfig evil evil-leader evil-numbers
   helm helm-projectile maxframe pager
   projectile racket-mode rainbow-delimiters s undo-tree zenburn-theme)
   "List of my sine qua non packages")
@@ -87,6 +87,7 @@
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 
 (whitespace-mode)
+(default-text-scale-mode)
 
 (load-theme 'zenburn)
 
