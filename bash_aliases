@@ -21,3 +21,4 @@ alias emacs='TERM=xterm-256color emacs'
 
 alias grep='grep --color=auto'
 alias rgrep='grep -r --exclude-dir=\.svn --exclude-dir=\.git'
+alias goups='git add --patch && git commit --amend --no-edit && git push --force-with-lease'

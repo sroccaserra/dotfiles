@@ -21,6 +21,9 @@ if status --is-interactive
     end
 end
 
+alias rgrep="grep -r"
+alias igrep="grep -i"
+
 ############
 # Git config
 set __fish_git_prompt_showupstream 'yes'
