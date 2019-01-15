@@ -49,15 +49,18 @@ let g:airline_powerline_fonts = 1
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
+let g:netrw_liststyle = 3
+
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
 set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h14;DejaVu\ Sans\ Mono\ for\ Powerline
+set grepprg=rg\ -n
 
 """ Begin shared with root
 
 filetype plugin indent on
 
-let mapleader=","
+let mapleader=" "
 
 set autoindent
 set autoread
@@ -99,8 +102,15 @@ set spelllang=fr
 set tabstop=4
 set whichwrap+=<,>,[,]
 set wildignore+=*.pyc,*.o,*.class,log/**
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
+set wildignore+=*.pdf,*.psd
+set wildignore+=**/node_modules/**
 set wildmenu
 set wildmode=list:longest,full
+
+autocmd Filetype asm setlocal shiftwidth=8
+autocmd Filetype asm setlocal softtabstop=8
+autocmd Filetype asm setlocal tabstop=8
 
 autocmd Filetype javascript setlocal suffixesadd=.js
 autocmd Filetype markdown setlocal wrap
@@ -108,6 +118,8 @@ autocmd Filetype markdown setlocal wrap
 autocmd Filetype yaml setlocal tabstop=2
 autocmd Filetype yaml setlocal shiftwidth=2
 autocmd Filetype yaml setlocal softtabstop=2
+
+autocmd BufNewFile,BufRead *.p8 set filetype=lua
 
 syntax on
 
@@ -117,7 +129,8 @@ silent! colorscheme zenburn
 
 :au FocusLost * silent! wa
 
-nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>e :Explore<CR>
+nmap <leader>t :NERDTreeToggle<CR>
 
 if &term =~ '256color'
     " Disable Background Color Erase (BCE) so that color schemes
