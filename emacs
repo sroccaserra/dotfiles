@@ -43,6 +43,9 @@
 (setq frame-title-format
       (concat "%b %+ (%f) - " invocation-name))
 
+(add-to-list 'exec-path "~/bin")
+(add-to-list 'exec-path "/usr/local/bin/")
+
 
 ;;;;;;;
 ;; Evil
@@ -109,6 +112,8 @@
 
 (global-set-key [(control c)(control m)] 'execute-extended-command)
 (global-set-key [(control c)(m)] 'execute-extended-command)
+(global-set-key [(super left)] 'move-beginning-of-line)
+(global-set-key [(super right)] 'move-end-of-line)
 
 (define-key minibuffer-local-map [(control n)] 'next-complete-history-element)
 (define-key minibuffer-local-map [(control p)] 'previous-complete-history-element)
