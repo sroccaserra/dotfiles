@@ -54,7 +54,7 @@ let g:netrw_liststyle = 3
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
 set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h14;DejaVu\ Sans\ Mono\ for\ Powerline
-set grepprg=rg\ -n
+set grepprg=rg\ --vimgrep
 
 """ Begin shared with root
 
@@ -105,6 +105,9 @@ set wildignore+=*.pyc,*.o,*.class,log/**
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
 set wildignore+=**/node_modules/**
+set wildignore+=**/.git/**
+set wildignore+=**/tmp/**
+set wildignore+=**/dist/**
 set wildmenu
 set wildmode=list:longest,full
 
