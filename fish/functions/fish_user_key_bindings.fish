@@ -1,3 +1,7 @@
 function fish_user_key_bindings
-    bind \e\eOA history-token-search-backward
+    if test ~/.config/fish/functions/fish_user_key_bindings.fish
+        source ~/.config/fish/functions/fish_user_key_bindings.fish
+    end
+    bind \e\eOA 'history-token-search-backward'
+    bind \cX\cE 'edit_command_buffer'
 end
