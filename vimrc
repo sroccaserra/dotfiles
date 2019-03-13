@@ -123,6 +123,9 @@ autocmd Filetype yaml setlocal shiftwidth=2
 autocmd Filetype yaml setlocal softtabstop=2
 
 autocmd BufNewFile,BufRead *.p8 set filetype=lua
+autocmd BufNewFile,BufRead *.p8 setlocal tabstop=2
+autocmd BufNewFile,BufRead *.p8 setlocal shiftwidth=2
+autocmd BufNewFile,BufRead *.p8 setlocal softtabstop=2
 
 syntax on
 
@@ -134,6 +137,7 @@ silent! colorscheme zenburn
 
 nmap <leader>e :Explore<CR>
 nmap <leader>t :NERDTreeToggle<CR>
+digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
 if &term =~ '256color'
     " Disable Background Color Erase (BCE) so that color schemes
