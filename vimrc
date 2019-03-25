@@ -26,7 +26,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Shougo/neocomplcache'
 Plugin 'bogado/file-line'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dag/vim-fish'
 Plugin 'mxw/vim-jsx'
 Plugin 'lambdatoast/elm.vim'
@@ -37,7 +37,8 @@ call vundle#end()
 filetype plugin indent on
 
 let g:ctrlp_match_window = 'top,order:ttb,max:20'
-let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 let g:Powerline_symbols = 'fancy'
 let g:neocomplcache_auto_completion_start_length = 3
