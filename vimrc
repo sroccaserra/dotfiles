@@ -37,7 +37,7 @@ call vundle#end()
 filetype plugin indent on
 
 let g:ctrlp_match_window = 'top,order:ttb,max:20'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 let g:Powerline_symbols = 'fancy'
@@ -55,7 +55,7 @@ let g:netrw_liststyle = 3
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 let NERDTreeMinimalUI=1
 set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h14;DejaVu\ Sans\ Mono\ for\ Powerline
-set grepprg=rg\ --vimgrep
+set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
 """ Begin shared with root
 
@@ -131,8 +131,6 @@ autocmd BufNewFile,BufRead *.p8 setlocal softtabstop=2
 syntax on
 
 """ End shared with root
-
-silent! colorscheme zenburn
 
 :au FocusLost * silent! wa
 
