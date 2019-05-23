@@ -13,7 +13,6 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'altercation/vim-colors-solarized'
 " Note: with powerline, you need one of these too:
 " https://github.com/ashwin/vim-powerline/tree/develop/font
 " (works on PuTTY)
@@ -32,6 +31,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'mustache/vim-mustache-handlebars'
 
 call vundle#end()
 filetype plugin indent on
@@ -66,7 +66,6 @@ let mapleader=" "
 set autoindent
 set autoread
 set backspace=2
-set background=dark
 set diffopt+=iwhite
 set encoding=utf-8
 set expandtab
@@ -123,14 +122,20 @@ autocmd Filetype yaml setlocal tabstop=2
 autocmd Filetype yaml setlocal shiftwidth=2
 autocmd Filetype yaml setlocal softtabstop=2
 
+autocmd Filetype lua setlocal tabstop=2
+autocmd Filetype lua setlocal shiftwidth=2
+autocmd Filetype lua setlocal softtabstop=2
+
 autocmd BufNewFile,BufRead *.p8 set filetype=lua
-autocmd BufNewFile,BufRead *.p8 setlocal tabstop=2
-autocmd BufNewFile,BufRead *.p8 setlocal shiftwidth=2
-autocmd BufNewFile,BufRead *.p8 setlocal softtabstop=2
+autocmd BufNewFile,BufRead *.nx set filetype=basic
 
 syntax on
 
 """ End shared with root
+
+let macvim_skip_colorscheme=1
+colorscheme default
+set background=dark
 
 :au FocusLost * silent! wa
 
