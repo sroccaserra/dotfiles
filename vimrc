@@ -32,6 +32,7 @@ Plugin 'lambdatoast/elm.vim'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 filetype plugin indent on
@@ -128,6 +129,8 @@ autocmd Filetype lua setlocal softtabstop=2
 
 autocmd BufNewFile,BufRead *.p8 set filetype=lua
 autocmd BufNewFile,BufRead *.nx set filetype=basic
+
+let g:ale_fixers = { 'javascript': ['eslint'] }
 
 syntax on
 
