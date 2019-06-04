@@ -40,22 +40,31 @@ filetype plugin indent on
 let g:ctrlp_match_window = 'top,order:ttb,max:20'
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
-let g:Powerline_symbols = 'fancy'
+
 let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
+
+let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
+let g:ale_fixers = { 'javascript': ['eslint'] }
+
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
-
 let g:netrw_liststyle = 3
 
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI = 1
+
+let macvim_skip_colorscheme=1
+colorscheme default
+set background=dark
 set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h14;DejaVu\ Sans\ Mono\ for\ Powerline
+
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
 """ Begin shared with root
@@ -130,15 +139,9 @@ autocmd Filetype lua setlocal softtabstop=2
 autocmd BufNewFile,BufRead *.p8 set filetype=lua
 autocmd BufNewFile,BufRead *.nx set filetype=basic
 
-let g:ale_fixers = { 'javascript': ['eslint'] }
-
 syntax on
 
 """ End shared with root
-
-let macvim_skip_colorscheme=1
-colorscheme default
-set background=dark
 
 :au FocusLost * silent! wa
 
