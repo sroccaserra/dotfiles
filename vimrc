@@ -28,11 +28,11 @@ Plugin 'bogado/file-line'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dag/vim-fish'
 Plugin 'mxw/vim-jsx'
-Plugin 'lambdatoast/elm.vim'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'w0rp/ale'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
