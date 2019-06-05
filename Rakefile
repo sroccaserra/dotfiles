@@ -191,7 +191,7 @@ task :linux_files_to_symlink do
     files_to_symlink.each do |link_path, value|
         source_path = File.expand_path value
         if not File.exists? link_path
-            sh "ln -s #{source_path} #{link_path}"
+            sh "ln -fs #{source_path} #{link_path}"
         end
     end
 end
