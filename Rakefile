@@ -131,6 +131,7 @@ task :git_global_config do
        'push.default' => 'tracking',
        'log.date' => 'iso',
        'rerere.enabled' => 'true',
+       'merge.conflictStyle' => 'diff3',
        'alias.c' => 'commit',
        'alias.ca' => '"commit -a"',
        'alias.d' => '"diff --word-diff"',
