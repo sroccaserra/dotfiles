@@ -6,7 +6,7 @@ if status --is-interactive
     set -x fish_function_path $sroccaserra_dotfiles/fish/functions $fish_function_path
 
     set -x EDITOR vim
-    set -x LESS "-iFRSX"
+    set -x LESS "-iFRSXM"
 
     set -u fish_user_paths ~/bin $PATH
 
