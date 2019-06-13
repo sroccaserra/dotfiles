@@ -132,6 +132,10 @@ autocmd Filetype yaml setlocal tabstop=2
 autocmd Filetype yaml setlocal shiftwidth=2
 autocmd Filetype yaml setlocal softtabstop=2
 
+autocmd Filetype javascript setlocal tabstop=2
+autocmd Filetype javascript setlocal shiftwidth=2
+autocmd Filetype javascript setlocal softtabstop=2
+
 autocmd Filetype lua setlocal tabstop=2
 autocmd Filetype lua setlocal shiftwidth=2
 autocmd Filetype lua setlocal softtabstop=2
