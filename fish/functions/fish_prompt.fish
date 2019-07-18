@@ -1,10 +1,10 @@
 function fish_prompt
     set last_status $status
-    
+
     # Who I am
     set_color yellow
-    printf '\n%s@%s' (whoami) (hostname)
-    
+    printf '\n%.3s' (whoami)
+
     # last status
     if test 0 -ne $last_status
         set_color normal
@@ -18,7 +18,7 @@ function fish_prompt
     # cwd
     set_color $fish_color_cwd
     printf ' %s' (prompt_pwd)
-    
+
     # Git status
     set_color normal
     if test (pwd | grep '^/vagrant\b')

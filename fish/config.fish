@@ -14,7 +14,7 @@ if status --is-interactive
         echo
         if test -x '/usr/games/cowsay'
             set animal (basename (find /usr/share/cowsay/ -name '*.cow' | sort -R | head -n 1) | sed 's/.cow$//')
-            /usr/games/fortune -s | /usr/games/cowsay -f $animal
+            /usr/games/fortune -s | /usr/games/cowsay -f "$animal"
         else
             /usr/games/fortune -s
         end
