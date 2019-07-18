@@ -16,18 +16,14 @@ Plugin 'gmarik/Vundle.vim'
 " Note: with powerline, you need one of these too:
 " https://github.com/ashwin/vim-powerline/tree/develop/font
 " (works on PuTTY)
-Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-fugitive'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Shougo/neocomplcache'
 Plugin 'bogado/file-line'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dag/vim-fish'
-Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mustache/vim-mustache-handlebars'
