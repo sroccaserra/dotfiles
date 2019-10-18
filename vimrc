@@ -115,11 +115,16 @@ autocmd Filetype asm setlocal softtabstop=8
 autocmd Filetype asm setlocal tabstop=8
 
 autocmd Filetype javascript setlocal suffixesadd=.js
+autocmd Filetype typescript setlocal suffixesadd=.ts
 autocmd Filetype markdown setlocal wrap
 
 autocmd Filetype yaml setlocal tabstop=2
 autocmd Filetype yaml setlocal shiftwidth=2
 autocmd Filetype yaml setlocal softtabstop=2
+
+autocmd Filetype typescript setlocal tabstop=2
+autocmd Filetype typescript setlocal shiftwidth=2
+autocmd Filetype typescript setlocal softtabstop=2
 
 autocmd Filetype javascript setlocal tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2
