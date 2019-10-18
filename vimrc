@@ -91,6 +91,7 @@ set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 set shiftwidth=4
+set shortmess=atoOTS
 set showcmd
 set showmode
 set smartindent
