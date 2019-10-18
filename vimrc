@@ -13,11 +13,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" Note: with powerline, you need one of these too:
-" https://github.com/ashwin/vim-powerline/tree/develop/font
-" (works on PuTTY)
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Shougo/neocomplcache'
@@ -46,21 +42,16 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
 
-let g:Powerline_symbols = 'fancy'
-let g:airline_powerline_fonts = 1
 let g:ale_fixers = { 'javascript': ['eslint'] }
 
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 let g:netrw_liststyle = 3
 
-let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
-let NERDTreeMinimalUI = 1
-
 let macvim_skip_colorscheme=1
 colorscheme default
 set background=dark
-set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h14;DejaVu\ Sans\ Mono\ for\ Powerline
+set noantialias
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
@@ -147,7 +138,6 @@ syntax on
 :au FocusLost * silent! wa
 
 nmap <leader>e :Explore<CR>
-nmap <leader>t :NERDTreeToggle<CR>
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
 if &term =~ '256color'
