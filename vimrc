@@ -29,10 +29,11 @@ Plugin 'pangloss/vim-javascript'
 call vundle#end()
 filetype plugin indent on
 
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:50,results:50'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:32,results:32'
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_custom_ignore = { 'dir': 'node_modules' }
+let g:ctrlp_clear_cache_on_exit = 0
 
 let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
 
