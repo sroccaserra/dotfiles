@@ -82,6 +82,7 @@ set gdefault
 set guioptions-=T       " Turn off useless toolbar
 set guioptions-=m       " Turn off useless toolbar
 set hlsearch
+set history=10000
 set ignorecase
 set incsearch
 set laststatus=2        " Always want statusline
