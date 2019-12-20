@@ -26,6 +26,8 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'FooSoft/vim-argwrap'
+Plugin 'tpope/vim-fireplace' " Clojure
+Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 
 call vundle#end()
 filetype plugin indent on
@@ -43,6 +45,7 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
+autocmd FileType clojure nested NeoComplCacheLock
 
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
@@ -52,6 +55,8 @@ let g:ale_cpp_gcc_options = '-std=c++17 -Wall -pedantic'
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 let g:netrw_liststyle = 3
+
+let g:rainbow_active = 1
 
 let macvim_skip_colorscheme=1
 colorscheme default
