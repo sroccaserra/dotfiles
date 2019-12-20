@@ -25,6 +25,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
+Plugin 'FooSoft/vim-argwrap'
 
 call vundle#end()
 filetype plugin indent on
@@ -44,6 +45,9 @@ let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
 
 let g:ale_fixers = { 'javascript': ['eslint'] }
+let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
+let g:ale_cpp_clang_options = '-std=c++17 -Wall -pedantic'
+let g:ale_cpp_gcc_options = '-std=c++17 -Wall -pedantic'
 
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
