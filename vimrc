@@ -46,7 +46,6 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_max_list = 5
 let g:neocomplcache_enable_insert_char_pre = 1
-autocmd FileType clojure nested NeoComplCacheLock
 
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
@@ -126,18 +125,10 @@ autocmd Filetype asm setlocal shiftwidth=8
 autocmd Filetype asm setlocal softtabstop=8
 autocmd Filetype asm setlocal tabstop=8
 
+autocmd Filetype clojure let b:delimitMate_quotes="\""
+autocmd FileType clojure nested NeoComplCacheLock
+
 autocmd Filetype javascript setlocal suffixesadd=.js
-autocmd Filetype typescript setlocal suffixesadd=.ts
-autocmd Filetype markdown setlocal wrap
-
-autocmd Filetype yaml setlocal tabstop=2
-autocmd Filetype yaml setlocal shiftwidth=2
-autocmd Filetype yaml setlocal softtabstop=2
-
-autocmd Filetype typescript setlocal tabstop=2
-autocmd Filetype typescript setlocal shiftwidth=2
-autocmd Filetype typescript setlocal softtabstop=2
-
 autocmd Filetype javascript setlocal tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2
 autocmd Filetype javascript setlocal softtabstop=2
@@ -145,6 +136,17 @@ autocmd Filetype javascript setlocal softtabstop=2
 autocmd Filetype lua setlocal tabstop=2
 autocmd Filetype lua setlocal shiftwidth=2
 autocmd Filetype lua setlocal softtabstop=2
+
+autocmd Filetype markdown setlocal wrap
+
+autocmd Filetype typescript setlocal suffixesadd=.ts
+autocmd Filetype typescript setlocal tabstop=2
+autocmd Filetype typescript setlocal shiftwidth=2
+autocmd Filetype typescript setlocal softtabstop=2
+
+autocmd Filetype yaml setlocal tabstop=2
+autocmd Filetype yaml setlocal shiftwidth=2
+autocmd Filetype yaml setlocal softtabstop=2
 
 autocmd Filetype asmM6502 setlocal tabstop=4
 autocmd Filetype asmM6502 setlocal shiftwidth=4
