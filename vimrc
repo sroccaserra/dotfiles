@@ -170,6 +170,7 @@ syntax on
 :au FocusLost * silent! wa
 
 nmap <leader>e :Explore<CR>
+imap kl <Esc>
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
 if &term =~ '256color'
