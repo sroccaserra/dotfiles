@@ -28,6 +28,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'FooSoft/vim-argwrap'
 Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses
+Plugin 'vim-scripts/asmM6502.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -145,8 +146,20 @@ autocmd Filetype lua setlocal tabstop=2
 autocmd Filetype lua setlocal shiftwidth=2
 autocmd Filetype lua setlocal softtabstop=2
 
+autocmd Filetype asmM6502 setlocal tabstop=4
+autocmd Filetype asmM6502 setlocal shiftwidth=4
+autocmd Filetype asmM6502 setlocal softtabstop=4
+
 autocmd BufNewFile,BufRead *.p8 set filetype=lua
 autocmd BufNewFile,BufRead *.nx set filetype=basic
+
+au BufNewFile,BufRead *.asm
+    \ if getline(1) =~? '^\s*processor 6502' |
+    \   set filetype=asmM6502 |
+    \ else |
+    \   set filetype=asm |
+    \ endif
+
 
 syntax on
 
