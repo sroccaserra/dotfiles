@@ -179,6 +179,8 @@ nmap <leader>e :Explore<CR>
 imap kl <Esc>
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
+vmap <leader>c "*y
+
 if &term =~ '256color'
     " Disable Background Color Erase (BCE) so that color schemes
     " work properly when Vim is used inside tmux and GNU screen.
