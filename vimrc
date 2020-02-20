@@ -125,6 +125,9 @@ set wildmode=list:longest,full
 autocmd Filetype asm setlocal shiftwidth=8
 autocmd Filetype asm setlocal softtabstop=8
 autocmd Filetype asm setlocal tabstop=8
+autocmd Filetype asm setlocal path+=include
+
+autocmd Filetype z80 setlocal path+=include
 
 autocmd Filetype clojure let b:delimitMate_quotes="\""
 autocmd FileType clojure nested NeoComplCacheLock
