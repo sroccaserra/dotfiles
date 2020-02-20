@@ -159,8 +159,10 @@ autocmd Filetype asmM6502 setlocal softtabstop=4
 autocmd BufNewFile,BufRead *.p8 set filetype=lua
 autocmd BufNewFile,BufRead *.nx set filetype=basic
 
+let asmM6502Regex = '^\s*processor 6502'
+
 au BufNewFile,BufRead *.asm
-    \ if getline(1) =~? '^\s*processor 6502' |
+    \ if (getline(1) =~? asmM6502Regex || getline(2) =~? asmM6502Regex || getline(3) =~? asmM6502Regex) |
     \   set filetype=asmM6502 |
     \ else |
     \   set filetype=asm |
