@@ -30,9 +30,12 @@ Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'vim-scripts/asmM6502.vim'
 Plugin 'samsaga2/vim-z80'
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 filetype plugin indent on
+
+set rtp+=/usr/local/opt/fzf
 
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:32,results:32'
 let g:ctrlp_cmd = 'CtrlPMRU'
@@ -175,6 +178,7 @@ syntax on
 
 :au FocusLost * silent! wa
 
+nmap <leader>p :Files<CR>
 nmap <leader>e :Explore<CR>
 imap kl <Esc>
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
