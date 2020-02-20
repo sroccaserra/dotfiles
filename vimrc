@@ -29,6 +29,7 @@ Plugin 'FooSoft/vim-argwrap'
 Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'vim-scripts/asmM6502.vim'
+Plugin 'samsaga2/vim-z80'
 
 call vundle#end()
 filetype plugin indent on
