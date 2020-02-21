@@ -180,6 +180,7 @@ syntax on
 :au FocusLost * silent! wa
 
 nmap <leader>p :Files<CR>
+nmap <leader>g :GFiles<CR>
 nmap <leader>h :History<CR>
 nmap <leader>e :Explore<CR>
 imap kl <Esc>
