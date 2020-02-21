@@ -13,24 +13,25 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'ervandew/supertab'
-Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/neocomplcache'
 Plugin 'bogado/file-line'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dag/vim-fish'
-Plugin 'vim-scripts/vim-auto-save'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'w0rp/ale'
-Plugin 'pangloss/vim-javascript'
+Plugin 'ervandew/supertab'
 Plugin 'FooSoft/vim-argwrap'
-Plugin 'tpope/vim-fireplace' " Clojure
-Plugin 'luochen1990/rainbow' " Rainbow Parentheses
-Plugin 'vim-scripts/asmM6502.vim'
-Plugin 'samsaga2/vim-z80'
 Plugin 'junegunn/fzf.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'luochen1990/rainbow' " Rainbow Parentheses
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Raimondi/delimitMate'
+Plugin 'samsaga2/vim-z80'
+Plugin 'Shougo/neocomplcache'
+Plugin 'tpope/vim-fireplace' " Clojure
+Plugin 'udalov/kotlin-vim'
+Plugin 'vim-scripts/asmM6502.vim'
+Plugin 'vim-scripts/vim-auto-save'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 filetype plugin indent on
