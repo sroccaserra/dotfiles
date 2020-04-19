@@ -182,14 +182,25 @@ syntax on
 
 :au FocusLost * silent! wa
 
+nmap <leader>b :Buffers<CR>
 nmap <leader>p :Files<CR>
 nmap <leader>g :GFiles<CR>
 nmap <leader>h :History<CR>
 nmap <leader>e :Explore<CR>
-imap kl <Esc>
-digraph oo 9702 " WHITE BULLET 0x25E6 digraph
+nmap <leader>f :ALEFix<CR>
+nmap <leader>n :ALENext<CR>
+
+nmap <leader>t :!NODE_ENV=test npx mocha --exit %<CR>
+
+imap jk <esc>
+vmap jk <esc>
+cmap jk <esc>
 
 vmap <leader>c "*y
+
+cmap <C-A> <Home>
+
+digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
 if &term =~ '256color'
     " Disable Background Color Erase (BCE) so that color schemes
