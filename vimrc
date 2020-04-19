@@ -123,8 +123,11 @@ set wildignore+=**/node_modules/**
 set wildignore+=**/.git/**
 set wildignore+=**/tmp/**
 set wildignore+=**/dist/**
+set wildignore+=**/.idea/**
 set wildmenu
 set wildmode=list:longest,full
+
+set path+=src
 
 autocmd Filetype asm setlocal shiftwidth=8
 autocmd Filetype asm setlocal softtabstop=8
