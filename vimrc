@@ -83,12 +83,12 @@ set diffopt+=iwhite
 set encoding=utf-8
 set expandtab
 set fileformat=unix
-set gdefault
+"set gdefault
 set guioptions-=T       " Turn off useless toolbar
 set guioptions-=m       " Turn off useless toolbar
 set hlsearch
 set history=10000
-set ignorecase
+"set ignorecase
 set incsearch
 set laststatus=2        " Always want statusline
 set lazyredraw          " Don't display macro steps
