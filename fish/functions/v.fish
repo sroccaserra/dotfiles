@@ -1,3 +1,3 @@
 function v --description='open fzf then selection in vim'
-    vim (fzf --multi --height=40%)
+  set files (git ls-files | fzf --multi --height=40%) && vim $files
 end
