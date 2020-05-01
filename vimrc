@@ -191,6 +191,8 @@ nmap <leader>f :ALEFix<CR>
 nmap <leader>n :ALENext<CR>
 
 autocmd Filetype javascript nmap <leader>t :!NODE_ENV=test npx mocha --exit %<CR>
+autocmd Filetype ruby nmap <leader>a :!bundle exec rspec<CR>
+autocmd Filetype ruby nmap <leader>t :!bundle exec rspec %<CR>
 
 imap jk <esc>
 cmap jk <esc>
