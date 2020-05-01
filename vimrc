@@ -193,7 +193,8 @@ vmap <leader>c "*y
 
 autocmd Filetype javascript nmap <leader>t :!NODE_ENV=test npx mocha --exit %<CR>
 autocmd Filetype ruby nmap <leader>a :!bundle exec rspec<CR>
-autocmd Filetype ruby nmap <leader>t :!bundle exec rspec %<CR>
+autocmd Filetype ruby nmap <leader>t :let lastSpecFile=expand('%')<CR>:!bundle exec rspec %<CR>
+autocmd Filetype ruby nmap <leader>l :execute ':!bundle exec rspec ' . lastSpecFile<CR>
 
 imap jk <esc>
 cmap jk <esc>
