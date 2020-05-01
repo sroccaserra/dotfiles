@@ -189,6 +189,7 @@ nmap <leader>h :History<CR>
 nmap <leader>e :Explore<CR>
 nmap <leader>f :ALEFix<CR>
 nmap <leader>n :ALENext<CR>
+vmap <leader>c "*y
 
 autocmd Filetype javascript nmap <leader>t :!NODE_ENV=test npx mocha --exit %<CR>
 autocmd Filetype ruby nmap <leader>a :!bundle exec rspec<CR>
@@ -196,8 +197,6 @@ autocmd Filetype ruby nmap <leader>t :!bundle exec rspec %<CR>
 
 imap jk <esc>
 cmap jk <esc>
-
-vmap <leader>c "*y
 
 cmap <C-A> <Home>
 
