@@ -193,7 +193,6 @@ nmap <leader>n :ALENext<CR>
 nmap <leader>t :!NODE_ENV=test npx mocha --exit %<CR>
 
 imap jk <esc>
-vmap jk <esc>
 cmap jk <esc>
 
 vmap <leader>c "*y
