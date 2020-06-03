@@ -20,6 +20,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'FooSoft/vim-argwrap'
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses
