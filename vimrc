@@ -143,12 +143,18 @@ autocmd Filetype javascript setlocal suffixesadd+=.js
 autocmd Filetype javascript setlocal tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2
 autocmd Filetype javascript setlocal softtabstop=2
+autocmd Filetype javascript setlocal makeprg=NODE_ENV=test\ npx\ mocha\ --exit "\ --color
+autocmd Filetype javascript setlocal errorformat=%E%.%#Error:\ %m,%Z%*[^(](%f:%l:%c),%-G%.%#
 
 autocmd Filetype lua setlocal tabstop=2
 autocmd Filetype lua setlocal shiftwidth=2
 autocmd Filetype lua setlocal softtabstop=2
 
 autocmd Filetype markdown setlocal wrap
+
+autocmd Filetype ruby compiler rspec
+autocmd Filetype ruby setlocal makeprg=bundle\ exec\ rspec "\ --force-color
+autocmd Filetype ruby setlocal path+=lib
 
 autocmd Filetype typescript setlocal suffixesadd+=.ts
 autocmd Filetype typescript setlocal tabstop=2
@@ -191,10 +197,8 @@ nmap <leader>f :ALEFix<CR>
 nmap <leader>n :ALENext<CR>
 vmap <leader>c "*y
 
-autocmd Filetype javascript nmap <leader>t :!NODE_ENV=test npx mocha --exit %<CR>
-autocmd Filetype ruby nmap <leader>a :!bundle exec rspec<CR>
-autocmd Filetype ruby nmap <leader>t :let lastSpecFile=expand('%')<CR>:!bundle exec rspec %<CR>
-autocmd Filetype ruby nmap <leader>l :execute ':!bundle exec rspec ' . lastSpecFile<CR>
+nmap <leader>t :let lastTestFile=expand('%')<CR>:make %<CR>
+nmap <leader>l :execute ':make ' . lastTestFile<CR>
 
 imap jk <esc>
 cmap jk <esc>
