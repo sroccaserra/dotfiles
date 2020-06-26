@@ -39,6 +39,7 @@ call vundle#end()
 filetype plugin indent on
 
 set rtp+=/usr/local/opt/fzf
+let g:fzf_preview_window = ''
 
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:32,results:32'
 let g:ctrlp_cmd = 'CtrlPMRU'
