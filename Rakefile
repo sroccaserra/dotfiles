@@ -63,7 +63,7 @@ task :linux => [:linux_useful_commands,
         touch file_name
         put_sroccaserra_section file_name, source_directive
     end
-    
+
     puts
     puts '# Copy shared tmux conf to byobu dir.'
     tmux_shared_conf = File.open 'tmux.conf', 'r'  do |file|
@@ -180,13 +180,14 @@ task :git_projects => [home('.vim/bundle'),
     end
 end
 
-task :linux_files_to_symlink do
+task :linux_files_to_symlink => [home('.vim/syntax')] do
     files_to_symlink = {
-        home(".bash_aliases") => "bash_aliases",
-        home(".inputrc") => "inputrc",
-        home(".noserc") => "noserc",
-        home(".ssh/rc") => "ssh_rc",
-        home(".tmux.conf") => "tmux.conf",
+        home('.bash_aliases') => 'bash_aliases',
+        home('.inputrc') => 'inputrc',
+        home('.noserc') => 'noserc',
+        home('.ssh/rc') => 'ssh_rc',
+        home('.tmux.conf') => 'tmux.conf',
+        home('.vim/syntax/mucom88.vim') => 'vim/syntax/mucom88.vim',
     }
     files_to_symlink.each do |link_path, value|
         source_path = File.expand_path value
@@ -245,12 +246,13 @@ task :linux_root => ['/root/.profile', '/root/.bashrc', '/root/.vimrc'] do
     end
 end
 
-directory home ".byobu"
-directory home ".config/fish"
-directory home ".ssh"
-directory home ".vim/bundle"
-directory home "bin"
-directory home "developer"
+directory home('.byobu')
+directory home('.config/fish')
+directory home('.ssh')
+directory home('.vim/bundle')
+directory home('.vim/syntax')
+directory home('bin')
+directory home('developer')
 
 file '/root/.profile'
 file '/root/.bashrc'

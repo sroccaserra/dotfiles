@@ -155,6 +155,9 @@ autocmd Filetype lua setlocal softtabstop=2
 
 autocmd Filetype markdown setlocal wrap
 
+autocmd BufNewFile,BufRead *.muc set filetype=mucom88
+autocmd Filetype mucom88 setlocal makeprg=miniplay
+
 autocmd Filetype ruby compiler rspec
 autocmd Filetype ruby setlocal makeprg=bundle\ exec\ rspec "\ --force-color
 autocmd Filetype ruby setlocal path+=lib
