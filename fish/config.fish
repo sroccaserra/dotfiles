@@ -3,7 +3,9 @@
 set fish_greeting
 
 if status --is-interactive
-    set -x fish_function_path $sroccaserra_dotfiles/fish/functions $fish_function_path
+    if not contains -- $sroccaserra_dotfiles/fish/functions $fish_function_path
+        set -p fish_function_path $sroccaserra_dotfiles/fish/functions
+    end
 
     set -x EDITOR vim
     set -x LESS "-iFRSXM"
