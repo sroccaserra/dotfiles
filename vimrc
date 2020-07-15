@@ -198,6 +198,8 @@ nmap <leader>b :Buffers<CR>
 nmap <leader>p :Files<CR>
 nmap <leader>g :GFiles<CR>
 nmap <leader>h :History<CR>
+nmap <leader>: :History:<CR>
+nmap <leader>/ :History/<CR>
 nmap <leader>e :Explore<CR>
 nmap <leader>f :ALEFix<CR>
 nmap <leader>n :ALENext<CR>
