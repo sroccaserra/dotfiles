@@ -142,13 +142,6 @@ autocmd Filetype z80 setlocal path+=include
 autocmd Filetype clojure let b:delimitMate_quotes="\""
 autocmd FileType clojure nested NeoComplCacheLock
 
-autocmd Filetype javascript setlocal suffixesadd+=.js
-autocmd Filetype javascript setlocal tabstop=2
-autocmd Filetype javascript setlocal shiftwidth=2
-autocmd Filetype javascript setlocal softtabstop=2
-autocmd Filetype javascript setlocal makeprg=NODE_ENV=test\ npx\ mocha\ --exit "\ --color
-autocmd Filetype javascript setlocal errorformat=%E%.%#Error:\ %m,%Z%*[^(](%f:%l:%c),%-G%.%#
-
 autocmd Filetype lua setlocal tabstop=2
 autocmd Filetype lua setlocal shiftwidth=2
 autocmd Filetype lua setlocal softtabstop=2
@@ -157,10 +150,6 @@ autocmd Filetype markdown setlocal wrap
 
 autocmd BufNewFile,BufRead *.muc set filetype=mucom88
 autocmd Filetype mucom88 setlocal makeprg=miniplay
-
-autocmd Filetype ruby compiler rspec
-autocmd Filetype ruby setlocal makeprg=bundle\ exec\ rspec "\ --force-color
-autocmd Filetype ruby setlocal path+=lib
 
 autocmd Filetype typescript setlocal suffixesadd+=.ts
 autocmd Filetype typescript setlocal tabstop=2
