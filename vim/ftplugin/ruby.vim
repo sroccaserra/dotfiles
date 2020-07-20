@@ -1,2 +1,2 @@
-iabbr dsc describe  do<CR>end<esc>kela
-iabbr it it  do<CR>end<esc>ka
+iabbr dd describe  do<CR>end<esc>kela
+iabbr ii it  do<CR>end<esc>ka
