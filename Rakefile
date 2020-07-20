@@ -180,7 +180,7 @@ task :git_projects => [home('.vim/bundle'),
     end
 end
 
-task :linux_files_to_symlink => [home('.vim/syntax')] do
+task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/ftplugin')] do
     files_to_symlink = {
         home('.bash_aliases') => 'bash_aliases',
         home('.inputrc') => 'inputrc',
@@ -188,6 +188,8 @@ task :linux_files_to_symlink => [home('.vim/syntax')] do
         home('.ssh/rc') => 'ssh_rc',
         home('.tmux.conf') => 'tmux.conf',
         home('.vim/syntax/mucom88.vim') => 'vim/syntax/mucom88.vim',
+        home('.vim/ftplugin/javascript.vim') => 'vim/ftplugin/javascript.vim',
+        home('.vim/ftplugin/ruby.vim') => 'vim/ftplugin/ruby.vim',
     }
     files_to_symlink.each do |link_path, value|
         source_path = File.expand_path value
@@ -251,6 +253,7 @@ directory home('.config/fish')
 directory home('.ssh')
 directory home('.vim/bundle')
 directory home('.vim/syntax')
+directory home('.vim/ftplugin')
 directory home('bin')
 directory home('developer')
 
