@@ -59,6 +59,7 @@ let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
 let g:ale_cpp_clang_options = '-std=c++17 -Wall -pedantic'
 let g:ale_cpp_gcc_options = '-std=c++17 -Wall -pedantic'
+let g:ale_c_parse_makefile = 1
 
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
@@ -82,9 +83,11 @@ let mapleader=" "
 set autoindent
 set autoread
 set backspace=2
+set colorcolumn=120
 set diffopt+=iwhite
 set encoding=utf-8
 set expandtab
+set exrc
 set fileformat=unix
 "set gdefault
 set guioptions-=T       " Turn off useless toolbar
@@ -107,6 +110,7 @@ set nowritebackup
 set number
 set ruler
 set scrolloff=8
+set secure
 set sidescrolloff=15
 set sidescroll=1
 set shiftwidth=4
@@ -136,6 +140,8 @@ autocmd Filetype asm setlocal shiftwidth=8
 autocmd Filetype asm setlocal softtabstop=8
 autocmd Filetype asm setlocal tabstop=8
 autocmd Filetype asm setlocal path+=include
+
+autocmd Filetype c setlocal path+=include
 
 autocmd Filetype z80 setlocal path+=include
 
