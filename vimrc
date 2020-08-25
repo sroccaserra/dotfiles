@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bogado/file-line'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dag/vim-fish'
+Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'ervandew/supertab'
@@ -33,7 +34,6 @@ Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'udalov/kotlin-vim'
 Plugin 'vim-scripts/asmM6502.vim'
 Plugin 'vim-scripts/vim-auto-save'
-Plugin 'w0rp/ale'
 
 call vundle#end()
 filetype plugin indent on
@@ -57,9 +57,9 @@ let g:neocomplcache_enable_insert_char_pre = 1
 
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
-let g:ale_cpp_clang_options = '-std=c++17 -Wall -pedantic'
-let g:ale_cpp_gcc_options = '-std=c++17 -Wall -pedantic'
-let g:ale_c_parse_makefile = 1
+let g:ale_cpp_cc_options = '-std=c++17 -Wall -pedantic'
+let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
+let g:ale_c_parse_makefile = 0
 
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
