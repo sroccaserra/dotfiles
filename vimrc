@@ -32,6 +32,7 @@ Plugin 'samsaga2/vim-z80'
 Plugin 'Shougo/neocomplcache'
 Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'udalov/kotlin-vim'
+Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/asmM6502.vim'
 Plugin 'vim-scripts/vim-auto-save'
 
@@ -207,6 +208,10 @@ imap jk <esc>
 cmap jk <esc>
 
 cmap <C-A> <Home>
+
+autocmd VimEnter * iunmap <leader>ih
+autocmd VimEnter * iunmap <leader>ihn
+autocmd VimEnter * iunmap <leader>is
 
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
