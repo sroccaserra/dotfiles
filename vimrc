@@ -94,6 +94,7 @@ set fileformat=unix
 set guioptions-=T       " Turn off useless toolbar
 set guioptions-=m       " Turn off useless toolbar
 set hlsearch
+set hidden
 set history=10000
 "set ignorecase
 set incsearch
