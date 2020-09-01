@@ -214,18 +214,17 @@ autocmd VimEnter * iunmap <leader>is
 
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
-if &term =~ '256color'
-    " Disable Background Color Erase (BCE) so that color schemes
-    " work properly when Vim is used inside tmux and GNU screen.
-    " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-endif
-
-if has("gui_running")
-    if has("win32")
-        autocmd GUIEnter * simalt ~n
-    else
-        set lines=999 columns=999
-    endif
-endif
-
+" if &term =~ '256color'
+"     " Disable Background Color Erase (BCE) so that color schemes
+"     " work properly when Vim is used inside tmux and GNU screen.
+"     " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
+"     set t_ut=
+" endif
+" 
+" if has("gui_running")
+"     if has("win32")
+"         autocmd GUIEnter * simalt ~n
+"     else
+"         set lines=999 columns=999
+"     endif
+" endif
