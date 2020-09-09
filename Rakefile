@@ -179,7 +179,7 @@ task :git_projects => [home('.vim/bundle'),
     end
 end
 
-task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/ftplugin')] do
+task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/after/ftplugin')] do
     files_to_symlink = {
         home('.bash_aliases') => 'bash_aliases',
         home('.inputrc') => 'inputrc',
@@ -187,13 +187,14 @@ task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/ftplugin')] do
         home('.ssh/rc') => 'ssh_rc',
         home('.tmux.conf') => 'tmux.conf',
         home('.vim/syntax/mucom88.vim') => 'vim/syntax/mucom88.vim',
-        home('.vim/ftplugin/c.vim') => 'vim/ftplugin/c.vim',
-        home('.vim/ftplugin/javascript.vim') => 'vim/ftplugin/javascript.vim',
-        home('.vim/ftplugin/ruby.vim') => 'vim/ftplugin/ruby.vim',
+        home('.vim/after/ftplugin/c.vim') => 'vim/after/ftplugin/c.vim',
+        home('.vim/after/ftplugin/javascript.vim') => 'vim/after/ftplugin/javascript.vim',
+        home('.vim/after/ftplugin/ruby.vim') => 'vim/after/ftplugin/ruby.vim',
     }
     files_to_symlink.each do |link_path, value|
         source_path = File.expand_path value
         if not File.exists? link_path
+            puts source_path
             sh "ln -fs #{source_path} #{link_path}"
         end
     end
@@ -253,7 +254,7 @@ directory home('.config/fish')
 directory home('.ssh')
 directory home('.vim/bundle')
 directory home('.vim/syntax')
-directory home('.vim/ftplugin')
+directory home('.vim/after/ftplugin')
 directory home('bin')
 directory home('developer')
 
