@@ -200,7 +200,7 @@ nmap <leader>f :ALEFix<CR>
 nmap <leader>n :ALENext<CR>
 vmap <leader>c "*y
 
-nmap <leader>t :let lastTestFile=expand('%')<CR>:make %<CR>
+nmap <leader>t :let lastTestFile=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
 nmap <leader>l :execute ':make ' . lastTestFile<CR>
 
 imap jk <esc>
