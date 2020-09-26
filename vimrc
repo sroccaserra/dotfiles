@@ -198,6 +198,7 @@ nmap <leader>/ :History/<CR>
 nmap <leader>e :Explore<CR>
 nmap <leader>f :ALEFix<CR>
 nmap <leader>n :ALENext<CR>
+nmap <leader>d :ijump <C-R><C-W><CR>
 vmap <leader>c "*y
 
 nmap <leader>t :let lastTestFile=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
