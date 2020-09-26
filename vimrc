@@ -72,7 +72,6 @@ let g:rainbow_active = 1
 let macvim_skip_colorscheme=1
 colorscheme default
 set background=dark
-set noantialias
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
