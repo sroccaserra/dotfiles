@@ -104,6 +104,9 @@ set guioptions-=m       " Turn off useless toolbar
 set hlsearch
 set hidden
 set history=1000
+if has('nvim')
+    set inccommand=nosplit
+endif
 set incsearch
 set laststatus=2        " Always want statusline
 set lazyredraw          " Don't display macro steps
