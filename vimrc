@@ -213,8 +213,8 @@ nmap <leader>n :ALENext<CR>
 nmap <leader>d :ijump <C-R><C-W><CR>
 vmap <leader>c "*y
 
-nmap <leader>t :let lastTestFile=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
-nmap <leader>l :execute ':make ' . lastTestFile<CR>
+nmap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
+nmap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
 
 imap jk <esc>
 cmap jk <esc>
