@@ -74,8 +74,10 @@ let g:rainbow_active = 1
 packadd! matchit
 
 let macvim_skip_colorscheme=1
-colorscheme default
+" colorscheme default
 set background=dark
+highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
@@ -194,7 +196,6 @@ au BufNewFile,BufRead *.asm
     \ else |
     \   set filetype=asm |
     \ endif
-
 
 syntax on
 
