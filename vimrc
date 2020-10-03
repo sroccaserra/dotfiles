@@ -32,6 +32,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'samsaga2/vim-z80'
 Plugin 'Shougo/neocomplcache'
 Plugin 'tpope/vim-fireplace' " Clojure
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'udalov/kotlin-vim'
 Plugin 'vim-scripts/a.vim'
