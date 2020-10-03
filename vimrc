@@ -201,28 +201,28 @@ syntax on
 
 :au FocusLost * silent! wa
 
-nmap <leader>b :Buffers<CR>
-nmap <leader>p :Files<CR>
-nmap <leader>g :GFiles<CR>
-nmap <leader>h :History<CR>
-nmap <leader>: :History:<CR>
-nmap <leader>/ :History/<CR>
-nmap <leader>e :Explore<CR>
-nmap <leader>f :ALEFix<CR>
-nmap <leader>n :ALENext<CR>
-nmap <leader>d :ijump <C-R><C-W><CR>
-vmap <leader>c "*y
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>p :Files<CR>
+nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>h :History<CR>
+nnoremap <leader>: :History:<CR>
+nnoremap <leader>/ :History/<CR>
+nnoremap <leader>e :Explore<CR>
+nnoremap <leader>f :ALEFix<CR>
+nnoremap <leader>n :ALENext<CR>
+nnoremap <leader>d :ijump <C-R><C-W><CR>
+vnoremap <leader>c "*y
 
-nmap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
-nmap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
+nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
+nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
 
-imap jk <esc>
-cmap jk <esc>
+inoremap jk <esc>
+cnoremap jk <esc>
 
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 
-cmap <C-A> <Home>
+cnoremap <C-A> <Home>
 
 autocmd VimEnter * iunmap <leader>ih
 autocmd VimEnter * iunmap <leader>ihn
