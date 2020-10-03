@@ -105,7 +105,6 @@ set list
 set listchars=tab:»\ ,trail:•
 set mouse=a
 set nobackup
-set nocompatible
 set noswapfile
 set nowrap
 set nowritebackup
