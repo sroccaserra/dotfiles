@@ -32,6 +32,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'samsaga2/vim-z80'
 Plugin 'Shougo/neocomplcache'
 Plugin 'tpope/vim-fireplace' " Clojure
+Plugin 'tpope/vim-surround'
 Plugin 'udalov/kotlin-vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/asmM6502.vim'
@@ -68,6 +69,8 @@ let g:auto_save_in_insert_mode = 0
 let g:netrw_liststyle = 3
 
 let g:rainbow_active = 1
+
+packadd! matchit
 
 let macvim_skip_colorscheme=1
 colorscheme default
