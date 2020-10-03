@@ -5,7 +5,7 @@ set nocompatible
 filetype off
 
 if !has("win32")
-    set shell=/bin/bash
+    set shell=/usr/bin/env\ bash
 endif
 
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -86,37 +86,40 @@ let mapleader=" "
 
 set autoindent
 set autoread
-set backspace=2
+set backspace=indent,eol,start
 set colorcolumn=120
+set complete-=i
 set diffopt+=iwhite
+set display+=lastline
 set encoding=utf-8
 set expandtab
 set exrc
 set fileformat=unix
-"set gdefault
+set formatoptions+=j
 set guioptions-=T       " Turn off useless toolbar
 set guioptions-=m       " Turn off useless toolbar
 set hlsearch
 set hidden
-set history=10000
-"set ignorecase
+set history=1000
 set incsearch
 set laststatus=2        " Always want statusline
 set lazyredraw          " Don't display macro steps
 set linebreak
 set list
-set listchars=tab:»\ ,trail:•
+set listchars=tab:>\ ,trail:•,extends:>,precedes:<,nbsp:+
 set mouse=a
 set nobackup
 set noswapfile
 set nowrap
 set nowritebackup
+set nrformats-=octal
 set number
 set ruler
-set scrolloff=8
+set scrolloff=1
 set secure
-set sidescrolloff=15
+set sessionoptions-=options
 set sidescroll=1
+set sidescrolloff=5
 set shiftwidth=4
 set shortmess=atoOTS
 set showcmd
@@ -125,7 +128,14 @@ set smartindent
 set smarttab
 set softtabstop=4
 set spelllang=fr
+set tabpagemax=50
 set tabstop=4
+if !has('nvim') && &ttimeoutlen == -1
+    set ttimeout
+    set ttimeoutlen=100
+endif
+set viewoptions-=options
+set viminfo^=!
 set whichwrap+=<,>,[,]
 set wildignore+=*.pyc,*.o,*.class,log/**
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
@@ -208,6 +218,9 @@ nmap <leader>l :execute ':make ' . lastTestFile<CR>
 
 imap jk <esc>
 cmap jk <esc>
+
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
 
 cmap <C-A> <Home>
 
