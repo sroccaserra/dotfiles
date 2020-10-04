@@ -106,7 +106,6 @@ set fileformat=unix
 set formatoptions+=j
 set guioptions-=T       " Turn off useless toolbar
 set guioptions-=m       " Turn off useless toolbar
-set hlsearch
 set hidden
 set history=1000
 if has('nvim')
@@ -163,6 +162,10 @@ set path+=src
 
 if !exists('autocmd_loaded')
     let autocmd_loaded = 1
+
+    autocmd CursorMoved * set hlsearch
+    autocmd InsertEnter * set nohlsearch
+
     autocmd Filetype asm setlocal shiftwidth=8
     autocmd Filetype asm setlocal softtabstop=8
     autocmd Filetype asm setlocal tabstop=8
