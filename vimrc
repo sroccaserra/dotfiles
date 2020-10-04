@@ -78,7 +78,7 @@ let macvim_skip_colorscheme=1
 " colorscheme default
 set background=dark
 highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
-
+highlight Folded ctermbg=236
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
