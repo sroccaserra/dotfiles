@@ -4,7 +4,7 @@
 set nocompatible
 filetype off
 
-if !has("win32")
+if !has('win32')
     set shell=/usr/bin/env\ bash
 endif
 
@@ -52,7 +52,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_custom_ignore = { 'dir': 'node_modules' }
 let g:ctrlp_clear_cache_on_exit = 0
 
-let g:fuzzy_ignore = "*.class,*.pyc,*.log,*.o"
+let g:fuzzy_ignore = '*.class,*.pyc,*.log,*.o'
 
 let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_enable_at_startup = 1
@@ -77,7 +77,7 @@ packadd! matchit
 let macvim_skip_colorscheme=1
 colorscheme default
 set background=dark
-if !exists("colorscheme_autocomd_loaded")
+if !exists('colorscheme_autocomd_loaded')
     let colorscheme_autocmd_loaded = 1
     autocmd ColorScheme *
                 \ highlight ColorColumn ctermbg=236 guibg=#393939 |
@@ -90,7 +90,7 @@ set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
 filetype plugin indent on
 
-let mapleader=" "
+let mapleader=' '
 
 set autoindent
 set autoread
@@ -161,7 +161,7 @@ set wildmode=list:longest,full
 
 set path+=src
 
-if !exists("autocmd_loaded")
+if !exists('autocmd_loaded')
     let autocmd_loaded = 1
     autocmd Filetype asm setlocal shiftwidth=8
     autocmd Filetype asm setlocal softtabstop=8
@@ -170,7 +170,7 @@ if !exists("autocmd_loaded")
 
     autocmd Filetype z80 setlocal path+=include
 
-    autocmd Filetype clojure let b:delimitMate_quotes="\""
+    autocmd Filetype clojure let b:delimitMate_quotes='"'
     autocmd FileType clojure nested NeoComplCacheLock
 
     autocmd Filetype lua setlocal tabstop=2
