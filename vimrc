@@ -75,10 +75,10 @@ let g:rainbow_active = 1
 packadd! matchit
 
 let macvim_skip_colorscheme=1
-" colorscheme default
+colorscheme default
 set background=dark
-highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
-highlight Folded ctermbg=236
+autocmd ColorScheme * highlight ColorColumn ctermbg=236 guibg=#393939
+autocmd ColorScheme * highlight Folded ctermbg=235 guibg=#393939
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
