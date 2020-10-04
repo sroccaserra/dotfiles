@@ -77,8 +77,12 @@ packadd! matchit
 let macvim_skip_colorscheme=1
 colorscheme default
 set background=dark
-autocmd ColorScheme * highlight ColorColumn ctermbg=236 guibg=#393939
-autocmd ColorScheme * highlight Folded ctermbg=235 guibg=#393939
+if !exists("colorscheme_autocomd_loaded")
+    let colorscheme_autocmd_loaded = 1
+    autocmd ColorScheme *
+                \ highlight ColorColumn ctermbg=236 guibg=#393939 |
+                \ highlight Folded ctermbg=235 guibg=#393939
+endif
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
@@ -157,55 +161,58 @@ set wildmode=list:longest,full
 
 set path+=src
 
-autocmd Filetype asm setlocal shiftwidth=8
-autocmd Filetype asm setlocal softtabstop=8
-autocmd Filetype asm setlocal tabstop=8
-autocmd Filetype asm setlocal path+=include
+if !exists("autocmd_loaded")
+    let autocmd_loaded = 1
+    autocmd Filetype asm setlocal shiftwidth=8
+    autocmd Filetype asm setlocal softtabstop=8
+    autocmd Filetype asm setlocal tabstop=8
+    autocmd Filetype asm setlocal path+=include
 
-autocmd Filetype z80 setlocal path+=include
+    autocmd Filetype z80 setlocal path+=include
 
-autocmd Filetype clojure let b:delimitMate_quotes="\""
-autocmd FileType clojure nested NeoComplCacheLock
+    autocmd Filetype clojure let b:delimitMate_quotes="\""
+    autocmd FileType clojure nested NeoComplCacheLock
 
-autocmd Filetype lua setlocal tabstop=2
-autocmd Filetype lua setlocal shiftwidth=2
-autocmd Filetype lua setlocal softtabstop=2
+    autocmd Filetype lua setlocal tabstop=2
+    autocmd Filetype lua setlocal shiftwidth=2
+    autocmd Filetype lua setlocal softtabstop=2
 
-autocmd Filetype markdown setlocal wrap
+    autocmd Filetype markdown setlocal wrap
 
-autocmd BufNewFile,BufRead *.muc set filetype=mucom88
-autocmd Filetype mucom88 setlocal makeprg=miniplay
+    autocmd BufNewFile,BufRead *.muc set filetype=mucom88
+    autocmd Filetype mucom88 setlocal makeprg=miniplay
 
-autocmd Filetype typescript setlocal suffixesadd+=.ts
-autocmd Filetype typescript setlocal tabstop=2
-autocmd Filetype typescript setlocal shiftwidth=2
-autocmd Filetype typescript setlocal softtabstop=2
+    autocmd Filetype typescript setlocal suffixesadd+=.ts
+    autocmd Filetype typescript setlocal tabstop=2
+    autocmd Filetype typescript setlocal shiftwidth=2
+    autocmd Filetype typescript setlocal softtabstop=2
 
-autocmd Filetype yaml setlocal tabstop=2
-autocmd Filetype yaml setlocal shiftwidth=2
-autocmd Filetype yaml setlocal softtabstop=2
+    autocmd Filetype yaml setlocal tabstop=2
+    autocmd Filetype yaml setlocal shiftwidth=2
+    autocmd Filetype yaml setlocal softtabstop=2
 
-autocmd Filetype asmM6502 setlocal tabstop=4
-autocmd Filetype asmM6502 setlocal shiftwidth=4
-autocmd Filetype asmM6502 setlocal softtabstop=4
+    autocmd Filetype asmM6502 setlocal tabstop=4
+    autocmd Filetype asmM6502 setlocal shiftwidth=4
+    autocmd Filetype asmM6502 setlocal softtabstop=4
 
-autocmd BufNewFile,BufRead *.p8 set filetype=lua
-autocmd BufNewFile,BufRead *.nx set filetype=basic
+    autocmd BufNewFile,BufRead *.p8 set filetype=lua
+    autocmd BufNewFile,BufRead *.nx set filetype=basic
 
-let asmM6502Regex = '^\s*processor 6502'
+    let asmM6502Regex = '^\s*processor 6502'
 
-au BufNewFile,BufRead *.asm
-    \ if (getline(1) =~? asmM6502Regex || getline(2) =~? asmM6502Regex || getline(3) =~? asmM6502Regex) |
-    \   set filetype=asmM6502 |
-    \ else |
-    \   set filetype=asm |
-    \ endif
+    autocmd BufNewFile,BufRead *.asm
+                \ if (getline(1) =~? asmM6502Regex || getline(2) =~? asmM6502Regex || getline(3) =~? asmM6502Regex) |
+                \   set filetype=asmM6502 |
+                \ else |
+                \   set filetype=asm |
+                \ endif
+
+    autocmd FocusLost * silent! wa
+endif
 
 syntax on
 
 """ End shared with root
-
-:au FocusLost * silent! wa
 
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>p :Files<CR>
