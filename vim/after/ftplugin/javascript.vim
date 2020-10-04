@@ -16,3 +16,4 @@ function! AlternateJSFile()
 endfunction
 
 noremap <leader>a :call fzf#vim#gitfiles('.', {'options': '--query '.AlternateJSFile()})<CR>
+noremap <leader>f :g/^\s*it\>/normal jvaBzf<CR>
