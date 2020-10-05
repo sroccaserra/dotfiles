@@ -13,24 +13,19 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'ap/vim-css-color'
 Plugin 'bogado/file-line'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dag/vim-fish'
 Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'ervandew/supertab'
-Plugin 'FooSoft/vim-argwrap'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'samsaga2/vim-z80'
-Plugin 'Shougo/neocomplcache'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'tpope/vim-repeat'
@@ -45,20 +40,6 @@ filetype plugin indent on
 
 set rtp+=/usr/local/opt/fzf
 let g:fzf_preview_window = ''
-
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:32,results:32'
-let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_custom_ignore = { 'dir': 'node_modules' }
-let g:ctrlp_clear_cache_on_exit = 0
-
-let g:fuzzy_ignore = '*.class,*.pyc,*.log,*.o'
-
-let g:neocomplcache_auto_completion_start_length = 3
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_max_list = 5
-let g:neocomplcache_enable_insert_char_pre = 1
 
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
@@ -174,7 +155,6 @@ if !exists('autocmd_loaded')
     autocmd Filetype z80 setlocal path+=include
 
     autocmd Filetype clojure let b:delimitMate_quotes='"'
-    autocmd FileType clojure nested NeoComplCacheLock
 
     autocmd Filetype lua setlocal tabstop=2
     autocmd Filetype lua setlocal shiftwidth=2
