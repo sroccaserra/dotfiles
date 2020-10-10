@@ -55,15 +55,18 @@ let g:rainbow_active = 1
 
 packadd! matchit
 
+if !exists('colorscheme_autocomd_loaded')
+    let colorscheme_autocmd_loaded = 1
+    augroup MyColors
+        autocmd!
+        autocmd ColorScheme *
+                    \ highlight ColorColumn ctermbg=236 guibg=#393939 |
+                    \ highlight Folded ctermbg=235 guibg=#393939
+    augroup END
+endif
 let macvim_skip_colorscheme=1
 colorscheme default
 set background=dark
-if !exists('colorscheme_autocomd_loaded')
-    let colorscheme_autocmd_loaded = 1
-    autocmd ColorScheme *
-                \ highlight ColorColumn ctermbg=236 guibg=#393939 |
-                \ highlight Folded ctermbg=235 guibg=#393939
-endif
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
