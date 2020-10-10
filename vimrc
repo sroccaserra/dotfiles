@@ -81,6 +81,8 @@ set autoread
 set backspace=indent,eol,start
 set colorcolumn=120
 set complete-=i
+set cursorline
+set cursorlineopt=number
 set diffopt+=iwhite
 set display+=lastline
 set encoding=utf-8
@@ -108,6 +110,7 @@ set nowrap
 set nowritebackup
 set nrformats-=octal
 set number
+set relativenumber
 set ruler
 set scrolloff=1
 set secure
