@@ -33,7 +33,7 @@ task :os_independant => [:files_to_source,
 task :linux => [:linux_useful_commands,
                 :linux_files_to_symlink,
                 :customize_virtualenv_prompt,
-                :linux_developer_tools,
+                # :linux_developer_tools,
                 :os_independant,
                 home(".byobu"),
                 home(".config/fish"),
@@ -200,12 +200,12 @@ task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/after/ftplugin'
     end
 end
 
-task :linux_developer_tools => [home("bin")] do
-    if test_command('java -version 2>&1 | head -n1') && (not test_command("lein version"))
-        sh '\curl https://raw.github.com/technomancy/leiningen/stable/bin/lein > "$HOME/bin/lein"'
-        sh 'chmod +x ~/bin/lein'
-    end
-end
+# task :linux_developer_tools => [home("bin")] do
+#     if test_command('java -version 2>&1 | head -n1') && (not test_command("lein version"))
+#         sh '\curl https://raw.github.com/technomancy/leiningen/stable/bin/lein > "$HOME/bin/lein"'
+#         sh 'chmod +x ~/bin/lein'
+#     end
+# end
 
 task :customize_virtualenv_prompt do
     virtualenvs_postactivate = home ".virtualenvs/postactivate"
