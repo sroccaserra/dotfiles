@@ -8,9 +8,9 @@ if test -z "$TMUX"
 then
     if test ! -z "$SSH_TTY"
     then
-        if test "$SSH_AUTH_SOCK" && [ $SSH_AUTH_SOCK != $SOCK ]
+        if test "$SSH_AUTH_SOCK" && [ "$SSH_AUTH_SOCK" != $SOCK ]
         then
-            ln -sf $SSH_AUTH_SOCK $SOCK
+            ln -sf "$SSH_AUTH_SOCK" $SOCK
             export SSH_AUTH_SOCK=$SOCK
         fi
     fi
