@@ -61,7 +61,9 @@ if !exists('colorscheme_autocomd_loaded')
         autocmd!
         autocmd ColorScheme *
                     \ highlight ColorColumn ctermbg=236 guibg=#393939 |
-                    \ highlight Folded ctermbg=235 guibg=#393939
+                    \ highlight Folded ctermbg=235 guibg=#393939 |
+                    \ highlight clear CursorLineNr |
+                    \ highlight CursorLineNr ctermbg=darkgray
     augroup END
 endif
 let macvim_skip_colorscheme=1
@@ -81,8 +83,10 @@ set autoread
 set backspace=indent,eol,start
 set colorcolumn=120
 set complete-=i
-set cursorline
-set cursorlineopt=number
+if !has('nvim')
+    set cursorline
+    set cursorlineopt=number
+endif
 set diffopt+=iwhite
 set display+=lastline
 set encoding=utf-8
