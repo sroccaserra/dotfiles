@@ -218,6 +218,7 @@ nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>n :ALENext<CR>
 nnoremap <leader>d :ijump <C-R><C-W><CR>
 vnoremap <leader>c "*y
+vnoremap <leader>p "_dP
 
 nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
 nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
