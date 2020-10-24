@@ -225,6 +225,8 @@ vnoremap <leader>p "_dP
 nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
 nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
 
+nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<cr>
+
 inoremap jk <esc>
 cnoremap jk <esc>
 
