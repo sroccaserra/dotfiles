@@ -166,6 +166,8 @@ if !exists('autocmd_loaded')
 
     autocmd Filetype clojure let b:delimitMate_quotes='"'
 
+    autocmd FileType xml,html,html.handlebars let b:delimitMate_matchpairs = "(:),[:],{:}"
+
     autocmd Filetype lua setlocal tabstop=2
     autocmd Filetype lua setlocal shiftwidth=2
     autocmd Filetype lua setlocal softtabstop=2
