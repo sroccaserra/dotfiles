@@ -3,6 +3,7 @@
 
 set nocompatible
 filetype off
+language en_US.UTF-8
 
 if !has('win32')
     set shell=/usr/bin/env\ bash
@@ -102,6 +103,7 @@ if has('nvim')
     set inccommand=nosplit
 endif
 set incsearch
+set langmenu=en_US.UTF-8
 set laststatus=2        " Always want statusline
 set lazyredraw          " Don't display macro steps
 set linebreak
