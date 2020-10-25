@@ -27,6 +27,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'samsaga2/vim-z80'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'tpope/vim-repeat'
