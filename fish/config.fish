@@ -11,6 +11,8 @@ if status --is-interactive
     set -gx LESS "-iFRSXM"
 
     set -u fish_user_paths ~/bin $PATH
+    set -u LC_ALL en_US.UTF-8
+    set -u LANG en_US.UTF-8
 end
 
 alias rgrep="grep -r"
