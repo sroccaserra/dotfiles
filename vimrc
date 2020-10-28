@@ -45,7 +45,7 @@ set rtp+=/usr/local/opt/fzf
 let g:fzf_preview_window = ''
 
 let g:ale_fixers = { 'javascript': ['eslint'] }
-let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++']}
+let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++'] } ", 'ocaml': ['ocaml-lsp'] }
 let g:ale_cpp_cc_options = '-std=c++17 -Wall -pedantic'
 let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
 let g:ale_c_parse_makefile = 0
@@ -224,6 +224,8 @@ nnoremap <leader>n :ALENext<CR>
 nnoremap <leader>d :ijump <C-R><C-W><CR>
 vnoremap <leader>c "*y
 vnoremap <leader>p "_dP
+
+nmap <leader>r :ALEFindReferences -relative<CR>
 
 nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
 nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>

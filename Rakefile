@@ -189,6 +189,7 @@ task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/after/ftplugin'
         home('.vim/syntax/mucom88.vim') => 'vim/syntax/mucom88.vim',
         home('.vim/after/ftplugin/c.vim') => 'vim/after/ftplugin/c.vim',
         home('.vim/after/ftplugin/javascript.vim') => 'vim/after/ftplugin/javascript.vim',
+        home('.vim/after/ftplugin/ocaml.vim') => 'vim/after/ftplugin/ocaml.vim',
         home('.vim/after/ftplugin/ruby.vim') => 'vim/after/ftplugin/ruby.vim',
     }
     files_to_symlink.each do |link_path, value|
