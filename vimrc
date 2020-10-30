@@ -226,6 +226,7 @@ nnoremap <leader>e :Explore<CR>
 nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>n :ALENext<CR>
 nnoremap <leader>d :ijump <C-R><C-W><CR>
+nnoremap <leader>z :tabnew %<CR>
 vnoremap <leader>c "*y
 vnoremap <leader>p "_dP
 
