@@ -28,6 +28,7 @@ Plugin 'ocaml/vim-ocaml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'samsaga2/vim-z80'
+Plugin 'takac/vim-hardtime'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fireplace' " Clojure
@@ -52,6 +53,7 @@ let g:ale_c_parse_makefile = 0
 
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
+let g:hardtime_default_on = 1
 let g:netrw_liststyle = 3
 
 let g:rainbow_active = 1
