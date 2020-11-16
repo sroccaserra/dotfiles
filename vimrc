@@ -20,6 +20,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'ervandew/supertab'
+Plugin 'itchyny/vim-haskell-indent'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses
