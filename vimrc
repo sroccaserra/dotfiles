@@ -230,7 +230,9 @@ nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>n :ALENext<CR>
 nnoremap <leader>d :ALEGoToDefinition<CR>
 nnoremap <leader>z :tabnew %<CR>
+
 vnoremap <leader>c "*y
+nnoremap <leader>v :r !pbpaste<CR>
 vnoremap <leader>p "_dP
 
 nmap <leader>r :ALEFindReferences -relative<CR>
