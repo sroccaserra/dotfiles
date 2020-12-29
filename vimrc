@@ -88,7 +88,6 @@ let mapleader=' '
 set autoindent
 set autoread
 set backspace=indent,eol,start
-set clipboard=unnamed
 set colorcolumn=120
 set complete-=i
 if !has('nvim')
