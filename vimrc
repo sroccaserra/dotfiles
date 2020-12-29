@@ -23,6 +23,7 @@ Plugin 'ervandew/supertab'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ocaml/vim-ocaml'
