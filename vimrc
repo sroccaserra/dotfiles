@@ -161,9 +161,6 @@ set path+=src
 if !exists('autocmd_loaded')
     let autocmd_loaded = 1
 
-    autocmd CursorMoved * set hlsearch
-    autocmd InsertEnter * set nohlsearch
-
     autocmd Filetype asm setlocal shiftwidth=8
     autocmd Filetype asm setlocal softtabstop=8
     autocmd Filetype asm setlocal tabstop=8
