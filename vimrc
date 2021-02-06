@@ -220,6 +220,7 @@ syntax on
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>p :Files<CR>
 nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>s :GFiles?<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>: :History:<CR>
 nnoremap <leader>/ :History/<CR>
