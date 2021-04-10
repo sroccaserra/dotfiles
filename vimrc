@@ -230,6 +230,8 @@ nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>n :ALENext<CR>
 nnoremap <leader>d :ALEGoToDefinition<CR>
 nnoremap <leader>z :tabnew %<CR>
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprevious<CR>
 
 vnoremap <leader>c "*y
 nnoremap <leader>v :r !pbpaste<CR>
