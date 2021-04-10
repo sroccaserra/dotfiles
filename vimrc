@@ -15,6 +15,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bogado/file-line'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'dag/vim-fish'
 Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
