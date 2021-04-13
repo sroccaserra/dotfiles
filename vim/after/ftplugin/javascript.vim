@@ -14,7 +14,9 @@ setlocal include=\\<require(.\\zs[^'\\"]\\+\\ze
 
 function! AlternateJSFile()
   let fileName = substitute(expand('%:r'), '.*/', '', '')
-  return (fileName =~ "_test") ? substitute(fileName, '_test$', '', '') : fileName.'_test'
+  let testSuffixRegex = '[_-]test$'
+  let testFilePattern = '"'''.fileName.' ''test"'
+  return (fileName =~ testSuffixRegex) ? substitute(fileName, testSuffixRegex, '', '') : testFilePattern
 endfunction
 
 noremap <leader>a :call fzf#vim#gitfiles('.', {'options': '--query '.AlternateJSFile()})<CR>
