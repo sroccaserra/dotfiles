@@ -48,7 +48,6 @@ filetype plugin indent on
 set rtp+=/usr/local/opt/fzf
 let g:fzf_preview_window = ''
 
-let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = {'c': ['clang'], 'cpp': ['clang', 'g++'] } ", 'ocaml': ['ocaml-lsp'] }
 let g:ale_cpp_cc_options = '-std=c++17 -Wall -pedantic'
 let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'

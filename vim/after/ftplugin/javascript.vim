@@ -12,6 +12,8 @@ iabbr ii it(, () => {<CR>});<esc>ka
 
 setlocal include=\\<require(.\\zs[^'\\"]\\+\\ze
 
+let g:ale_fixers = { 'javascript': ['eslint'] }
+
 function! AlternateJSFile()
   let fileName = substitute(expand('%:r'), '.*/', '', '')
   let testSuffixRegex = '[_-]test$'
