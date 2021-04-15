@@ -25,6 +25,11 @@ def home(path='')
     File.expand_path File.join('~', path)
 end
 
+def relative_to_pwd(path)
+    expanded_path = File.expand_path path
+    expanded_path.sub(/^#{pwd}\//, '')
+end
+
 task :os_independant => [:files_to_source,
                          :git_global_config,
                          :git_projects,
@@ -187,11 +192,13 @@ task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/after/ftplugin'
         home('.ssh/rc') => 'ssh_rc',
         home('.tmux.conf') => 'tmux.conf',
         home('.vim/syntax/mucom88.vim') => 'vim/syntax/mucom88.vim',
-        home('.vim/after/ftplugin/c.vim') => 'vim/after/ftplugin/c.vim',
-        home('.vim/after/ftplugin/javascript.vim') => 'vim/after/ftplugin/javascript.vim',
-        home('.vim/after/ftplugin/ocaml.vim') => 'vim/after/ftplugin/ocaml.vim',
-        home('.vim/after/ftplugin/ruby.vim') => 'vim/after/ftplugin/ruby.vim',
     }
+
+    Dir["#{pwd}/vim/after/ftplugin/*"].each do |filename|
+      relative_path = relative_to_pwd(filename)
+      files_to_symlink[home('.'+relative_path)] = relative_path
+    end
+
     files_to_symlink.each do |link_path, value|
         source_path = File.expand_path value
         if not File.exists? link_path

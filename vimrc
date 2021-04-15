@@ -173,10 +173,6 @@ if !exists('autocmd_loaded')
 
     autocmd FileType xml,html,html.handlebars let b:delimitMate_matchpairs = "(:),[:],{:}"
 
-    autocmd FileType haskell setlocal tabstop=2
-    autocmd FileType haskell setlocal shiftwidth=2
-    autocmd FileType haskell setlocal softtabstop=2
-
     autocmd Filetype lua setlocal tabstop=2
     autocmd Filetype lua setlocal shiftwidth=2
     autocmd Filetype lua setlocal softtabstop=2
