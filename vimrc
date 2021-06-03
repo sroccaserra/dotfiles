@@ -14,12 +14,12 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin '907th/vim-auto-save'
 Plugin 'bogado/file-line'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'dag/vim-fish'
 Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'elixir-editors/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'junegunn/fzf'
@@ -37,10 +37,8 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fireplace' " Clojure
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'udalov/kotlin-vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/asmM6502.vim'
-Plugin 'vim-scripts/vim-auto-save'
 
 call vundle#end()
 filetype plugin indent on
