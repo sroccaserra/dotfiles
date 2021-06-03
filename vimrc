@@ -213,17 +213,20 @@ syntax on
 
 """ End shared with root
 
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>p :Files<CR>
-nnoremap <leader>g :GFiles<CR>
-nnoremap <leader>s :GFiles?<CR>
-nnoremap <leader>h :History<CR>
-nnoremap <leader>: :History:<CR>
 nnoremap <leader>/ :History/<CR>
+nnoremap <leader>: :History:<CR>
+nnoremap <leader>B vaBV
+vnoremap <leader>B aBV
+nnoremap <leader>b :Buffer<CR>
 nnoremap <leader>e :Explore<CR>
-nnoremap <leader>z :tabnew %<CR>
+nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>h :History<CR>
 nnoremap <leader>j :cnext<CR>
 nnoremap <leader>k :cprevious<CR>
+nnoremap <leader>p :Files<CR>
+nnoremap <leader>s :GFiles?<CR>
+nnoremap <leader>v :r !pbpaste<CR>
+nnoremap <leader>z :tabnew %<CR>
 
 nnoremap <leader><leader>c :ALECodeAction<CR>
 nnoremap <leader><leader>d :ALEGoToDefinition<CR>
@@ -235,7 +238,6 @@ nnoremap <leader><leader>r :ALERename<CR>
 vnoremap <leader><leader>c :ALECodeAction<CR>
 
 vnoremap <leader>c "*y
-nnoremap <leader>v :r !pbpaste<CR>
 vnoremap <leader>p "_dP
 
 nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
