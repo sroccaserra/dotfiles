@@ -16,6 +16,7 @@ iabbr <buffer> II it(, () => {<CR>});<esc>ka
 setlocal include=\\<require(.\\zs[^'\\"]\\+\\ze
 
 let g:ale_fixers = { 'javascript': ['eslint'] }
+let g:ale_linters = { 'javascript': ['eslint', 'tsserver'] }
 
 function! AlternateJSFile()
   let fileName = substitute(expand('%:r'), '.*/', '', '')
@@ -26,3 +27,4 @@ endfunction
 
 noremap <buffer> <leader>a :call fzf#vim#gitfiles('.', {'options': '--query '.AlternateJSFile()})<CR>
 noremap <buffer> <leader>z :g/^\s*it\>/normal jvaBzf<CR>
+noremap K :ALEHover<CR>

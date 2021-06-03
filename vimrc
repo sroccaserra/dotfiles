@@ -221,18 +221,22 @@ nnoremap <leader>h :History<CR>
 nnoremap <leader>: :History:<CR>
 nnoremap <leader>/ :History/<CR>
 nnoremap <leader>e :Explore<CR>
-nnoremap <leader>f :ALEFix<CR>
-nnoremap <leader>n :ALENext<CR>
-nnoremap <leader>d :ALEGoToDefinition<CR>
 nnoremap <leader>z :tabnew %<CR>
 nnoremap <leader>j :cnext<CR>
 nnoremap <leader>k :cprevious<CR>
 
+nnoremap <leader><leader>c :ALECodeAction<CR>
+nnoremap <leader><leader>d :ALEGoToDefinition<CR>
+nnoremap <leader><leader>f :ALEFindReferences -relative<CR>
+nnoremap <leader><leader>F :ALEFix<CR>
+nnoremap <leader><leader>n :ALENext<CR>
+nnoremap <leader><leader>r :ALERename<CR>
+
+vnoremap <leader><leader>c :ALECodeAction<CR>
+
 vnoremap <leader>c "*y
 nnoremap <leader>v :r !pbpaste<CR>
 vnoremap <leader>p "_dP
-
-nmap <leader>r :ALEFindReferences -relative<CR>
 
 nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
 nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
