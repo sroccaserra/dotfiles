@@ -7,8 +7,11 @@ setlocal errorformat=%E%.%#Error:\ %m,%Z%*[^(](%f:%l:%c),%-G%.%#
 
 " Note: trigger these abbrevs with a ', like dd' as the quote will stay after
 " the expension.
-iabbr <buffer> dd describe(, () => {<CR>});<esc>kela
-iabbr <buffer> ii it(, () => {<CR>});<esc>ka
+iabbr <buffer> dd describe(, function() {<CR>});<esc>kela
+iabbr <buffer> ii it(, function() {<CR>});<esc>ka
+
+iabbr <buffer> DD describe(, () => {<CR>});<esc>kela
+iabbr <buffer> II it(, () => {<CR>});<esc>ka
 
 setlocal include=\\<require(.\\zs[^'\\"]\\+\\ze
 
