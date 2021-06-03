@@ -228,8 +228,8 @@ nnoremap <leader>z :tabnew %<CR>
 
 nnoremap <leader><leader>c :ALECodeAction<CR>
 nnoremap <leader><leader>d :ALEGoToDefinition<CR>
-nnoremap <leader><leader>f :ALEFindReferences -relative<CR>
-nnoremap <leader><leader>F :ALEFix<CR>
+nnoremap <leader><leader>F :ALEFindReferences -relative<CR>
+nnoremap <leader><leader>f :ALEFix<CR>
 nnoremap <leader><leader>n :ALENext<CR>
 nnoremap <leader><leader>r :ALERename<CR>
 
