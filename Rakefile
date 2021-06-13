@@ -192,6 +192,7 @@ task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/after/ftplugin'
         home('.ssh/rc') => 'ssh_rc',
         home('.tmux.conf') => 'tmux.conf',
         home('.vim/syntax/mucom88.vim') => 'vim/syntax/mucom88.vim',
+        home('.vim/syntax/uxntal.vim') => 'vim/syntax/uxntal.vim',
     }
 
     Dir["#{pwd}/vim/after/ftplugin/*"].each do |filename|

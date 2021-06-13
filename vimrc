@@ -194,6 +194,7 @@ if !exists('autocmd_loaded')
 
     autocmd BufNewFile,BufRead *.p8 set filetype=lua
     autocmd BufNewFile,BufRead *.nx set filetype=basic
+    autocmd BufNewFile,BufRead *.tal set filetype=uxntal
 
     let asmM6502Regex = '^\s*processor 6502'
 
