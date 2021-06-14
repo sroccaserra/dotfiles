@@ -184,15 +184,15 @@ task :git_projects => [home('.vim/bundle'),
     end
 end
 
-task :linux_files_to_symlink => [home('.vim/syntax'), home('.vim/after/ftplugin')] do
+task :linux_files_to_symlink => [home('.vim/after/syntax'), home('.vim/after/ftplugin')] do
     files_to_symlink = {
         home('.bash_aliases') => 'bash_aliases',
         home('.inputrc') => 'inputrc',
         home('.noserc') => 'noserc',
         home('.ssh/rc') => 'ssh_rc',
         home('.tmux.conf') => 'tmux.conf',
-        home('.vim/syntax/mucom88.vim') => 'vim/syntax/mucom88.vim',
-        home('.vim/syntax/uxntal.vim') => 'vim/syntax/uxntal.vim',
+        home('.vim/after/syntax/mucom88.vim') => 'vim/after/syntax/mucom88.vim',
+        home('.vim/after/syntax/uxntal.vim') => 'vim/after/syntax/uxntal.vim',
     }
 
     Dir["#{pwd}/vim/after/ftplugin/*"].each do |filename|
@@ -262,8 +262,8 @@ directory home('.byobu')
 directory home('.config/fish')
 directory home('.ssh')
 directory home('.vim/bundle')
-directory home('.vim/syntax')
 directory home('.vim/after/ftplugin')
+directory home('.vim/after/syntax')
 directory home('bin')
 directory home('developer')
 

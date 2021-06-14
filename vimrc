@@ -25,7 +25,7 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'luochen1990/rainbow' " Rainbow Parentheses
+"Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ocaml/vim-ocaml'
 Plugin 'pangloss/vim-javascript'
@@ -194,6 +194,7 @@ if !exists('autocmd_loaded')
 
     autocmd BufNewFile,BufRead *.p8 set filetype=lua
     autocmd BufNewFile,BufRead *.nx set filetype=basic
+
     autocmd BufNewFile,BufRead *.tal set filetype=uxntal
 
     let asmM6502Regex = '^\s*processor 6502'
