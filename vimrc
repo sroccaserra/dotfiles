@@ -257,6 +257,16 @@ autocmd VimEnter * iunmap <leader>ih
 autocmd VimEnter * iunmap <leader>ihn
 autocmd VimEnter * iunmap <leader>is
 
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+" Not needed, use this instead?
+" :'<,'>normal @q
+" :'<,'>normal! @q
+function! ExecuteMacroOverVisualRange()
+    echo "@".getcmdline()
+    execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
 " if &term =~ '256color'
