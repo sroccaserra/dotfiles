@@ -31,7 +31,7 @@ Plugin 'ocaml/vim-ocaml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'samsaga2/vim-z80'
-Plugin 'takac/vim-hardtime'
+" Plugin 'takac/vim-hardtime'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fireplace' " Clojure
