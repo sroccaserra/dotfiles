@@ -54,7 +54,12 @@ let g:ale_c_parse_makefile = 0
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 let g:hardtime_default_on = 1
+
+" let g:netrw_altv = 1
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
 let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
 
 let g:rainbow_active = 1
 
@@ -223,7 +228,7 @@ nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>j :cnext<CR>
 nnoremap <leader>k :cprevious<CR>
-nnoremap <leader>p :Files<CR>
+nnoremap <leader>p :Lexplore %:p:h<CR>
 nnoremap <leader>s :GFiles?<CR>
 nnoremap <leader>v :r !pbpaste<CR>
 nnoremap <leader>z :tabnew %<CR>
