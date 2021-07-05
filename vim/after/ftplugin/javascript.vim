@@ -21,6 +21,12 @@ let g:ale_linters = { 'javascript': ['eslint', 'tsserver'] }
 function! AlternateJSFile()
   let fileName = substitute(expand('%:r'), '.*/', '', '')
   let testSuffixRegex = '[_-]test$'
+  return substitute(fileName, testSuffixRegex, '', '')
+endfunction
+
+function! AlternateJSTestFile()
+  let fileName = substitute(expand('%:r'), '.*/', '', '')
+  let testSuffixRegex = '[_-]test$'
   let testFilePattern = '"'''.fileName.' ''test"'
   return (fileName =~ testSuffixRegex) ? substitute(fileName, testSuffixRegex, '', '') : testFilePattern
 endfunction
