@@ -218,23 +218,38 @@ syntax on
 
 """ End shared with root
 
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap { {zz
+nnoremap } }zz
+nnoremap J mzJ`z
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 nnoremap <leader>/ :History/<CR>
 nnoremap <leader>: :History:<CR>
 nnoremap <leader>B vaBV
 vnoremap <leader>B aBV
 nnoremap <leader>b :Buffer<CR>
+nnoremap <Leader>c :let @+=expand('%')<CR>
 nnoremap <leader>e :Explore<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>h :History<CR>
-nnoremap <leader>j :cnext<CR>
-nnoremap <leader>k :cprevious<CR>
+nnoremap <leader>j :cnext<CR>zzzv
+nnoremap <leader>k :cprevious<CR>zzzv
 nnoremap <leader>p :Lexplore %:p:h<CR>
+nnoremap <leader>r *Ncgn
 nnoremap <leader>s :GFiles?<CR>
 nnoremap <leader>v :r !pbpaste<CR>
 nnoremap <leader>z :tabnew %<CR>
 
 nnoremap <leader><leader>c :ALECodeAction<CR>
 nnoremap <leader><leader>d :ALEGoToDefinition<CR>
+nnoremap <leader><leader>D :ALEDetail<CR>
 nnoremap <leader><leader>F :ALEFindReferences -relative<CR>
 nnoremap <leader><leader>f :ALEFix<CR>
 nnoremap <leader><leader>n :ALENext<CR>
@@ -253,8 +268,13 @@ nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<cr>
 inoremap jk <esc>
 cnoremap jk <esc>
 
+" Undo break points
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
+inoremap , ,<C-G>u
+inoremap . .<C-G>u
+inoremap ! !<C-G>u
+inoremap ? ?<C-G>u
 
 cnoremap <C-A> <Home>
 
