@@ -101,7 +101,7 @@ set diffopt+=iwhite
 set display+=lastline
 set encoding=utf-8
 set expandtab
-set exrc
+" set exrc
 set fileformat=unix
 set formatoptions+=j
 set guioptions-=T       " Turn off useless toolbar
