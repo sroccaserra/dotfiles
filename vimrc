@@ -225,8 +225,6 @@ syntax on
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap * *zzzv
-nnoremap { {zz
-nnoremap } }zz
 nnoremap J mzJ`z
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
