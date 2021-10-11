@@ -22,6 +22,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'itchyny/vim-haskell-indent'
+Plugin 'jgdavey/tslime.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'leafgarland/typescript-vim'
@@ -39,6 +40,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/asmM6502.vim'
+Plugin 'vim-test/vim-test'
 
 call vundle#end()
 filetype plugin indent on
@@ -66,6 +68,11 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
 
 let g:rainbow_active = 1
+
+let test#strategy = "tslime"
+
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
 
 packadd! matchit
 
@@ -257,8 +264,11 @@ vnoremap <leader><leader>c :ALECodeAction<CR>
 vnoremap <leader>c "*y
 vnoremap <leader>p "_dP
 
-nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
-nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
+nnoremap <leader>t :TestNearest<CR>
+nnoremap <leader>l :TestLast<CR>
+
+" nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
+" nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
 
 nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<cr>
 
