@@ -139,7 +139,7 @@ task :git_global_config do
        'alias.c' => 'commit',
        'alias.ca' => '"commit -a"',
        'alias.l' => '"log --decorate --graph --abbrev-commit"',
-       'alias.s' => '"status --short --branch"',
+       'alias.s' => '"status --short"',
        'alias.poule' => 'pull',
        'alias.mouche' => 'push',
        'alias.lapin' => '"log --decorate --graph"'
