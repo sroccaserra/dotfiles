@@ -138,9 +138,8 @@ task :git_global_config do
        'rerere.enabled' => 'true',
        'alias.c' => 'commit',
        'alias.ca' => '"commit -a"',
-       'alias.d' => '"diff --word-diff"',
        'alias.l' => '"log --decorate --graph --abbrev-commit"',
-       'alias.s' => '"status -sb"',
+       'alias.s' => '"status --short --branch"',
        'alias.poule' => 'pull',
        'alias.mouche' => 'push',
        'alias.lapin' => '"log --decorate --graph"'
