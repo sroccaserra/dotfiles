@@ -188,11 +188,6 @@ if !exists('autocmd_loaded')
     autocmd BufNewFile,BufRead *.muc set filetype=mucom88
     autocmd Filetype mucom88 setlocal makeprg=miniplay
 
-    autocmd Filetype typescript setlocal suffixesadd+=.ts
-    autocmd Filetype typescript setlocal tabstop=2
-    autocmd Filetype typescript setlocal shiftwidth=2
-    autocmd Filetype typescript setlocal softtabstop=2
-
     autocmd Filetype yaml setlocal tabstop=2
     autocmd Filetype yaml setlocal shiftwidth=2
     autocmd Filetype yaml setlocal softtabstop=2
