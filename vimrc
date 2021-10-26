@@ -228,6 +228,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap * *zzzv
 nnoremap J mzJ`z
+nnoremap <C-D> <C-D>zz
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
