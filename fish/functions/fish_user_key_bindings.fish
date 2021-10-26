@@ -4,4 +4,5 @@ function fish_user_key_bindings
     end
     bind \e\eOA 'history-token-search-backward'
     bind \cX\cE 'edit_command_buffer'
+    bind \cG 'g'
 end
