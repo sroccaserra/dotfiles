@@ -199,9 +199,9 @@ if !exists('autocmd_loaded')
     autocmd Filetype yaml setlocal shiftwidth=2
     autocmd Filetype yaml setlocal softtabstop=2
 
-    autocmd Filetype asmM6502 setlocal tabstop=4
-    autocmd Filetype asmM6502 setlocal shiftwidth=4
-    autocmd Filetype asmM6502 setlocal softtabstop=4
+    autocmd Filetype asmM6502 setlocal tabstop=8
+    autocmd Filetype asmM6502 setlocal shiftwidth=8
+    autocmd Filetype asmM6502 setlocal softtabstop=8
 
     autocmd BufNewFile,BufRead *.p8 set filetype=lua
     autocmd BufNewFile,BufRead *.nx set filetype=basic
