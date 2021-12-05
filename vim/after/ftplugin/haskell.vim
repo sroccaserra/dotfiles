@@ -1,6 +1,9 @@
-autocmd FileType haskell setlocal tabstop=2
-autocmd FileType haskell setlocal shiftwidth=2
-autocmd FileType haskell setlocal softtabstop=2
+setlocal suffixesadd+=.hs
+setlocal path+=src
+
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
 
 " usage: end the ii abrev with a <CR>
 iabbr <buffer> ii import Text.ParserCombinators.ReadP<CR>
