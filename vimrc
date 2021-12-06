@@ -320,3 +320,14 @@ digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+if has("autocmd")
+    au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+    au InsertEnter,InsertChange *
+      \ if v:insertmode == 'i' |
+      \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+      \ elseif v:insertmode == 'r' |
+      \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+      \ endif
+    au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
