@@ -62,7 +62,7 @@ let g:auto_save_in_insert_mode = 0
 let g:hardtime_default_on = 1
 
 " let g:netrw_altv = 1
-let g:netrw_banner = 0
+" let g:netrw_banner = 0
 " let g:netrw_browse_split = 4
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
@@ -279,10 +279,10 @@ cnoremap jk <esc>
 " Undo break points
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
-inoremap , ,<C-G>u
-inoremap . .<C-G>u
-inoremap ! !<C-G>u
-inoremap ? ?<C-G>u
+" inoremap , ,<C-G>u
+" inoremap . .<C-G>u
+" inoremap ! !<C-G>u
+" inoremap ? ?<C-G>u
 
 cnoremap <C-A> <Home>
 
