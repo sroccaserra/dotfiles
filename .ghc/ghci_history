@@ -1,0 +1,100 @@
+range ((1, 4), (5,6))
+range (1, 4)
+import Data.Ix
+validate1 42 >>= validate2
+return 42 <$> validate1
+42 * validate1
+42 <*> validate1
+42 <$> validate1
+42 $ validate1
+42 $ validate1 <*> validate2
+42 <$> validate1 <*> validate2
+42 <$> validate1 >>= validate2
+validate1 42 >>= validate2
+(validate1 42 >>= validate2) == Right 42
+(validate1 42 >>= validate2) = Right 42
+validate1 42 >>= validate2 == Right 42
+validate1 42 >>= validate2 = Right 42
+validate1 42 >>= validate2
+validate1 65 >>= validate2
+validate1 42 >>= validate2
+validate1 3 >>= validate2
+validate2 =<< validate1 2
+validate2 =<< validate1 65
+validate2 >>= validate1 65
+validate1 >>= validate2 65
+validate1 >=> validate2 65
+validate1 >=> validate2 $ 65
+validate1 >=> validate2 65
+(validate1 >=> validate2) 65
+(validate1 >=> validate2) 40
+(validate1 >=> validate2) 4
+validate 65
+validate 23
+validate 2
+:load Spec
+validate 2
+validate = validate1 >=> validate2
+validate = validate1 >=> validate2
+(validate1 >=> validate2) 65
+(validate1 >=> validate2) 2
+(validate1 >=> validate2) 42 = Right 42
+(validate1 >=> validate2) 42 == Right 42
+(validate1 >=> validate2) 42
+validate 4
+validate 44
+validate = validate1 >=> validate2
+validate 44
+validate 4
+validate 67
+validate 3
+validate = validate1 <=< validate2
+validate 3
+validate = validate1 <=< validate
+validate 3
+validate = validate1 =<< validate
+validate1 =<< validate
+validate1 <=< validate
+import Control.Monad
+validate1 <=< validate
+validate1 <=> validate
+validate1 >>= (validate2 4)
+(validate1 >>= (validate2 4))
+(validate1 >>= (validate2 4)
+(validate1 >>= validate2) return 5
+(validate1 >>= validate2) 5
+validate1 >>= validate2 5
+validate1 >>= validate2
+validate 51
+validate 50
+validate 10
+validate 3
+:l Spec
+do $ let x = 4  validate1 x  validate2 x  return x
+do $ let x = 4 ; validate1 x ; validate2 x ; return x
+do
+(validate1 . validate2) 56
+(validate1 >>= validate2) 56
+(validate1 <*> validate2) 56
+(validate1 >> validate2) 56
+(validate1 >> validate2) 3
+(validate1 << validate2) 3
+validate 2
+validate = validate1 >> validate2
+validate = validate1 <.> validate2
+validate = validate1 <$> validate2
+validate = validate1 <*> validate2
+validate = validate1 >>= validate2
+validate1 9
+validate1 12
+:l Spec
+validate 23
+validate 2
+:l Spec
+:l test.Spec
+validate 2
+validate 23
+:l
+:e
+:m
+:m
