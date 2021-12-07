@@ -12,6 +12,7 @@ if status --is-interactive
 
     set -u fish_user_paths ~/bin $PATH
     set -u LC_ALL en_US.UTF-8
+    set -x LC_CTYPE en_US.UTF-8
     set -u LANG en_US.UTF-8
 end
 
