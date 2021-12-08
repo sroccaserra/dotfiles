@@ -249,7 +249,7 @@ nnoremap <leader>k :cprevious<CR>zzzv
 nnoremap <leader>p :Lexplore %:p:h<CR>
 nnoremap <leader>r *Ncgn
 nnoremap <leader>s :GFiles?<CR>
-nnoremap <leader>v :r !pbpaste<CR>
+nnoremap <leader>v :r !xclip -selection clipboard -o<CR>
 nnoremap <leader>z :tabnew %<CR>
 
 nnoremap <leader><leader>c :ALECodeAction<CR>
@@ -262,7 +262,7 @@ nnoremap <leader><leader>r :ALERename<CR>
 
 vnoremap <leader><leader>c :ALECodeAction<CR>
 
-vnoremap <leader>c "*y
+vnoremap <leader>c "+y
 vnoremap <leader>p "_dP
 
 nnoremap <leader>t :TestNearest<CR>
