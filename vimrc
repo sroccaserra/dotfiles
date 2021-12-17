@@ -286,6 +286,8 @@ inoremap <C-W> <C-G>u<C-W>
 
 cnoremap <C-A> <Home>
 
+iabbr ajd <C-R>=strftime("%Y-%m-%d")<CR>
+
 autocmd VimEnter * iunmap <leader>ih
 autocmd VimEnter * iunmap <leader>ihn
 autocmd VimEnter * iunmap <leader>is
