@@ -186,10 +186,6 @@ if !exists('autocmd_loaded')
 
     autocmd FileType xml,html,html.handlebars let b:delimitMate_matchpairs = "(:),[:],{:}"
 
-    autocmd Filetype lua setlocal tabstop=2
-    autocmd Filetype lua setlocal shiftwidth=2
-    autocmd Filetype lua setlocal softtabstop=2
-
     autocmd Filetype markdown setlocal wrap
 
     autocmd BufNewFile,BufRead *.muc set filetype=mucom88
