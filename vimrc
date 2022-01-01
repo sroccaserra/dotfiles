@@ -248,7 +248,7 @@ nnoremap <leader>k :cprevious<CR>zzzv
 nnoremap <leader>p :Lexplore %:p:h<CR>
 nnoremap <leader>r *Ncgn
 nnoremap <leader>s :GFiles?<CR>
-nnoremap <leader>v :r !xclip -selection clipboard -o<CR>
+nnoremap <leader>v :set paste<CR>mvo<C-R>+<ESC>'vj:set nopaste<CR>
 nnoremap <leader>z :tabnew %<CR>
 
 nnoremap <leader><leader>c :ALECodeAction<CR>
