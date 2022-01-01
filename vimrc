@@ -25,6 +25,7 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'jgdavey/tslime.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/vim-emoji'
 Plugin 'leafgarland/typescript-vim'
 "Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'mustache/vim-mustache-handlebars'
@@ -73,6 +74,8 @@ let test#strategy = "tslime"
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
+
+set completefunc=emoji#complete
 
 packadd! matchit
 
@@ -237,7 +240,7 @@ nnoremap <leader>B vaBV
 vnoremap <leader>B aBV
 nnoremap <leader>b :Buffer<CR>
 nnoremap <Leader>c :let @+=expand('%')<CR>
-nnoremap <leader>e :Explore<CR>
+"nnoremap <leader>e :Explore<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>j :cnext<CR>zzzv
@@ -261,6 +264,9 @@ vnoremap <leader><leader>c :ALECodeAction<CR>
 vnoremap <leader>c "+y
 vnoremap <leader>p "_dP
 
+nnoremap <leader>e :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
+vnoremap <leader>e :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
+
 nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>l :TestLast<CR>
 
@@ -283,6 +289,24 @@ inoremap <C-W> <C-G>u<C-W>
 cnoremap <C-A> <Home>
 
 iabbr ajd <C-R>=strftime("%Y-%m-%d")<CR>
+
+" iabbr :bulb: 💡
+" iabbr :check: ✅
+" iabbr :circle: ⭕
+" iabbr :construction: 🚧
+" iabbr :cross: ❌
+" iabbr :crying: 😢
+" iabbr :eyes: 👀
+" iabbr :facepalm: 🤦
+" iabbr :fear: 😨
+" iabbr :fire: 🔥
+" iabbr :memo: 📝
+" iabbr :recycle: ♻️
+" iabbr :smile: 🙂
+" iabbr :surprise: 😮
+" iabbr :tada: 🎉
+" iabbr :thinking: 🤔
+" iabbr :warning: ⚠️
 
 autocmd VimEnter * iunmap <leader>ih
 autocmd VimEnter * iunmap <leader>ihn
