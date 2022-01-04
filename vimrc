@@ -186,6 +186,8 @@ if !exists('autocmd_loaded')
     autocmd Filetype z80 setlocal path+=include
 
     autocmd Filetype clojure let b:delimitMate_quotes='"'
+    autocmd Filetype scheme let b:delimitMate_quotes='"'
+    autocmd Filetype scheme setlocal lispwords+=library
 
     autocmd FileType xml,html,html.handlebars let b:delimitMate_matchpairs = "(:),[:],{:}"
 
