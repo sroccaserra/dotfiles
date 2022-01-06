@@ -6,7 +6,7 @@ task :default => [:test]
 task :test do
     raise unless home() == File.expand_path('~')
     raise unless home('') == File.expand_path('~')
-    raise unless home('developer') == File.expand_path('~/developer')
+    raise unless home('Developer') == File.expand_path('~/Developer')
 
     test_lines = ["1","22","333", "# begin sroccaserra", "44", "555", "66",
                   "# end sroccaserra", "77", "8888"]
@@ -164,7 +164,7 @@ task :git_global_config do
 end
 
 task :git_projects => [home('.vim/bundle'),
-                       home('developer')] do
+                       home('Developer')] do
     if not test_command 'git --version'
         puts 'Git is unavailable, git projects skipped.'
         return
@@ -172,8 +172,8 @@ task :git_projects => [home('.vim/bundle'),
 
     git_projects = {
         'https://github.com/gmarik/vundle.git' => home('.vim/bundle/Vundle.vim'),
-        'git@github.com:sroccaserra/emacs.git' => home('developer/emacs'),
-        'git@github.com:sroccaserra/smart-tab.git' => home('developer/smart-tab'),
+        'git@github.com:sroccaserra/emacs.git' => home('Developer/emacs'),
+        'git@github.com:sroccaserra/smart-tab.git' => home('Developer/smart-tab'),
     }
 
     git_projects.each do |url, destination_dir|
@@ -264,7 +264,7 @@ directory home('.vim/bundle')
 directory home('.vim/after/ftplugin')
 directory home('.vim/after/syntax')
 directory home('bin')
-directory home('developer')
+directory home('Developer')
 
 file '/root/.profile'
 file '/root/.bashrc'
