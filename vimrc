@@ -277,8 +277,8 @@ nnoremap <leader>l :TestLast<CR>
 
 nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<cr>
 
-inoremap jk <esc>
-cnoremap jk <esc>
+inoremap sf <esc>
+cnoremap sf <esc>
 
 " Undo break points
 inoremap <C-U> <C-G>u<C-U>
