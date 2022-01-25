@@ -26,6 +26,7 @@ Plugin 'jgdavey/tslime.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/vim-emoji'
+Plugin 'karolbelina/uxntal.vim'
 Plugin 'leafgarland/typescript-vim'
 "Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'mustache/vim-mustache-handlebars'
