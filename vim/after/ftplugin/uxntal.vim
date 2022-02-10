@@ -5,4 +5,7 @@ setlocal softtabstop=4
 setlocal iskeyword+=-
 
 let b:delimitMate_quotes=''
+
 inoremap <buffer> # X#
+nnoremap <buffer> ]m /^@<CR>
+nnoremap <buffer> [m ?^@<CR>
