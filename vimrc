@@ -56,9 +56,6 @@ let g:ale_cpp_cc_options = '-std=c++17 -Wall -pedantic'
 let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
 let g:ale_c_parse_makefile = 0
 
-let g:ale_java_javac_sourcepath = '.:src:test'
-let g:ale_java_javac_classpath = getcwd() . '/junit.jar:' . getcwd() . '/lib/junit.jar'
-
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 let g:hardtime_default_on = 1
