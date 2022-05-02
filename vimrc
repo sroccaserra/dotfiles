@@ -241,6 +241,7 @@ vnoremap <leader>B aBV
 nnoremap <leader>b :Buffer<CR>
 nnoremap <Leader>c :let @+=expand('%')<CR>
 "nnoremap <leader>e :Explore<CR>
+nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>j :cnext<CR>zzzv
