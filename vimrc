@@ -30,7 +30,7 @@ Plugin 'karolbelina/uxntal.vim'
 Plugin 'leafgarland/typescript-vim'
 "Plugin 'luochen1990/rainbow' " Rainbow Parentheses
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'ocaml/vim-ocaml'
+" Plugin 'ocaml/vim-ocaml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'samsaga2/vim-z80'
