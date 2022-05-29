@@ -12,7 +12,7 @@ endif
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin '907th/vim-auto-save'
 Plugin 'bogado/file-line'
