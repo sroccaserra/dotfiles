@@ -2,51 +2,51 @@
 " vi: set filetype=vim:
 
 set nocompatible
-filetype off
 language en_US.UTF-8
 
 if !has('win32')
     set shell=/usr/bin/env\ bash
 endif
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+call plug#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+Plug '907th/vim-auto-save'
+Plug 'bogado/file-line'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dag/vim-fish'
+Plug 'dense-analysis/ale'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'ervandew/supertab'
+Plug 'itchyny/vim-haskell-indent'
+Plug 'jgdavey/tslime.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-emoji'
+Plug 'karolbelina/uxntal.vim'
+Plug 'leafgarland/typescript-vim'
+"Plug 'luochen1990/rainbow' " Rainbow Parentheses
+Plug 'mustache/vim-mustache-handlebars'
+" Plug 'ocaml/vim-ocaml'
+Plug 'Raimondi/delimitMate'
+Plug 'samsaga2/vim-z80'
+" Plug 'takac/vim-hardtime'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fireplace' " Clojure
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/asmM6502.vim'
+Plug 'vim-test/vim-test'
 
-Plugin '907th/vim-auto-save'
-Plugin 'bogado/file-line'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'dag/vim-fish'
-Plugin 'dense-analysis/ale'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'elixir-editors/vim-elixir'
-Plugin 'ervandew/supertab'
-Plugin 'itchyny/vim-haskell-indent'
-Plugin 'jgdavey/tslime.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/vim-emoji'
-Plugin 'karolbelina/uxntal.vim'
-Plugin 'leafgarland/typescript-vim'
-"Plugin 'luochen1990/rainbow' " Rainbow Parentheses
-Plugin 'mustache/vim-mustache-handlebars'
-" Plugin 'ocaml/vim-ocaml'
-Plugin 'pangloss/vim-javascript'
-Plugin 'Raimondi/delimitMate'
-Plugin 'samsaga2/vim-z80'
-" Plugin 'takac/vim-hardtime'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-fireplace' " Clojure
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/a.vim'
-Plugin 'vim-scripts/asmM6502.vim'
-Plugin 'vim-test/vim-test'
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter'
+else
+    Plug 'pangloss/vim-javascript'
+endif
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 set rtp+=/usr/local/opt/fzf
 let g:fzf_preview_window = ''

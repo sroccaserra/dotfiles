@@ -77,6 +77,12 @@ task :linux => [:linux_useful_commands,
     File.open home('.byobu/.tmux.conf'), 'w' do |file|
         file.puts tmux_shared_conf
     end
+
+    puts
+    puts '# Vim setup'
+    sh 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    test_command 'vim --noplugin -N "+set hidden" "+syntax on" +PlugInstall +xa'
 end
 
 task :windows => [:os_independant] do
@@ -103,7 +109,6 @@ end
 
 task :useful_commands => [:git_projects] do
     test_command 'curl --version | head -n1'
-    test_command 'vim --noplugin -N "+set hidden" "+syntax on" +BundleInstall +xa'
 end
 
 task :linux_useful_commands do
@@ -163,15 +168,13 @@ task :git_global_config do
     end
 end
 
-task :git_projects => [home('.vim/bundle'),
-                       home('Developer')] do
+task :git_projects => [home('Developer')] do
     if not test_command 'git --version'
         puts 'Git is unavailable, git projects skipped.'
         return
     end
 
     git_projects = {
-        'https://github.com/gmarik/vundle.git' => home('.vim/bundle/Vundle.vim'),
         'git@github.com:sroccaserra/emacs.git' => home('Developer/emacs'),
         'git@github.com:sroccaserra/smart-tab.git' => home('Developer/smart-tab'),
     }
@@ -260,7 +263,6 @@ end
 directory home('.byobu')
 directory home('.config/fish')
 directory home('.ssh')
-directory home('.vim/bundle')
 directory home('.vim/after/ftplugin')
 directory home('.vim/after/syntax')
 directory home('bin')
