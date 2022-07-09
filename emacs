@@ -14,7 +14,7 @@
 (package-initialize)
 
 (defvar my-packages '(ace-jump-mode clojure-mode
-  dash default-text-scale dired+ editorconfig evil evil-leader evil-numbers
+  dash default-text-scale editorconfig evil evil-leader evil-numbers
   helm helm-projectile maxframe pager
   projectile racket-mode rainbow-delimiters s undo-tree zenburn-theme)
   "List of my sine qua non packages")
@@ -99,7 +99,7 @@
 ;;;;;;;;;;;
 ;; My tools
 
-(--each '("~/developer/smart-tab" "~/developer/emacs")
+(--each '("~/Developer/smart-tab" "~/Developer/emacs")
   (add-to-list 'load-path it t))
 
 (require 'smart-tab)
