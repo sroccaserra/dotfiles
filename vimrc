@@ -1,12 +1,8 @@
-" See https://github.com/skwp/dotfiles for vundle plugins & conf ideas
 " vi: set filetype=vim:
 
 set nocompatible
 language en_US.UTF-8
-
-if !has('win32')
-    set shell=/usr/bin/env\ bash
-endif
+set shell=/usr/bin/env\ bash
 
 call plug#begin()
 
