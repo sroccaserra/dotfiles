@@ -14,6 +14,7 @@ Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/vim-haskell-indent'
 Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -69,6 +70,8 @@ let test#strategy = "tslime"
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
+
+let g:go_fmt_fail_silently = 1
 
 set completefunc=emoji#complete
 
@@ -126,7 +129,7 @@ set laststatus=2        " Always want statusline
 set lazyredraw          " Don't display macro steps
 set linebreak
 set list
-set listchars=tab:>\ ,trail:•,extends:>,precedes:<,nbsp:+
+set listchars=tab:\|\ ,trail:•,extends:>,precedes:<,nbsp:+
 set mouse=a
 set nobackup
 set noswapfile
