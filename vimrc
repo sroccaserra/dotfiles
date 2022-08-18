@@ -181,6 +181,10 @@ if !exists('autocmd_loaded')
     autocmd Filetype asm setlocal tabstop=8
     autocmd Filetype asm setlocal path+=include
 
+    autocmd Filetype asmM6502 setlocal tabstop=8
+    autocmd Filetype asmM6502 setlocal shiftwidth=8
+    autocmd Filetype asmM6502 setlocal softtabstop=8
+
     autocmd Filetype z80 setlocal path+=include
 
     autocmd Filetype clojure let b:delimitMate_quotes='"'
@@ -197,10 +201,6 @@ if !exists('autocmd_loaded')
     autocmd Filetype yaml setlocal tabstop=2
     autocmd Filetype yaml setlocal shiftwidth=2
     autocmd Filetype yaml setlocal softtabstop=2
-
-    autocmd Filetype asmM6502 setlocal tabstop=8
-    autocmd Filetype asmM6502 setlocal shiftwidth=8
-    autocmd Filetype asmM6502 setlocal softtabstop=8
 
     autocmd BufNewFile,BufRead *.p8 set filetype=lua
     autocmd BufNewFile,BufRead *.nx set filetype=basic
