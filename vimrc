@@ -280,8 +280,16 @@ nnoremap <leader>l :TestLast<CR>
 
 nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<cr>
 
-inoremap sf <esc>
-cnoremap sf <esc>
+" 11 letter pairs that don't appear adjoined in either direction:
+" bq, cj, cv, fz, gq, jq, jv, jx, kq, pq and xz
+" inoremap gq <Esc>
+inoremap qg <Esc>
+" cnoremap gq <Esc>
+cnoremap qg <Esc>
+" inoremap sf <esc>
+" cnoremap sf <esc>
+" inoremap <Space><Space> <Esc>
+" cnoremap <Space><Space> <Esc>
 
 " Undo break points
 inoremap <C-U> <C-G>u<C-U>
