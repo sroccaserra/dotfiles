@@ -112,7 +112,7 @@ task :useful_commands => [:git_projects] do
 end
 
 task :linux_useful_commands do
-    test_command 'python terminal-colors -xc'
+    test_command 'python3 terminal-colors -xc'
     test_command 'wget --version | head -n1'
 end
 
