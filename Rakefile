@@ -83,6 +83,10 @@ task :linux => [:linux_useful_commands,
     sh 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     test_command 'vim --noplugin -N "+set hidden" "+syntax on" +PlugInstall +xa'
+    puts '# Neovim setup'
+    sh 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    test_command 'nvim --noplugin -N "+set hidden" "+syntax on" +PlugInstall +xa'
 end
 
 task :windows => [:os_independant] do
@@ -186,18 +190,26 @@ task :git_projects => [home('Developer')] do
     end
 end
 
-task :linux_files_to_symlink => [home('.vim/after/syntax'), home('.vim/after/ftplugin')] do
+task :linux_files_to_symlink => [
+  home('.vim/after/syntax'),
+  home('.vim/after/ftplugin'),
+  home('.config/nvim/after/syntax'),
+  home('.config/nvim/after/ftplugin'),
+  home('.config/nvim')
+] do
     files_to_symlink = {
         home('.bash_aliases') => 'bash_aliases',
         home('.inputrc') => 'inputrc',
         home('.noserc') => 'noserc',
         home('.ssh/rc') => 'ssh_rc',
+        home('.config/nvim/init.lua') => 'nvim/init.lua',
         home('.tmux.conf') => 'tmux.conf',
     }
 
     (Dir["#{pwd}/vim/after/ftplugin/*"] + Dir["#{pwd}/vim/after/syntax/*"]).each do |filename|
       relative_path = relative_to_pwd(filename)
       files_to_symlink[home('.'+relative_path)] = relative_path
+      files_to_symlink[home('.config/n'+relative_path)] = relative_path
     end
 
     files_to_symlink.each do |link_path, value|
@@ -260,9 +272,12 @@ end
 
 directory home('.byobu')
 directory home('.config/fish')
+directory home('.config/nvim')
 directory home('.ssh')
 directory home('.vim/after/ftplugin')
 directory home('.vim/after/syntax')
+directory home('.config/nvim/after/ftplugin')
+directory home('.config/nvim/after/syntax')
 directory home('bin')
 directory home('Developer')
 

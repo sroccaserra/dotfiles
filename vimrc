@@ -10,11 +10,9 @@ Plug '907th/vim-auto-save'
 Plug 'bogado/file-line'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish'
-Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/vim-haskell-indent'
 Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -36,8 +34,13 @@ Plug 'vim-scripts/asmM6502.vim'
 Plug 'vim-test/vim-test'
 
 if has('nvim')
-    Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 else
+    Plug 'dense-analysis/ale'
+    Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
     Plug 'pangloss/vim-javascript'
 endif
 
@@ -46,13 +49,15 @@ call plug#end()
 set rtp+=/usr/local/opt/fzf
 let g:fzf_preview_window = ''
 
-let g:ale_linters = { 'c': ['clang'], 'cpp': ['clang', 'g++'], 'elixir': ['elixir-ls'], 'go': ['gopls'] }
-let g:ale_fixers = { 'elixir': ['mix_format'] }
+if !has('nvim')
+    let g:ale_linters = { 'c': ['clang'], 'cpp': ['clang', 'g++'], 'elixir': ['elixir-ls'], 'go': ['gopls'] }
+    let g:ale_fixers = { 'elixir': ['mix_format'] }
 
 
-let g:ale_cpp_cc_options = '-std=c++17 -Wall -pedantic'
-let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
-let g:ale_c_parse_makefile = 0
+    let g:ale_cpp_cc_options = '-std=c++17 -Wall -pedantic'
+    let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
+    let g:ale_c_parse_makefile = 0
+endif
 
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
@@ -187,6 +192,11 @@ if !exists('autocmd_loaded')
 
     autocmd Filetype z80 setlocal path+=include
 
+    if has('nvim')
+        autocmd BufNewFile,BufRead *.fs setlocal filetype=forth
+        autocmd Filetype go setlocal noexpandtab
+    endif
+
     autocmd Filetype clojure let b:delimitMate_quotes='"'
     autocmd Filetype scheme let b:delimitMate_quotes='"'
     autocmd Filetype scheme setlocal lispwords+=library
@@ -256,15 +266,31 @@ nnoremap <leader>s :GFiles?<CR>
 nnoremap <leader>v :set paste<CR>mvo<C-R>+<ESC>'vj:set nopaste<CR>
 nnoremap <leader>z :tabnew %<CR>
 
-nnoremap <leader><leader>c :ALECodeAction<CR>
-nnoremap <leader><leader>d :ALEGoToDefinition<CR>
-nnoremap <leader><leader>D :ALEDetail<CR>
-nnoremap <leader><leader>F :ALEFindReferences -relative<CR>
-nnoremap <leader><leader>f :ALEFix<CR>
-nnoremap <leader><leader>n :ALENext<CR>
-nnoremap <leader><leader>r :ALERename<CR>
+if has('nvim')
+    nnoremap <leader><leader>g <cmd>Telescope live_grep<cr>
 
-vnoremap <leader><leader>c :ALECodeAction<CR>
+    nnoremap <leader><leader>c :lua vim.lsp.buf.code_action()<CR>
+    vnoremap <leader><leader>c :lua vim.lsp.buf.code_action()<CR>
+    nnoremap <leader><leader>D :lua vim.diagnostic.open_float()<CR>
+    nnoremap <leader><leader>d :lua vim.lsp.buf.definition()<CR>
+    nnoremap <leader><leader>F :lua vim.lsp.buf.references()<CR>
+    nnoremap <leader><leader>f :lua vim.lsp.buf.formatting()<CR>
+    nnoremap <leader><leader>h :lua vim.lsp.buf.hover()<CR>
+    nnoremap <leader><leader>i :lua vim.lsp.buf.implementation()<CR>
+    nnoremap <leader><leader>n :lua vim.diagnostic.goto_next()<CR>
+    nnoremap <leader><leader>r :lua vim.lsp.buf.rename()<CR>
+    nnoremap <leader><leader>s :lua vim.lsp.buf.signature_help()<CR>
+else
+    nnoremap <leader><leader>c :ALECodeAction<CR>
+    nnoremap <leader><leader>d :ALEGoToDefinition<CR>
+    nnoremap <leader><leader>D :ALEDetail<CR>
+    nnoremap <leader><leader>F :ALEFindReferences -relative<CR>
+    nnoremap <leader><leader>f :ALEFix<CR>
+    nnoremap <leader><leader>n :ALENext<CR>
+    nnoremap <leader><leader>r :ALERename<CR>
+
+    vnoremap <leader><leader>c :ALECodeAction<CR>
+endif
 
 vnoremap <leader>c "+y
 vnoremap <leader>p "_dP
