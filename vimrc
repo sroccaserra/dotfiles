@@ -9,11 +9,11 @@ call plug#begin()
 Plug '907th/vim-auto-save'
 Plug 'bogado/file-line'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dag/vim-fish'
+Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elixir-editors/vim-elixir'
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'ervandew/supertab'
-Plug 'itchyny/vim-haskell-indent'
+Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
 Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -26,7 +26,7 @@ Plug 'samsaga2/vim-z80'
 " Plug 'takac/vim-hardtime'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fireplace' " Clojure
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/a.vim'
@@ -40,8 +40,8 @@ if has('nvim')
     Plug 'nvim-telescope/telescope.nvim'
 else
     Plug 'dense-analysis/ale'
-    Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
-    Plug 'pangloss/vim-javascript'
+    Plug 'fatih/vim-go', { 'for': 'go' } ", { 'do': ':GoUpdateBinaries' }
+    Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 endif
 
 call plug#end()
