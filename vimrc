@@ -13,6 +13,7 @@ Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'ervandew/supertab'
+Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
 Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -82,17 +83,23 @@ set completefunc=emoji#complete
 
 packadd! matchit
 
-if !exists('colorscheme_autocomd_loaded')
-    let colorscheme_autocmd_loaded = 1
-    augroup MyColors
-        autocmd!
-        autocmd ColorScheme *
-                    \ highlight ColorColumn ctermbg=236 guibg=#393939 |
-                    \ highlight Folded ctermbg=235 guibg=#393939
-    augroup END
+if has('nvim')
+    colorscheme gruvbox
+else
+    let macvim_skip_colorscheme=1
+    if !exists('colorscheme_autocomd_loaded')
+        let colorscheme_autocmd_loaded = 1
+        augroup MyColors
+            autocmd!
+            autocmd ColorScheme *
+                        \ highlight ColorColumn ctermbg=236 guibg=#393939 |
+                        \ highlight Folded ctermbg=235 guibg=#393939 |
+                        \ highlight clear CursorLineNr |
+                        \ highlight CursorLineNr ctermbg=darkgray
+        augroup END
+    endif
+    colorscheme default
 endif
-let macvim_skip_colorscheme=1
-colorscheme default
 set background=dark
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
