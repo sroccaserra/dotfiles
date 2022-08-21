@@ -200,6 +200,8 @@ if !exists('autocmd_loaded')
         autocmd Filetype go setlocal noexpandtab
     endif
 
+    autocmd Filetype help nnoremap <buffer> gd <C-]>
+
     autocmd Filetype clojure let b:delimitMate_quotes='"'
     autocmd Filetype scheme let b:delimitMate_quotes='"'
     autocmd Filetype scheme setlocal lispwords+=library
@@ -247,6 +249,7 @@ nnoremap J mzJ`z
 nnoremap <C-D> <C-D>zz
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+nnoremap ù <C-^>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -307,10 +310,11 @@ nnoremap <leader>l :TestLast<CR>
 " nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
 " nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
 
-nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<cr>
+nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<CR>
 
 " 11 letter pairs that don't appear adjoined in either direction:
 " bq, cj, cv, fz, gq, jq, jv, jx, kq, pq and xz
+" Or: just use Ctrl-[ (on azerty keyboard, Ctrl-^ acts like Ctrl-[ or <Esc>)
 " inoremap gq <Esc>
 inoremap qg <Esc>
 " cnoremap gq <Esc>
