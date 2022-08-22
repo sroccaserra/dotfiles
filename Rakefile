@@ -141,6 +141,7 @@ task :git_global_config do
     git_settings = {
        'color.ui' => 'auto',
        'branch.autosetuprebase' => 'always',
+       'init.defaultBranch' => 'main',
        'pull.rebase' => 'true',
        'push.default' => 'tracking',
        'log.date' => 'iso',
