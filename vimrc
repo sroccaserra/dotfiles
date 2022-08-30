@@ -316,9 +316,9 @@ nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<CR>
 " bq, cj, cv, fz, gq, jq, jv, jx, kq, pq and xz
 " Or: just use Ctrl-[ (on azerty keyboard, Ctrl-^ acts like Ctrl-[ or <Esc>)
 " inoremap gq <Esc>
-inoremap qg <Esc>
+" inoremap qg <Esc>
 " cnoremap gq <Esc>
-cnoremap qg <Esc>
+" cnoremap qg <Esc>
 " inoremap sf <esc>
 " cnoremap sf <esc>
 " inoremap <Space><Space> <Esc>
