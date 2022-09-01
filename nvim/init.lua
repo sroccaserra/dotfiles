@@ -1,8 +1,8 @@
 vim.cmd [[ source ~/.vimrc ]]
 
-require('telescope').setup{
+require('telescope').setup {
   defaults = {
-    file_ignore_patterns = {"package-lock.json"},
+    file_ignore_patterns = { "package-lock.json" },
     mappings = {
       i = {
         ["<C-j>"] = "move_selection_next",
@@ -14,7 +14,7 @@ require('telescope').setup{
 
 -- LSP Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -28,7 +28,7 @@ local on_attach = function(_, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -51,8 +51,8 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-for _, server_name in ipairs({'gopls', 'tsserver', 'hls', 'pyright'}) do
-  require'lspconfig'[server_name].setup{
+for _, server_name in ipairs({ 'gopls', 'tsserver', 'hls', 'pyright' }) do
+  require 'lspconfig'[server_name].setup {
     on_attach = on_attach,
     flags = lsp_flags,
   }
@@ -83,7 +83,7 @@ require 'lspconfig'.sumneko_lua.setup {
   },
 }
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = { "go", "haskell", "java", "javascript", "lua", "python", "ruby", "typescript", "vim" },
   sync_install = false,
   -- auto_install = true,
