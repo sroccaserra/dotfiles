@@ -261,7 +261,14 @@ vnoremap <leader>B aBV
 nnoremap <leader>b :Buffer<CR>
 nnoremap <Leader>c :let @+=expand('%')<CR>
 "nnoremap <leader>e :Explore<CR>
-nnoremap <leader>f :Files<CR>
+if has('nvim')
+    nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+else
+    nnoremap <leader>f :Files<CR>
+endif
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>j :cnext<CR>zzzv
