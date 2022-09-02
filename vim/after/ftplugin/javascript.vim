@@ -18,19 +18,15 @@ setlocal include=\\<require(.\\zs[^'\\"]\\+\\ze
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = { 'javascript': ['eslint', 'tsserver'] }
 
-function! AlternateJSFile()
+function! FzfAlternateFileQuery()
   let fileName = substitute(expand('%:r'), '.*/', '', '')
-  let testSuffixRegex = '[_-]test$'
-  return substitute(fileName, testSuffixRegex, '', '')
-endfunction
-
-function! AlternateJSTestFile()
-  let fileName = substitute(expand('%:r'), '.*/', '', '')
-  let testSuffixRegex = '[_-]test$'
+  let testSuffixRegex = '[_-]\?[tT]est$'
   let testFilePattern = '"'''.fileName.' ''test"'
   return (fileName =~ testSuffixRegex) ? substitute(fileName, testSuffixRegex, '', '') : testFilePattern
 endfunction
 
-noremap <buffer> <leader>a :call fzf#vim#gitfiles('.', {'options': '--query '.AlternateJSFile()})<CR>
+if !has('nvim')
+  noremap <buffer> <leader>a :call fzf#vim#gitfiles('.', {'options': '--query '.FzfAlternateFileQuery()})<CR>
+endif
 noremap <buffer> <leader>z :g/^\s*it\>/normal jvaBzf<CR>
-noremap K :ALEHover<CR>
+noremap <buffer> K :ALEHover<CR>
