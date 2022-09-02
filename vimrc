@@ -39,6 +39,7 @@ if has('nvim')
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'ThePrimeagen/harpoon'
 else
     Plug 'dense-analysis/ale'
     Plug 'fatih/vim-go', { 'for': 'go' } ", { 'do': ':GoUpdateBinaries' }
@@ -269,30 +270,37 @@ if has('nvim')
 else
     nnoremap <leader>f :Files<CR>
 endif
-nnoremap <leader>g :GFiles<CR>
-nnoremap <leader>h :History<CR>
-nnoremap <leader>j :cnext<CR>zzzv
-nnoremap <leader>k :cprevious<CR>zzzv
+nnoremap <leader>zg :GFiles<CR>
+nnoremap <leader>zh :History<CR>
+" nnoremap <leader>j :cnext<CR>zzzv
+" nnoremap <leader>k :cprevious<CR>zzzv
 nnoremap <leader>p :Lexplore %:p:h<CR>
 nnoremap <leader>r *Ncgn
 nnoremap <leader>s :GFiles?<CR>
 nnoremap <leader>v :set paste<CR>mvo<C-R>+<ESC>'vj:set nopaste<CR>
-nnoremap <leader>z :tabnew %<CR>
+" nnoremap <leader>z :tabnew %<CR>
 
 if has('nvim')
     nnoremap <leader><leader>g <cmd>Telescope live_grep<cr>
 
-    nnoremap <leader><leader>c :lua vim.lsp.buf.code_action()<CR>
-    vnoremap <leader><leader>c :lua vim.lsp.buf.code_action()<CR>
-    nnoremap <leader><leader>D :lua vim.diagnostic.open_float()<CR>
-    nnoremap <leader><leader>d :lua vim.lsp.buf.definition()<CR>
-    nnoremap <leader><leader>F :lua vim.lsp.buf.references()<CR>
-    nnoremap <leader><leader>f :lua vim.lsp.buf.formatting()<CR>
-    nnoremap <leader><leader>h :lua vim.lsp.buf.hover()<CR>
-    nnoremap <leader><leader>i :lua vim.lsp.buf.implementation()<CR>
-    nnoremap <leader><leader>n :lua vim.diagnostic.goto_next()<CR>
-    nnoremap <leader><leader>r :lua vim.lsp.buf.rename()<CR>
-    nnoremap <leader><leader>s :lua vim.lsp.buf.signature_help()<CR>
+    nnoremap <leader><leader>c <Cmd>lua vim.lsp.buf.code_action()<CR>
+    vnoremap <leader><leader>c <Cmd>lua vim.lsp.buf.code_action()<CR>
+    nnoremap <leader><leader>D <Cmd>lua vim.diagnostic.open_float()<CR>
+    nnoremap <leader><leader>d <Cmd>lua vim.lsp.buf.definition()<CR>
+    nnoremap <leader><leader>F <Cmd>lua vim.lsp.buf.references()<CR>
+    nnoremap <leader><leader>f <Cmd>lua vim.lsp.buf.formatting()<CR>
+    nnoremap <leader><leader>h <Cmd>lua vim.lsp.buf.hover()<CR>
+    nnoremap <leader><leader>i <Cmd>lua vim.lsp.buf.implementation()<CR>
+    nnoremap <leader><leader>n <Cmd>lua vim.diagnostic.goto_next()<CR>
+    nnoremap <leader><leader>r <Cmd>lua vim.lsp.buf.rename()<CR>
+    nnoremap <leader><leader>s <Cmd>lua vim.lsp.buf.signature_help()<CR>
+
+    nnoremap <silent> <leader>h <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
+    nnoremap <silent> <leader>a <Cmd>lua require("harpoon.mark").add_file()<CR>
+    nnoremap <silent> <leader>j <Cmd>lua require("harpoon.ui").nav_file(1)<CR>
+    nnoremap <silent> <leader>k <Cmd>lua require("harpoon.ui").nav_file(2)<CR>
+    nnoremap <silent> <leader>l <Cmd>lua require("harpoon.ui").nav_file(3)<CR>
+    nnoremap <silent> <leader>m <Cmd>lua require("harpoon.ui").nav_file(4)<CR>
 else
     nnoremap <leader><leader>c :ALECodeAction<CR>
     nnoremap <leader><leader>d :ALEGoToDefinition<CR>
@@ -311,8 +319,8 @@ vnoremap <leader>p "_dP
 nnoremap <leader>e :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 vnoremap <leader>e :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 
-nnoremap <leader>t :TestNearest<CR>
-nnoremap <leader>l :TestLast<CR>
+nnoremap <leader>tt :TestNearest<CR>
+nnoremap <leader>tl :TestLast<CR>
 
 " nnoremap <leader>t :let LAST_TEST_FILE=expand('%')<CR>:silent make % <bar> redraw!<CR>:cwindow<CR>
 " nnoremap <leader>l :execute ':make ' . LAST_TEST_FILE<CR>
