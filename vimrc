@@ -250,7 +250,7 @@ nnoremap J mzJ`z
 nnoremap <C-D> <C-D>zz
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-nnoremap ù <C-^>
+nnoremap ù i<CR><Esc>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
