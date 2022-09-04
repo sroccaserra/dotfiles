@@ -347,6 +347,8 @@ inoremap <C-W> <C-G>u<C-W>
 " inoremap ! !<C-G>u
 " inoremap ? ?<C-G>u
 
+inoremap <silent> <C-l> <Nop>
+
 cnoremap <C-A> <Home>
 
 iabbr ajd <C-R>=strftime("%Y-%m-%d")<CR>
