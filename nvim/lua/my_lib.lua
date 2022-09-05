@@ -1,4 +1,6 @@
-local function find_file_or_test_file()
+local M = {}
+
+function M.find_file_or_test_file()
   local filename_with_no_ext = vim.fn.expand('%:r'):gsub('.*/', '')
   local test_file_pattern = '[-_]?[tT]est'
 
@@ -12,6 +14,4 @@ local function find_file_or_test_file()
   vim.fn['fzf#vim#files']('.', { source = "rg -l ''", options = '--query "' .. fuzzy_query ..'"' })
 end
 
-return {
-  fn = find_file_or_test_file
-}
+return M
