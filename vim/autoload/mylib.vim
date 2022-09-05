@@ -1,12 +1,15 @@
-function mylib#FindFileOrTestFile()
-    let filenameWithNoExt = substitute(expand('%:r'), '.*/', '', '')
-    let testFilePattern = '[_-]\?[tT]est$'
+vim9script
 
+def mylib#FindFileOrTestFile(): void
+    const filenameWithNoExt = substitute(expand('%:r'), '.*/', '', '')
+    const testFilePattern = '[_-]\?[tT]est$'
+
+    var fuzzyQuery: string
     if (filenameWithNoExt =~ testFilePattern)
-        let fuzzyQuery = '''' . substitute(filenameWithNoExt, testFilePattern, '', '')
+        fuzzyQuery = "'" .. substitute(filenameWithNoExt, testFilePattern, '', '')
     else
-        let fuzzyQuery = '''' . filenameWithNoExt . ' ''test'
+        fuzzyQuery = "'" .. filenameWithNoExt .. " 'test"
     endif
 
-    call fzf#vim#files('.', { 'source': 'rg --files', 'options': '--query "' . fuzzyQuery . '"'})
-endfunction
+    call fzf#vim#files('.', { source: 'rg --files', options: '--query "' .. fuzzyQuery .. '"' })
+enddef
