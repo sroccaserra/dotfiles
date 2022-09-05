@@ -18,15 +18,19 @@ setlocal include=\\<require(.\\zs[^'\\"]\\+\\ze
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linters = { 'javascript': ['eslint', 'tsserver'] }
 
-function! FzfAlternateFileQuery()
-  let fileName = substitute(expand('%:r'), '.*/', '', '')
-  let testSuffixRegex = '[_-]\?[tT]est$'
-  let testFilePattern = '"'''.fileName.' ''test"'
-  return (fileName =~ testSuffixRegex) ? substitute(fileName, testSuffixRegex, '', '') : testFilePattern
+function! FindFileOrTestFile()
+    let fileName = substitute(expand('%:r'), '.*/', '', '')
+    let testSuffixRegex = '[_-]\?[tT]est$'
+    if (fileName =~ testSuffixRegex)
+        let fuzzyQuery = '''' . substitute(fileName, testSuffixRegex, '', '')
+    else
+        let fuzzyQuery = '''' . fileName . ' ''test'
+    endif
+    call fzf#vim#files('.', { 'source': "rg -l ''", 'options': '--query "' . fuzzyQuery . '"'})
 endfunction
 
 if !has('nvim')
-  noremap <buffer> <leader>a :call fzf#vim#gitfiles('.', {'options': '--query '.FzfAlternateFileQuery()})<CR>
+    noremap <buffer> <leader>a :call FindFileOrTestFile()<CR>
 endif
 noremap <buffer> <leader>z :g/^\s*it\>/normal jvaBzf<CR>
 noremap <buffer> K :ALEHover<CR>
