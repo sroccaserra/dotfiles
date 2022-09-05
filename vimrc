@@ -49,6 +49,7 @@ endif
 call plug#end()
 
 set rtp+=/usr/local/opt/fzf
+set rtp+=$HOME/dotfiles/vim
 
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
