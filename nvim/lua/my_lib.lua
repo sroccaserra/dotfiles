@@ -11,7 +11,7 @@ function M.find_file_or_test_file()
     fuzzy_query = "'" .. filename_with_no_ext .. " 'test"
   end
 
-  vim.fn['fzf#vim#files']('.', { source = "rg -l ''", options = '--query "' .. fuzzy_query ..'"' })
+  vim.fn['fzf#vim#files']('.', { source = 'rg --files', options = '--query "' .. fuzzy_query .. '"' })
 end
 
 return M

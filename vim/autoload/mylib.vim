@@ -8,5 +8,5 @@ function mylib#FindFileOrTestFile()
         let fuzzyQuery = '''' . filenameWithNoExt . ' ''test'
     endif
 
-    call fzf#vim#files('.', { 'source': "rg -l ''", 'options': '--query "' . fuzzyQuery . '"'})
+    call fzf#vim#files('.', { 'source': 'rg --files', 'options': '--query "' . fuzzyQuery . '"'})
 endfunction

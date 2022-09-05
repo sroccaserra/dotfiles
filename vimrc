@@ -281,7 +281,7 @@ if has('nvim')
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 endif
-nnoremap <leader>zf :call fzf#vim#files('.', { 'source': "rg -l ''" })<CR>
+nnoremap <leader>zf :call fzf#vim#files('.', { 'source': 'rg --files ' })<CR>
 nnoremap <leader>zg :GFiles<CR>
 nnoremap <leader>zh :History<CR>
 " nnoremap <leader>j :cnext<CR>zzzv
