@@ -263,7 +263,6 @@ nnoremap J mzJ`z
 nnoremap <C-D> <C-D>zz
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-nnoremap ù i<CR><Esc>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -342,6 +341,8 @@ nnoremap <leader>' :execute 'buffer' getpos("'" . nr2char(getchar()) )[0]<CR>
 " 11 letter pairs that don't appear adjoined in either direction:
 " bq, cj, cv, fz, gq, jq, jv, jx, kq, pq and xz
 " Or: just use Ctrl-[ (on azerty keyboard, Ctrl-^ acts like Ctrl-[ or <Esc>)
+inoremap ùù <Esc>
+cnoremap ùù <Esc>
 " inoremap gq <Esc>
 " inoremap qg <Esc>
 " cnoremap gq <Esc>
