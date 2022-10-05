@@ -199,9 +199,9 @@ set path+=src
 if !exists('autocmd_loaded')
     let autocmd_loaded = 1
 
-    autocmd Filetype asm setlocal shiftwidth=8
-    autocmd Filetype asm setlocal softtabstop=8
-    autocmd Filetype asm setlocal tabstop=8
+    autocmd Filetype asm setlocal shiftwidth=4
+    autocmd Filetype asm setlocal softtabstop=4
+    autocmd Filetype asm setlocal tabstop=4
     autocmd Filetype asm setlocal path+=include
 
     autocmd Filetype asmM6502 setlocal tabstop=8
