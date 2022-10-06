@@ -45,6 +45,17 @@ hook global InsertChar ù %{ try %{
 map global normal '#' :comment-line<ret>
 
 ##
+# Hooks
+
+hook global ModeChange .*:insert:.* %{ try %{
+    write
+} }
+
+hook global NormalIdle .* %{ try %{
+    write
+} }
+
+##
 # Tools
 
 set-option global grepcmd 'rg --vimgrep'
