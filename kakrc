@@ -5,6 +5,7 @@ colorscheme gruvbox-dark
 
 map global insert <c-left> '<a-;>b'
 map global insert <c-right> '<a-;>e'
+map global normal '#' :comment-line<ret>
 
 set-face global InsertCursor default,green+B
 
