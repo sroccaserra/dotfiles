@@ -25,7 +25,7 @@ hook global WinCreate ^[^*]+$ %{
 hook global InsertChar ù %{ try %{
       exec -draft hH <a-k>ùù<ret> d
       exec -with-hooks <esc>
-}}
+} }
 
 hook global RegisterModified '/' %{
     add-highlighter -override global/search regex "%reg{/}" 0:+u
@@ -33,4 +33,28 @@ hook global RegisterModified '/' %{
 
 hook global WinSetOption filetype=markdown %{
     add-highlighter window/ wrap -word
+}
+
+evaluate-commands %sh{
+    if [ -n "$SSH_TTY" ]; then
+        copy='printf "\033]52;;%s\033\\" $(base64 | tr -d "\n") > /dev/tty'
+        paste='printf "paste unsupported through ssh"'
+        backend="OSC 52"
+    else
+        case $(uname) in
+            Linux)
+                if [ -n "$WAYLAND_DISPLAY" ]; then
+                    copy="wl-copy -p"; paste="wl-paste -p"; backend=Wayland
+                else
+                    copy="xclip -i"; paste="xclip -o"; backend=X11
+                fi
+                ;;
+            Darwin)  copy="pbcopy"; paste="pbpaste"; backend=OSX ;;
+        esac
+    fi
+    printf "map global user -docstring 'paste (after) from clipboard' p '<a-!>%s<ret>'\n" "$paste"
+    printf "map global user -docstring 'paste (before) from clipboard' P '!%s<ret>'\n" "$paste"
+    printf "map global user -docstring 'yank to primary' y '<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s primary}<ret>'\n" "$copy" "$backend"
+    printf "map global user -docstring 'yank to clipboard' Y '<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s clipboard}<ret>'\n" "$copy -selection clipboard" "$backend"
+    printf "map global user -docstring 'replace from clipboard' R '|%s<ret>'\n" "$paste"
 }
