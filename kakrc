@@ -36,6 +36,9 @@ hook global WinSetOption filetype=markdown %{
     add-highlighter window/ wrap -word
 }
 
+set-option global grepcmd 'rg --vimgrep'
+hook global -always BufOpenFifo '\*grep\*' %{ map global user j ':grep-next-match<ret>' }
+
 evaluate-commands %sh{
     if [ -n "$SSH_TTY" ]; then
         copy='printf "\033]52;;%s\033\\" $(base64 | tr -d "\n") > /dev/tty'
