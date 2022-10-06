@@ -1,5 +1,5 @@
 add-highlighter global/ show-matching
-add-highlighter global/ show-whitespaces
+add-highlighter global/trailing-whitespace regex '\h+$' 0:Error
 
 colorscheme gruvbox-dark
 
