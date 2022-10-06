@@ -1,4 +1,5 @@
 add-highlighter global/ show-matching
+add-highlighter global/ show-whitespaces
 
 colorscheme gruvbox-dark
 
@@ -23,9 +24,13 @@ hook global WinCreate ^[^*]+$ %{
 
 hook global InsertChar ù %{ try %{
       exec -draft hH <a-k>ùù<ret> d
-      exec <esc>
+      exec -with-hooks <esc>
 }}
 
 hook global RegisterModified '/' %{
     add-highlighter -override global/search regex "%reg{/}" 0:+u
+}
+
+hook global WinSetOption filetype=markdown %{
+    add-highlighter window/ wrap -word
 }
