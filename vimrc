@@ -269,7 +269,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 nnoremap ù :noh<CR>
-nnoremap <BS> <C-^>
+nnoremap ga <C-^>
 nnoremap <leader>/ :History/<CR>
 nnoremap <leader>: :History:<CR>
 nnoremap <leader>B vaBV
