@@ -196,7 +196,8 @@ task :linux_files_to_symlink => [
   home('.vim/after/ftplugin'),
   home('.config/nvim/after/syntax'),
   home('.config/nvim/after/ftplugin'),
-  home('.config/nvim')
+  home('.config/nvim'),
+  home('.config/kak'),
 ] do
     files_to_symlink = {
         home('.bash_aliases') => 'bash_aliases',
@@ -204,6 +205,7 @@ task :linux_files_to_symlink => [
         home('.noserc') => 'noserc',
         home('.ssh/rc') => 'ssh_rc',
         home('.config/nvim/init.lua') => 'nvim/init.lua',
+        home('.config/kak/kakrc') => 'kakrc',
         home('.tmux.conf') => 'tmux.conf',
     }
 
@@ -273,12 +275,13 @@ end
 
 directory home('.byobu')
 directory home('.config/fish')
-directory home('.config/nvim')
 directory home('.ssh')
 directory home('.vim/after/ftplugin')
 directory home('.vim/after/syntax')
+directory home('.config/nvim')
 directory home('.config/nvim/after/ftplugin')
 directory home('.config/nvim/after/syntax')
+directory home('.config/kak')
 directory home('bin')
 directory home('Developer')
 
