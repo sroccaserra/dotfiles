@@ -24,7 +24,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'Raimondi/delimitMate'
 Plug 'samsaga2/vim-z80'
-" Plug 'takac/vim-hardtime'
+Plug 'takac/vim-hardtime'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
