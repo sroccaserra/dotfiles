@@ -97,10 +97,7 @@ let g:go_fmt_fail_silently = 1
 
 packadd! matchit
 
-if has('nvim')
-    colorscheme gruvbox
-else
-    let macvim_skip_colorscheme=1
+if !has('nvim')
     if !exists('colorscheme_autocomd_loaded')
         let colorscheme_autocmd_loaded = 1
         augroup MyColors
@@ -109,12 +106,19 @@ else
                         \ highlight ColorColumn ctermbg=236 guibg=#393939 |
                         \ highlight Folded ctermbg=235 guibg=#393939 |
                         \ highlight clear CursorLineNr |
-                        \ highlight CursorLineNr ctermbg=darkgray
+                        \ highlight CursorLineNr ctermbg=darkgray guibg=#393939
         augroup END
     endif
-    colorscheme default
+    colorscheme ron
+else
+    set termguicolors
+    colorscheme gruvbox
+    highlight iCursor guibg=green
+    highlight rCursor guibg=yellow
+    set guicursor=n-v-c-sm:block-reverse
+    set guicursor+=i-ci-ve:block-blinkwait10-blinkon10-blinkof10-iCursor
+    set guicursor+=r-cr-o:block-rCursor
 endif
-set background=dark
 
 set grepprg=rg\ --vimgrep\ --sort-files\ --max-columns\ 120
 
