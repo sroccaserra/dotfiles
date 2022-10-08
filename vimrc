@@ -198,6 +198,7 @@ set path+=src
 
 if !exists('autocmd_loaded')
     let autocmd_loaded = 1
+    autocmd InsertEnter * setlocal nohlsearch
 
     autocmd Filetype asm setlocal shiftwidth=4
     autocmd Filetype asm setlocal softtabstop=4
@@ -259,7 +260,6 @@ syntax on
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap * *zzzv
 nnoremap J mzJ`z
 nnoremap <C-D> <C-D>zz
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
@@ -401,6 +401,19 @@ xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 function! ExecuteMacroOverVisualRange()
     echo "@".getcmdline()
     execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+nnoremap * :call SetCWordInSearch()<CR>
+function! SetCWordInSearch()
+    let l:wordUnderCursor = expand("<cword>")
+    if len(l:wordUnderCursor) == 0
+        echohl ErrorMsg | echo "No word under cursor" | echohl None
+        return
+    endif
+    let searchExpression = "\\<" . l:wordUnderCursor . "\\>"
+    let @/ = searchExpression
+    call feedkeys(":setlocal hlsearch\r", 'n')
+    call feedkeys(":echo '" . searchExpression . "'\r", 'n')
 endfunction
 
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
