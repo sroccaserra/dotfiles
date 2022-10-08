@@ -18,7 +18,6 @@ Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
 Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-emoji'
 Plug 'karolbelina/uxntal.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'mustache/vim-mustache-handlebars'
@@ -95,8 +94,6 @@ let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
 
 let g:go_fmt_fail_silently = 1
-
-set completefunc=emoji#complete
 
 packadd! matchit
 
@@ -333,9 +330,6 @@ endif
 
 vnoremap <leader>c "+y
 vnoremap <leader>p "_dP
-
-nnoremap <leader>e :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
-vnoremap <leader>e :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 
 nnoremap <leader>tt :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
