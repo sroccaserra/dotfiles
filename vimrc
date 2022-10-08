@@ -34,6 +34,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/asmM6502.vim'
 Plug 'vim-test/vim-test'
+Plug 'wincent/terminus'
 
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -401,24 +402,7 @@ endfunction
 
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
-" Add Vim cursor change for xterm
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
-
-" Add Vim cursor change for Gnome
-if has("autocmd")
-    au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
-    au InsertEnter,InsertChange *
-      \ if v:insertmode == 'i' |
-      \   silent execute '!echo -ne "\e[5 q"' | redraw! |
-      \ elseif v:insertmode == 'r' |
-      \   silent execute '!echo -ne "\e[3 q"' | redraw! |
-      \ endif
-    au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-endif
-
-" Enable Vim Insert mode Ctrl + arrows in tmux
+" Enable Vim insert mode ctrl + arrows in tmux
 if (&term =~ '^screen') || (&term =~ '^tmux')
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
