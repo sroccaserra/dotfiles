@@ -98,18 +98,14 @@ let g:go_fmt_fail_silently = 1
 packadd! matchit
 
 if !has('nvim')
-    if !exists('colorscheme_autocomd_loaded')
-        let colorscheme_autocmd_loaded = 1
-        augroup MyColors
-            autocmd!
-            autocmd ColorScheme *
-                        \ highlight ColorColumn ctermbg=236 guibg=#393939 |
-                        \ highlight Folded ctermbg=235 guibg=#393939 |
-                        \ highlight clear CursorLineNr |
-                        \ highlight CursorLineNr ctermbg=darkgray guibg=#393939
-        augroup END
-    endif
-    colorscheme ron
+    set background=dark
+    " let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    " let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+    " set termguicolors
+    highlight ColorColumn ctermbg=236 guibg=#393939
+    highlight Folded ctermbg=235 guibg=#393939
+    highlight clear CursorLineNr
+    highlight CursorLineNr ctermbg=darkgray guibg=#393939
 else
     set termguicolors
     colorscheme gruvbox
