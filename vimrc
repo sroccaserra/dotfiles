@@ -372,24 +372,6 @@ cnoremap <C-A> <Home>
 
 iabbr ajd <C-R>=strftime("%Y-%m-%d")<CR>
 
-" iabbr :bulb: 💡
-" iabbr :check: ✅
-" iabbr :circle: ⭕
-" iabbr :construction: 🚧
-" iabbr :cross: ❌
-" iabbr :crying: 😢
-" iabbr :eyes: 👀
-" iabbr :facepalm: 🤦
-" iabbr :fear: 😨
-" iabbr :fire: 🔥
-" iabbr :memo: 📝
-" iabbr :recycle: ♻️
-" iabbr :smile: 🙂
-" iabbr :surprise: 😮
-" iabbr :tada: 🎉
-" iabbr :thinking: 🤔
-" iabbr :warning: ⚠️
-
 autocmd VimEnter * iunmap <leader>ih
 autocmd VimEnter * iunmap <leader>ihn
 autocmd VimEnter * iunmap <leader>is
@@ -419,25 +401,12 @@ endfunction
 
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
 
-" if &term =~ '256color'
-"     " Disable Background Color Erase (BCE) so that color schemes
-"     " work properly when Vim is used inside tmux and GNU screen.
-"     " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
-"     set t_ut=
-" endif
-" 
-" if has("gui_running")
-"     if has("win32")
-"         autocmd GUIEnter * simalt ~n
-"     else
-"         set lines=999 columns=999
-"     endif
-" endif
+" Add Vim cursor change for xterm
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-
+" Add Vim cursor change for Gnome
 if has("autocmd")
     au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
     au InsertEnter,InsertChange *
@@ -449,7 +418,8 @@ if has("autocmd")
     au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 endif
 
-if &term =~ '^screen'
+" Enable Vim Insert mode Ctrl + arrows in tmux
+if (&term =~ '^screen') || (&term =~ '^tmux')
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
     execute "set <xDown>=\e[1;*B"
