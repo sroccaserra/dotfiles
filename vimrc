@@ -30,6 +30,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'udalov/kotlin-vim'
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/asmM6502.vim'
 Plug 'vim-test/vim-test'
