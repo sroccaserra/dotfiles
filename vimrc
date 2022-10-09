@@ -20,6 +20,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'karolbelina/uxntal.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'Raimondi/delimitMate'
 Plug 'samsaga2/vim-z80'
