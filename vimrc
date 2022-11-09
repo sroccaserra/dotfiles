@@ -217,6 +217,7 @@ if !exists('autocmd_loaded')
     autocmd Filetype help nnoremap <buffer> gd <C-]>
 
     autocmd Filetype clojure let b:delimitMate_quotes='"'
+    autocmd Filetype j let b:delimitMate_quotes="'"
     autocmd Filetype lisp let b:delimitMate_quotes='"'
     autocmd Filetype scheme let b:delimitMate_quotes='"'
     autocmd Filetype scheme setlocal lispwords+=library
