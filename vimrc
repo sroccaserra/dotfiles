@@ -71,7 +71,6 @@ if !has('nvim')
     let g:ale_linters = { 'c': ['clang'], 'cpp': ['clang', 'g++'], 'elixir': ['elixir-ls'], 'go': ['gopls'] }
     let g:ale_fixers = { 'elixir': ['mix_format'] }
 
-
     let g:ale_cpp_cc_options = '-std=c++17 -Wall -pedantic'
     let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
     let g:ale_c_parse_makefile = 0
