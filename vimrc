@@ -104,6 +104,9 @@ if !has('nvim')
     highlight Folded ctermbg=235 guibg=#393939
     highlight clear CursorLineNr
     highlight CursorLineNr ctermbg=darkgray guibg=#393939
+    highlight clear SpellBad
+    highlight SpellBad ctermfg=white ctermbg=red guifg=#ffff00 guibg=#ff0000
+
 else
     set termguicolors
     colorscheme gruvbox
