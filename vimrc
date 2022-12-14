@@ -18,9 +18,11 @@ Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
 Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'justin2004/vim-apl'
 Plug 'karolbelina/uxntal.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'Raimondi/delimitMate'
 Plug 'samsaga2/vim-z80'
