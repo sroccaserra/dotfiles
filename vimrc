@@ -40,12 +40,13 @@ Plug 'vim-test/vim-test'
 Plug 'wincent/terminus'
 
 if has('nvim')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'ThePrimeagen/harpoon'
+    Plug 'ThePrimeagen/vim-be-good'
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'ThePrimeagen/harpoon'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-context'
 else
     Plug 'dense-analysis/ale'
     Plug 'fatih/vim-go', { 'for': 'go' } ", { 'do': ':GoUpdateBinaries' }
