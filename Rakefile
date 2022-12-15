@@ -156,8 +156,9 @@ task :git_global_config do
     puts "# Git config."
 
     git_settings = {
-       'color.ui' => 'auto',
        'branch.autosetuprebase' => 'always',
+       'color.ui' => 'auto',
+       'core.quotePath' => 'false',
        'init.defaultBranch' => 'main',
        'pull.rebase' => 'true',
        'push.default' => 'tracking',
