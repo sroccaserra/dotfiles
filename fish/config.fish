@@ -18,6 +18,9 @@ end
 
 alias rgrep="grep -r"
 alias igrep="grep -i"
+alias local="psql service=local"
+alias dev="psql service=dev"
+alias prod="psql service=prod"
 
 ############
 # Git config
