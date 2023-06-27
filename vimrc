@@ -25,6 +25,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'preservim/nerdtree'
 Plug 'Raimondi/delimitMate'
 Plug 'samsaga2/vim-z80'
 " Plug 'takac/vim-hardtime'
@@ -302,6 +303,9 @@ nnoremap <leader>r *Ncgn
 nnoremap <leader>s :GFiles?<CR>
 nnoremap <leader>v :set paste<CR>mvo<C-R>+<ESC>'vj:set nopaste<CR>
 " nnoremap <leader>z :tabnew %<CR>
+nnoremap <leader>n :NERDTreeFind<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
 
 if has('nvim')
     nnoremap <leader><leader>g <cmd>Telescope live_grep<cr>
