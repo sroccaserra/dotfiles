@@ -311,7 +311,6 @@ if has('nvim')
     nnoremap <leader><leader>g <cmd>Telescope live_grep<cr>
 
     nnoremap <leader><leader>c <Cmd>lua vim.lsp.buf.code_action()<CR>
-    vnoremap <leader><leader>c <Cmd>lua vim.lsp.buf.code_action()<CR>
     nnoremap <leader><leader>D <Cmd>lua vim.diagnostic.open_float()<CR>
     nnoremap <leader><leader>d <Cmd>lua vim.lsp.buf.definition()<CR>
     nnoremap <leader><leader>F <Cmd>lua vim.lsp.buf.references()<CR>
@@ -329,15 +328,16 @@ if has('nvim')
     nnoremap <silent> <leader>l <Cmd>lua require("harpoon.ui").nav_file(3)<CR>
     nnoremap <silent> <leader>m <Cmd>lua require("harpoon.ui").nav_file(4)<CR>
 else
-    nnoremap <leader><leader>c :ALECodeAction<CR>
-    nnoremap <leader><leader>d :ALEGoToDefinition<CR>
-    nnoremap <leader><leader>D :ALEDetail<CR>
-    nnoremap <leader><leader>F :ALEFindReferences -relative<CR>
-    nnoremap <leader><leader>f :ALEFix<CR>
-    nnoremap <leader><leader>n :ALENext<CR>
-    nnoremap <leader><leader>r :ALERename<CR>
+    nnoremap <leader>ac :ALECodeAction<CR>
+    nnoremap <leader>ad :ALEGoToDefinition<CR>
+    nnoremap <leader>aD :ALEDetail<CR>
+    nnoremap <leader>aF :ALEFindReferences -relative<CR>
+    nnoremap <leader>af :ALEFix<CR>
+    nnoremap <leader>an :ALENext<CR>
+    nnoremap <leader>ar :ALERename<CR>
 
-    vnoremap <leader><leader>c :ALECodeAction<CR>
+    vnoremap <leader>ac :ALECodeAction<CR>
+    vnoremap <leader>ar :ALERename<CR>
 endif
 
 vnoremap <leader>c "+y
