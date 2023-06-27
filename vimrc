@@ -284,7 +284,6 @@ nnoremap <leader>/ :History/<CR>
 nnoremap <leader>: :History:<CR>
 nnoremap <leader>B vaBV
 vnoremap <leader>B aBV
-nnoremap <leader>b :Buffer<CR>
 nnoremap <Leader>c :let @+=expand('%')<CR>
 "nnoremap <leader>e :Explore<CR>
 if has('nvim')
@@ -293,6 +292,7 @@ if has('nvim')
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 endif
+nnoremap <leader>zb :Buffer<CR>
 nnoremap <leader>zf :call fzf#vim#files('.', { 'source': 'rg --files ' })<CR>
 nnoremap <leader>zg :GFiles<CR>
 nnoremap <leader>zh :History<CR>
