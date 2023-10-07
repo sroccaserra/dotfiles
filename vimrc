@@ -15,12 +15,12 @@ Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'ervandew/supertab'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
-Plug 'jgdavey/tslime.vim'
+" Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'justin2004/vim-apl'
 Plug 'karolbelina/uxntal.vim'
-Plug 'kovisoft/slimv'
+" Plug 'kovisoft/slimv'
 Plug 'leafgarland/typescript-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
@@ -29,12 +29,14 @@ Plug 'preservim/nerdtree'
 Plug 'Raimondi/delimitMate'
 Plug 'samsaga2/vim-z80'
 " Plug 'takac/vim-hardtime'
+" Plug 'Tetralux/odin.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'udalov/kotlin-vim'
+" Plug 'udalov/kotlin-vim'
+" Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/asmM6502.vim'
 Plug 'vim-test/vim-test'
