@@ -83,6 +83,7 @@ if !has('nvim')
     let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
     let g:ale_c_parse_makefile = 0
     let g:ale_erlang_erlc_options = '-I ./src'
+    let g:ale_python_auto_virtualenv = 1
 endif
 
 let g:auto_save = 1
