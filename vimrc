@@ -15,6 +15,7 @@ Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'ervandew/supertab'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
+Plug 'jdonaldson/vaxe'
 " Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
