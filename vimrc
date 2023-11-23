@@ -250,6 +250,7 @@ if !exists('autocmd_loaded')
     autocmd BufNewFile,BufRead *.nx set filetype=basic
 
     autocmd BufNewFile,BufRead *.tal set filetype=uxntal
+    autocmd BufNewFile,BufRead *.ua set filetype=uiua
 
     autocmd BufNewFile,BufRead *.ex set filetype=elixir
     autocmd BufNewFile,BufRead *.exs set filetype=elixir
