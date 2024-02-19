@@ -285,12 +285,14 @@ vnoremap K :m '<-2<CR>gv=gv
 
 nnoremap ù :noh<CR>
 nnoremap ga <C-^>
+nnoremap <leader>aa :A<CR>
 nnoremap <leader>/ :History/<CR>
 nnoremap <leader>: :History:<CR>
 nnoremap <leader>B vaBV
 vnoremap <leader>B aBV
 nnoremap <Leader>c :let @+=expand('%')<CR>
 "nnoremap <leader>e :Explore<CR>
+
 if has('nvim')
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -298,6 +300,7 @@ if has('nvim')
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 endif
 nnoremap <leader>zb :Buffer<CR>
+nnoremap <leader>zn :Buffer<CR>
 nnoremap <leader>zf :call fzf#vim#files('.', { 'source': 'rg --files ' })<CR>
 nnoremap <leader>zg :GFiles<CR>
 nnoremap <leader>zh :History<CR>
