@@ -80,7 +80,7 @@ if !has('nvim')
     let g:ale_fixers = { 'elixir': ['mix_format'] }
 
     let g:ale_cpp_cc_options = '-std=c++20 -Wall -pedantic -fsyntax-only -I/usr/include/lua5.4'
-    let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude'
+    let g:ale_c_cc_options = '-std=c18 -Wall -Wextra -Wpedantic -Werror -Iinclude -I/usr/include/lua5.4'
     let g:ale_c_parse_makefile = 0
     let g:ale_erlang_erlc_options = '-I ./src'
     let g:ale_python_auto_virtualenv = 1
@@ -246,6 +246,7 @@ if !exists('autocmd_loaded')
     autocmd Filetype yaml setlocal shiftwidth=2
     autocmd Filetype yaml setlocal softtabstop=2
 
+    autocmd BufNewFile,BufRead *.h set filetype=c
     autocmd BufNewFile,BufRead *.p8 set filetype=lua
     autocmd BufNewFile,BufRead *.nx set filetype=basic
 
