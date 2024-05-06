@@ -350,6 +350,7 @@ else
 endif
 
 vnoremap <leader>c "+y
+vnoremap <leader>y "+y
 vnoremap <leader>p "_dP
 
 nnoremap <leader>tt :TestNearest<CR>
