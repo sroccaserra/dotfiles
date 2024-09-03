@@ -293,6 +293,7 @@ nnoremap <leader>B vaBV
 vnoremap <leader>B aBV
 nnoremap <Leader>c :let @+=expand('%')<CR>
 "nnoremap <leader>e :Explore<CR>
+nnoremap <Leader>m :term ++curwin make<CR>
 
 if !has('nvim')
     nnoremap <leader>at :call mylib#FindFileOrTestFile()<CR>
