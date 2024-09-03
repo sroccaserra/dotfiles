@@ -294,6 +294,10 @@ vnoremap <leader>B aBV
 nnoremap <Leader>c :let @+=expand('%')<CR>
 "nnoremap <leader>e :Explore<CR>
 
+if !has('nvim')
+    nnoremap <leader>at :call mylib#FindFileOrTestFile()<CR>
+endif
+
 if has('nvim')
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
