@@ -117,6 +117,8 @@ if !has('nvim')
     highlight clear SpellBad
     highlight SpellBad ctermfg=white ctermbg=red guifg=#ffff00 guibg=#ff0000
 
+    autocmd InsertEnter * set nocul
+    autocmd InsertLeave * set cul
 else
     set termguicolors
     colorscheme gruvbox
