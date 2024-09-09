@@ -298,10 +298,6 @@ nnoremap <Leader>c :let @+=expand('%')<CR>
 "nnoremap <leader>e :Explore<CR>
 nnoremap <Leader>m :term ++curwin make<CR>
 
-if !has('nvim')
-    nnoremap <leader>at :call mylib#FindFileOrTestFile()<CR>
-endif
-
 if has('nvim')
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -313,6 +309,9 @@ nnoremap <leader>zn :Buffer<CR>
 nnoremap <leader>zf :call fzf#vim#files('.', { 'source': 'rg --files ' })<CR>
 nnoremap <leader>zg :GFiles<CR>
 nnoremap <leader>zh :History<CR>
+import autoload 'mylib.vim'
+nnoremap <leader>zt :call mylib#FindFileOrTestFile()<CR>
+
 " nnoremap <leader>j :cnext<CR>zzzv
 " nnoremap <leader>k :cprevious<CR>zzzv
 nnoremap <leader>p :Lexplore %:p:h<CR>
