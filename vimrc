@@ -240,6 +240,7 @@ if !exists('autocmd_loaded')
 
     autocmd Filetype markdown setlocal wrap
     autocmd Filetype ale-preview setlocal wrap
+    autocmd Filetype gemtext setlocal wrap
 
     autocmd BufNewFile,BufRead *.muc set filetype=mucom88
     autocmd Filetype mucom88 setlocal makeprg=miniplay
