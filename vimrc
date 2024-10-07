@@ -377,8 +377,8 @@ cnoremap ùù <Esc>
 " inoremap qg <Esc>
 " cnoremap gq <Esc>
 " cnoremap qg <Esc>
-" inoremap sf <esc>
-" cnoremap sf <esc>
+" inoremap sf <Esc>
+" cnoremap sf <Esc>
 " inoremap <Space><Space> <Esc>
 " cnoremap <Space><Space> <Esc>
 
@@ -394,7 +394,7 @@ inoremap <silent> <C-l> <Nop>
 
 cnoremap <C-A> <Home>
 
-iabbr ajd <C-R>=strftime("%Y-%m-%d")<CR>
+iabbr ,d <C-R>=strftime("%Y-%m-%d")<CR>
 
 autocmd VimEnter * iunmap <leader>ih
 autocmd VimEnter * iunmap <leader>ihn
