@@ -304,13 +304,13 @@ if has('nvim')
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 endif
-nnoremap <leader>zb :Buffer<CR>
-nnoremap <leader>zn :Buffer<CR>
-nnoremap <leader>zf :call fzf#vim#files('.', { 'source': 'rg --files ' })<CR>
-nnoremap <leader>zg :GFiles<CR>
-nnoremap <leader>zh :History<CR>
+nnoremap <leader>qb :Buffer<CR>
+nnoremap <leader>qn :Buffer<CR>
+nnoremap <leader>qf :call fzf#vim#files('.', { 'source': 'rg --files ' })<CR>
+nnoremap <leader>qg :GFiles<CR>
+nnoremap <leader>qh :History<CR>
 import autoload 'mylib.vim'
-nnoremap <leader>zt :call mylib#FindFileOrTestFile()<CR>
+nnoremap <leader>qt :call mylib#FindFileOrTestFile()<CR>
 
 " nnoremap <leader>j :cnext<CR>zzzv
 " nnoremap <leader>k :cprevious<CR>zzzv
@@ -318,7 +318,6 @@ nnoremap <leader>p :Lexplore %:p:h<CR>
 nnoremap <leader>r *Ncgn
 nnoremap <leader>s :GFiles?<CR>
 nnoremap <leader>v :set paste<CR>mvo<C-R>+<ESC>'vj:set nopaste<CR>
-" nnoremap <leader>z :tabnew %<CR>
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
