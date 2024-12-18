@@ -420,6 +420,7 @@ function! SetCWordInSearch()
     let @/ = searchExpression
     call feedkeys(":setlocal hlsearch\r", 'n')
     call feedkeys(":echo '" . searchExpression . "'\r", 'n')
+    call setreg("+", l:wordUnderCursor)
 endfunction
 
 digraph oo 9702 " WHITE BULLET 0x25E6 digraph
